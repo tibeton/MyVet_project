@@ -5,14 +5,14 @@
 
 export const site = {
   name: "MyVet",
-  phoneDisplay: "+998 (71) 200-00-00",
-  phoneHref: "+998712000000",
-  emergencyDisplay: "+998 (90) 000-00-00",
-  emergencyHref: "+998900000000",
+  phoneDisplay: "+998 99 442 50 80",
+  phoneHref: "+998994425080",
+  emergencyDisplay: "+998 99 067 07 90",
+  emergencyHref: "+998990670790",
   email: "info@myvet.uz",
   telegram: "https://t.me/myvet_uz",
   instagram: "https://instagram.com/myvet.uz",
-  whatsappHref: "+998900000000",
+  whatsappHref: "+998994425080",
   addressShort: "Tashkent, Uzbekistan",
   // Замените на реальные координаты/embed клиники.
   mapEmbed:
