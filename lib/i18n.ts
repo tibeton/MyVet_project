@@ -70,7 +70,7 @@ type Dict = {
     kicker: string;
     title: string;
     lead: string;
-    members: { name: string; role: string; exp: string }[];
+    members: { name: string; role: string }[];
   };
   process: {
     kicker: string;
@@ -90,7 +90,8 @@ type Dict = {
     kicker: string;
     title: string;
     lead: string;
-    items: { name: string; meta: string; text: string }[];
+    ymapsCta: string;
+    ymapsBadge: string;
   };
   faq: {
     kicker: string;
@@ -138,9 +139,9 @@ export const dictionaries: Record<Locale, Dict> = {
   // ═══════════════════════════════════════════ RU ══
   ru: {
     meta: {
-      title: "MyVet — Ветеринарная клиника в Ташкенте",
+      title: "MyVet — Ветеринарная клиника в Ташкенте · Круглосуточно 24/7",
       description:
-        "MyVet — современная ветеринарная клиника в Ташкенте: терапия, хирургия, вакцинация, диагностика (УЗИ, анализы), стоматология и груминг. Своя лаборатория, опытные врачи, экстренная помощь 24/7.",
+        "MyVet — современная ветеринарная клиника в Ташкенте: терапия, хирургия, вакцинация, диагностика (УЗИ, анализы), стоматология и груминг. Своя лаборатория, опытные врачи, круглосуточная экстренная помощь и вызов ветеринара на дом.",
     },
     nav: {
       services: "Услуги",
@@ -238,7 +239,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     why: {
       kicker: "Почему MyVet",
-      title: "Спокойно за питомца — спокойно вам",
+      title: "Здоровье питомца — наш главный приоритет",
       lead: "Мы берём ответственность за здоровье вашего любимца на каждом этапе.",
       points: [
         {
@@ -270,12 +271,11 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     team: {
       kicker: "Наша команда",
-      title: "Врачи, которым доверяют питомцев",
+      title: "Команда, которой доверяют питомцев",
       lead: "Каждый специалист — это опыт, забота и любовь к животным.",
       members: [
-        { name: "Алишер Каримов", role: "Главный врач · хирург", exp: "15 лет опыта" },
-        { name: "Дилноза Рахимова", role: "Терапевт · дерматолог", exp: "10 лет опыта" },
-        { name: "Тимур Юсупов", role: "Врач-диагност · УЗИ", exp: "8 лет опыта" },
+        { name: "Улугбек Баходирович", role: "Главный врач" },
+        { name: "Наргиза Фарходовна", role: "Руководитель" },
       ],
     },
     process: {
@@ -296,35 +296,21 @@ export const dictionaries: Record<Locale, Dict> = {
       note: "Точная стоимость зависит от состояния питомца и определяется на приёме.",
       currency: "сум",
       items: [
-        { name: "Первичный приём и консультация", price: "от 80 000" },
-        { name: "Вакцинация (комплексная)", price: "от 150 000" },
+        { name: "Первичный приём и консультация", price: "от 120 000" },
+        { name: "Вакцинация (комплексная)", price: "от 185 000" },
         { name: "УЗИ-диагностика", price: "от 120 000" },
         { name: "Чистка зубов (ультразвук)", price: "от 250 000" },
-        { name: "Стерилизация / кастрация", price: "от 400 000" },
-        { name: "Вызов врача на дом", price: "от 100 000" },
+        { name: "Стерилизация", price: "от 450 000" },
+        { name: "Кастрация", price: "от 250 000" },
+        { name: "Вызов врача на дом", price: "от 150 000" },
       ],
     },
     reviews: {
       kicker: "Отзывы",
       title: "Нам доверяют самое дорогое",
-      lead: "Истории владельцев, которые стали постоянными клиентами MyVet.",
-      items: [
-        {
-          name: "Камила",
-          meta: "хозяйка кошки Луны",
-          text: "Привезли Луну ночью с отравлением — приняли сразу, всё объяснили и спасли. Бесконечно благодарны команде.",
-        },
-        {
-          name: "Рустам",
-          meta: "хозяин лабрадора Рекса",
-          text: "Делаем здесь все прививки и наблюдаемся уже три года. Врачи внимательные, а Рекс совсем не боится приёмов.",
-        },
-        {
-          name: "Нигора",
-          meta: "хозяйка хаски Аклы",
-          text: "Операция прошла идеально, после держали на связи и контролировали восстановление. Чувствуется забота, а не конвейер.",
-        },
-      ],
+      lead: "Реальные отзывы владельцев с Яндекс.Карт. Нажмите на любой, чтобы открыть его на картах.",
+      ymapsCta: "Все отзывы на Яндекс.Картах",
+      ymapsBadge: "на Яндекс.Картах",
     },
     faq: {
       kicker: "Частые вопросы",
@@ -336,8 +322,8 @@ export const dictionaries: Record<Locale, Dict> = {
           a: "Желательно — так вы попадёте к врачу без ожидания. Но в экстренных случаях мы принимаем без записи в любое время.",
         },
         {
-          q: "Принимаете ли вы экзотических животных?",
-          a: "Да, помимо кошек и собак мы работаем с грызунами, птицами, рептилиями и другими питомцами. Уточните вид при записи.",
+          q: "Какие способы оплаты вы принимаете?",
+          a: "Принимаем наличные и оплату картой. Полную стоимость услуг вы всегда видите до начала процедуры — без скрытых доплат.",
         },
         {
           q: "Работаете ли вы ночью?",
@@ -378,14 +364,14 @@ export const dictionaries: Record<Locale, Dict> = {
       invalidPhone: "Укажите корректный номер",
       or: "или свяжитесь напрямую",
       address: "Адрес",
-      addressValue: "Ташкент, Узбекистан",
+      addressValue: "улица Чигил, 32А, Ташкент",
       hours: "Часы работы",
-      hoursValue: "Ежедневно · 09:00–21:00 · экстренно 24/7",
+      hoursValue: "Ежедневно 24/7 · без обеда, выходных и праздников",
       emergency: "Экстренная линия",
       emergencyNote: "Круглосуточно для неотложных случаев",
     },
     footer: {
-      tagline: "Современная ветеринарная клиника в Ташкенте. Заботимся о тех, кого вы любите.",
+      tagline: "Современная ветеринарная клиника в Узбекистане. Заботимся о тех, кого вы любите.",
       nav: "Навигация",
       contacts: "Контакты",
       social: "Соцсети",
@@ -397,9 +383,9 @@ export const dictionaries: Record<Locale, Dict> = {
   // ═══════════════════════════════════════════ UZ ══
   uz: {
     meta: {
-      title: "MyVet — Toshkentdagi veterinariya klinikasi",
+      title: "MyVet — Toshkentda veterinariya klinikasi · 24/7 kechayu kunduz",
       description:
-        "MyVet — Toshkentdagi zamonaviy veterinariya klinikasi: terapiya, jarrohlik, vaksinatsiya, diagnostika (UTT, tahlillar), stomatologiya va gruming. O‘z laboratoriyasi, tajribali shifokorlar va 24/7 shoshilinch yordam.",
+        "MyVet — Toshkentdagi zamonaviy veterinariya klinikasi: terapiya, jarrohlik, vaksinatsiya, diagnostika (UTT, tahlillar), stomatologiya va gruming. O‘z laboratoriyasi, tajribali shifokorlar, kechayu kunduz shoshilinch yordam va uyga veterinar chaqirish.",
     },
     nav: {
       services: "Xizmatlar",
@@ -497,7 +483,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     why: {
       kicker: "Nega MyVet",
-      title: "Hayvon uchun xotirjam — siz uchun xotirjam",
+      title: "Hayvon sog‘lig‘i — bizning asosiy ustuvorligimiz",
       lead: "Sevimli hayvoningiz sog‘lig‘i uchun har bosqichda javobgarlikni o‘z zimmamizga olamiz.",
       points: [
         {
@@ -529,12 +515,11 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     team: {
       kicker: "Bizning jamoa",
-      title: "Hayvonlar ishonadigan shifokorlar",
+      title: "Hayvonlar ishonadigan jamoa",
       lead: "Har bir mutaxassis — tajriba, g‘amxo‘rlik va hayvonlarga mehr.",
       members: [
-        { name: "Alisher Karimov", role: "Bosh shifokor · jarroh", exp: "15 yil tajriba" },
-        { name: "Dilnoza Rahimova", role: "Terapevt · dermatolog", exp: "10 yil tajriba" },
-        { name: "Timur Yusupov", role: "Diagnost · UTT", exp: "8 yil tajriba" },
+        { name: "Ulug‘bek Bahodirovich", role: "Bosh shifokor" },
+        { name: "Nargiza Farhodovna", role: "Rahbar" },
       ],
     },
     process: {
@@ -555,35 +540,21 @@ export const dictionaries: Record<Locale, Dict> = {
       note: "Aniq narx hayvon holatiga bog‘liq va qabulda belgilanadi.",
       currency: "so‘m",
       items: [
-        { name: "Birlamchi qabul va maslahat", price: "80 000 dan" },
-        { name: "Vaksinatsiya (kompleks)", price: "150 000 dan" },
+        { name: "Birlamchi qabul va maslahat", price: "120 000 dan" },
+        { name: "Vaksinatsiya (kompleks)", price: "185 000 dan" },
         { name: "UTT diagnostika", price: "120 000 dan" },
         { name: "Tish tozalash (ultratovush)", price: "250 000 dan" },
-        { name: "Sterilizatsiya / kastratsiya", price: "400 000 dan" },
-        { name: "Shifokorni uyga chaqirish", price: "100 000 dan" },
+        { name: "Sterilizatsiya", price: "450 000 dan" },
+        { name: "Kastratsiya", price: "250 000 dan" },
+        { name: "Shifokorni uyga chaqirish", price: "150 000 dan" },
       ],
     },
     reviews: {
       kicker: "Fikrlar",
       title: "Bizga eng qadrlini ishonishadi",
-      lead: "MyVet doimiy mijoziga aylangan egalarning hikoyalari.",
-      items: [
-        {
-          name: "Kamila",
-          meta: "Luna mushukning egasi",
-          text: "Lunani kechasi zaharlanish bilan olib keldik — darhol qabul qilishdi, hammasini tushuntirib, qutqarishdi. Jamoaga cheksiz minnatdormiz.",
-        },
-        {
-          name: "Rustam",
-          meta: "Reks labradorning egasi",
-          text: "Bu yerda barcha emlashlarni qilamiz va uch yildan beri kuzatuvdamiz. Shifokorlar e’tiborli, Reks esa qabuldan umuman qo‘rqmaydi.",
-        },
-        {
-          name: "Nigora",
-          meta: "Akla xaskining egasi",
-          text: "Operatsiya mukammal o‘tdi, keyin aloqada bo‘lib, sog‘ayishni nazorat qilishdi. Konveyer emas, haqiqiy g‘amxo‘rlik seziladi.",
-        },
-      ],
+      lead: "Yandex.Xaritadagi haqiqiy mijoz fikrlari. Xaritada ochish uchun istalganiga bosing.",
+      ymapsCta: "Yandex.Xaritadagi barcha fikrlar",
+      ymapsBadge: "Yandex.Xaritada",
     },
     faq: {
       kicker: "Ko‘p beriladigan savollar",
@@ -595,8 +566,8 @@ export const dictionaries: Record<Locale, Dict> = {
           a: "Tavsiya etiladi — shunda kutmasdan shifokorga tushasiz. Ammo shoshilinch holatlarda istalgan vaqtda yozuvsiz qabul qilamiz.",
         },
         {
-          q: "Ekzotik hayvonlarni qabul qilasizmi?",
-          a: "Ha, mushuk va itlardan tashqari kemiruvchilar, qushlar, sudralib yuruvchilar va boshqa hayvonlar bilan ishlaymiz. Yozilishda turini bildiring.",
+          q: "Qanday to‘lov usullarini qabul qilasiz?",
+          a: "Naqd pul va karta orqali to‘lovni qabul qilamiz. Xizmatlarning to‘liq narxini muolaja boshlanishidan oldin ko‘rasiz — yashirin to‘lovlarsiz.",
         },
         {
           q: "Kechasi ishlaysizmi?",
@@ -637,14 +608,14 @@ export const dictionaries: Record<Locale, Dict> = {
       invalidPhone: "To‘g‘ri raqam kiriting",
       or: "yoki to‘g‘ridan-to‘g‘ri bog‘laning",
       address: "Manzil",
-      addressValue: "Toshkent, O‘zbekiston",
+      addressValue: "Chig‘il ko‘chasi, 32A, Toshkent",
       hours: "Ish vaqti",
-      hoursValue: "Har kuni · 09:00–21:00 · shoshilinch 24/7",
+      hoursValue: "Har kuni 24/7 · tanaffus, dam olish va bayramsiz",
       emergency: "Shoshilinch liniya",
       emergencyNote: "Shoshilinch holatlar uchun kechayu kunduz",
     },
     footer: {
-      tagline: "Toshkentdagi zamonaviy veterinariya klinikasi. Siz sevganlar haqida g‘amxo‘rlik qilamiz.",
+      tagline: "O‘zbekistondagi zamonaviy veterinariya klinikasi. Siz sevganlar haqida g‘amxo‘rlik qilamiz.",
       nav: "Navigatsiya",
       contacts: "Aloqa",
       social: "Ijtimoiy tarmoqlar",
@@ -656,9 +627,9 @@ export const dictionaries: Record<Locale, Dict> = {
   // ═══════════════════════════════════════════ EN ══
   en: {
     meta: {
-      title: "MyVet — Veterinary Clinic in Tashkent",
+      title: "MyVet — Veterinary Clinic in Tashkent · Open 24/7",
       description:
-        "MyVet is a modern veterinary clinic in Tashkent: therapy, surgery, vaccination, diagnostics (ultrasound, lab tests), dentistry and grooming. In-house lab, experienced vets and 24/7 emergency care.",
+        "MyVet is a modern veterinary clinic in Tashkent: therapy, surgery, vaccination, diagnostics (ultrasound, lab tests), dentistry and grooming. In-house lab, experienced vets, round-the-clock emergency care and home vet visits.",
     },
     nav: {
       services: "Services",
@@ -756,7 +727,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     why: {
       kicker: "Why MyVet",
-      title: "Peace of mind for you and your pet",
+      title: "Your pet's health is our top priority",
       lead: "We take responsibility for your pet's health at every stage.",
       points: [
         {
@@ -788,12 +759,11 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     team: {
       kicker: "Our team",
-      title: "Vets you can trust your pet with",
+      title: "A team you can trust your pet with",
       lead: "Every specialist brings experience, care and a genuine love for animals.",
       members: [
-        { name: "Alisher Karimov", role: "Head vet · surgeon", exp: "15 years of practice" },
-        { name: "Dilnoza Rakhimova", role: "Therapist · dermatologist", exp: "10 years of practice" },
-        { name: "Timur Yusupov", role: "Diagnostician · ultrasound", exp: "8 years of practice" },
+        { name: "Ulugbek Bakhodirovich", role: "Head veterinarian" },
+        { name: "Nargiza Farkhodovna", role: "Director" },
       ],
     },
     process: {
@@ -814,35 +784,21 @@ export const dictionaries: Record<Locale, Dict> = {
       note: "The exact price depends on your pet's condition and is confirmed at the visit.",
       currency: "UZS",
       items: [
-        { name: "Initial visit & consultation", price: "from 80,000" },
-        { name: "Vaccination (complex)", price: "from 150,000" },
+        { name: "Initial visit & consultation", price: "from 120,000" },
+        { name: "Vaccination (complex)", price: "from 185,000" },
         { name: "Ultrasound diagnostics", price: "from 120,000" },
         { name: "Teeth cleaning (ultrasonic)", price: "from 250,000" },
-        { name: "Spaying / neutering", price: "from 400,000" },
-        { name: "Vet home visit", price: "from 100,000" },
+        { name: "Spaying", price: "from 450,000" },
+        { name: "Neutering", price: "from 250,000" },
+        { name: "Vet home visit", price: "from 150,000" },
       ],
     },
     reviews: {
       kicker: "Reviews",
       title: "People trust us with what matters most",
-      lead: "Stories from owners who became regular MyVet clients.",
-      items: [
-        {
-          name: "Kamila",
-          meta: "Luna the cat's owner",
-          text: "We brought Luna in at night with poisoning — they took us straight away, explained everything and saved her. Endlessly grateful to the team.",
-        },
-        {
-          name: "Rustam",
-          meta: "Rex the labrador's owner",
-          text: "We've done all our vaccinations here for three years now. The vets are attentive, and Rex isn't afraid of visits at all.",
-        },
-        {
-          name: "Nigora",
-          meta: "Akla the husky's owner",
-          text: "The surgery went perfectly, and afterwards they stayed in touch and monitored recovery. It feels like real care, not a conveyor belt.",
-        },
-      ],
+      lead: "Real client reviews from Yandex Maps. Tap any one to open it on the map.",
+      ymapsCta: "All reviews on Yandex Maps",
+      ymapsBadge: "on Yandex Maps",
     },
     faq: {
       kicker: "FAQ",
@@ -854,8 +810,8 @@ export const dictionaries: Record<Locale, Dict> = {
           a: "It's recommended — that way you see the vet without waiting. But in emergencies we accept walk-ins at any time.",
         },
         {
-          q: "Do you treat exotic animals?",
-          a: "Yes. Besides cats and dogs we work with rodents, birds, reptiles and other pets. Let us know the species when booking.",
+          q: "What payment methods do you accept?",
+          a: "We accept cash and card payments. You'll always see the full cost of services before any procedure begins — with no hidden fees.",
         },
         {
           q: "Are you open at night?",
@@ -896,14 +852,14 @@ export const dictionaries: Record<Locale, Dict> = {
       invalidPhone: "Enter a valid number",
       or: "or reach us directly",
       address: "Address",
-      addressValue: "Tashkent, Uzbekistan",
+      addressValue: "Chigil street, 32A, Tashkent",
       hours: "Opening hours",
-      hoursValue: "Daily · 09:00–21:00 · emergency 24/7",
+      hoursValue: "Open 24/7 · no lunch break, days off or holidays",
       emergency: "Emergency line",
       emergencyNote: "Around the clock for urgent cases",
     },
     footer: {
-      tagline: "A modern veterinary clinic in Tashkent. Caring for the ones you love.",
+      tagline: "A modern veterinary clinic in Uzbekistan. Caring for the ones you love.",
       nav: "Navigation",
       contacts: "Contacts",
       social: "Social",

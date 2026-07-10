@@ -217,6 +217,17 @@ h1, h2, h3, h4 {
   animation: marquee 32s linear infinite;
 }
 
+/* Reviews marquee — slower, pauses on hover so cards can be read & clicked */
+.review-track {
+  display: inline-flex;
+  will-change: transform;
+  animation: marquee 48s linear infinite;
+}
+.review-marquee:hover .review-track,
+.review-track:focus-within {
+  animation-play-state: paused;
+}
+
 /* Hover lift card */
 .lift {
   transition: transform 0.5s var(--ease-out-expo),
@@ -244,7 +255,8 @@ h1, h2, h3, h4 {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .marquee-track {
+  .marquee-track,
+  .review-track {
     animation: none;
     transform: none;
   }

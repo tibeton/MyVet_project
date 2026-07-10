@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Manrope, Onest } from "next/font/google";
 import { getDict, isLocale, locales, type Locale } from "@/lib/i18n";
+import Preloader from "@/components/Preloader";
+import JsonLd from "@/components/JsonLd";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -34,11 +36,32 @@ export async function generateMetadata({
     title: dict.meta.title,
     description: dict.meta.description,
     icons: { icon: "/favicon.svg" },
+    alternates: {
+      canonical: `/${safe}`,
+      languages: {
+        ru: "/ru",
+        uz: "/uz",
+        en: "/en",
+        "x-default": "/ru",
+      },
+    },
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
+      url: `/${safe}`,
+      siteName: "MyVet",
       type: "website",
       locale: safe === "ru" ? "ru_RU" : safe === "uz" ? "uz_UZ" : "en_US",
+      alternateLocale: ["ru_RU", "uz_UZ", "en_US"],
+      images: [
+        { url: "/og.jpg", width: 1200, height: 630, alt: dict.meta.title },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: ["/og.jpg"],
     },
   };
 }
@@ -55,7 +78,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${manrope.variable} ${onest.variable}`}>{children}</body>
+      <body className={`${manrope.variable} ${onest.variable}`}>
+        <JsonLd />
+        <Preloader />
+        {children}
+      </body>
     </html>
   );
 }

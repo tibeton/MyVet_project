@@ -34,7 +34,7 @@ export default async function Home({
         <Team dict={dict} />
         <Process dict={dict} />
         <Prices dict={dict} />
-        <Reviews dict={dict} />
+        <Reviews dict={dict} locale={safe} />
         <FAQ dict={dict} />
         <Contact dict={dict} locale={safe} />
       </main>
