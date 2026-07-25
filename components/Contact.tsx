@@ -1,9 +1,14 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Dict, Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import Reveal from "./Reveal";
+import { Button } from "@astryxdesign/core/Button";
+import { TextInput } from "@astryxdesign/core/TextInput";
+import { TextArea } from "@astryxdesign/core/TextArea";
+import { Selector } from "@astryxdesign/core/Selector";
+import { InputGroup, InputGroupText } from "@astryxdesign/core/InputGroup";
 import {
   IconPhone,
   IconMail,
@@ -26,18 +31,42 @@ export default function Contact({
 }) {
   const c = dict.contact;
   const [status, setStatus] = useState<Status>("idle");
-  const [errors, setErrors] = useState<{ name?: boolean; phone?: boolean }>({});
+  const [errors, setErrors] = useState<{
+    name?: boolean;
+    phone?: boolean;
+    pet?: boolean;
+  }>({});
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [pet, setPet] = useState("");
+  const [service, setService] = useState(c.serviceOptions[0]);
+  const [message, setMessage] = useState("");
+
+  // Astryx TextInput exposes neither inputMode nor autoComplete, so set them on
+  // the underlying <input> — without inputMode phones show a full keyboard.
+  const phoneRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const input = phoneRef.current?.querySelector("input");
+    if (!input) return;
+    input.setAttribute("inputmode", "numeric");
+    input.setAttribute("autocomplete", "tel-national");
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const name = (data.get("name") as string)?.trim();
-    const phone = (data.get("phone") as string)?.trim();
+    const trimmedName = name.trim();
+    const trimmedPhone = phone.trim();
+    const trimmedPet = pet.trim();
+    const trimmedMessage = message.trim();
 
-    const nextErrors = { name: !name, phone: !phone || phone.replace(/\D/g, "").length < 7 };
+    const nextErrors = {
+      name: !trimmedName,
+      // National part only — the +998 country code is a fixed prefix addon.
+      phone: trimmedPhone.replace(/\D/g, "").length !== 9,
+      pet: !trimmedPet,
+    };
     setErrors(nextErrors);
-    if (nextErrors.name || nextErrors.phone) return;
+    if (Object.values(nextErrors).some(Boolean)) return;
 
     setStatus("sending");
     try {
@@ -45,17 +74,21 @@ export default function Contact({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          phone,
-          pet: data.get("pet"),
-          service: data.get("service"),
-          message: data.get("message"),
+          name: trimmedName,
+          phone: `+998 ${trimmedPhone}`,
+          pet: trimmedPet,
+          service,
+          message: trimmedMessage,
           locale,
         }),
       });
       if (!res.ok) throw new Error("request failed");
       setStatus("success");
-      form.reset();
+      setName("");
+      setPhone("");
+      setPet("");
+      setService(c.serviceOptions[0]);
+      setMessage("");
     } catch {
       setStatus("error");
     }
@@ -68,9 +101,6 @@ export default function Contact({
     { icon: IconPin, label: c.address, value: c.addressValue, href: site.mapLink },
     { icon: IconClock, label: c.hours, value: c.hoursValue },
   ];
-
-  const fieldClass =
-    "w-full rounded-2xl border border-line bg-surface px-4 py-3.5 text-sm text-ink outline-none transition-colors placeholder:text-faint focus:border-accent";
 
   return (
     <section id="contact" className="section scroll-mt-20">
@@ -88,88 +118,80 @@ export default function Contact({
 
             <form onSubmit={onSubmit} noValidate className="mt-7 space-y-3.5">
               <div className="grid gap-3.5 sm:grid-cols-2">
-                <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-ink">
-                    {c.name}
-                  </label>
-                  <input
-                    name="name"
+                <TextInput
+                  label={c.name}
+                  value={name}
+                  onChange={(v) => {
+                    setName(v);
+                    if (errors.name) setErrors((p) => ({ ...p, name: false }));
+                  }}
+                  status={errors.name ? { type: "error", message: c.required } : undefined}
+                />
+                <div ref={phoneRef}>
+                  <InputGroup
+                    label={c.phone}
+                    status={errors.phone ? { type: "error", message: c.invalidPhone } : undefined}
+                  >
+                    <InputGroupText>+998</InputGroupText>
+                  <TextInput
+                    label={c.phone}
+                    isLabelHidden
                     type="text"
-                    autoComplete="name"
-                    className={`${fieldClass} ${errors.name ? "border-pink-bright" : ""}`}
-                    onChange={() => errors.name && setErrors((p) => ({ ...p, name: false }))}
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-xs text-pink-bright">{c.required}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-ink">
-                    {c.phone}
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    inputMode="tel"
-                    autoComplete="tel"
-                    placeholder="+998 __ ___ __ __"
-                    className={`${fieldClass} ${errors.phone ? "border-pink-bright" : ""}`}
-                    onChange={() => errors.phone && setErrors((p) => ({ ...p, phone: false }))}
-                  />
-                  {errors.phone && (
-                    <p className="mt-1 text-xs text-pink-bright">{c.invalidPhone}</p>
-                  )}
+                    value={phone}
+                    onChange={(v) => {
+                      // Digits only, formatted as "XX XXX XX XX" (9 digits max).
+                      let raw = v.replace(/\D/g, "");
+                      // Pasting a full number ("+998 99 442 50 80" or "8 99…")
+                      // would otherwise be truncated into nonsense.
+                      if (raw.length > 9 && raw.startsWith("998")) raw = raw.slice(3);
+                      if (raw.length > 9 && raw.startsWith("8")) raw = raw.slice(1);
+                      const d = raw.slice(0, 9);
+                      const parts = [d.slice(0, 2), d.slice(2, 5), d.slice(5, 7), d.slice(7, 9)];
+                      setPhone(parts.filter(Boolean).join(" "));
+                      if (errors.phone) setErrors((p) => ({ ...p, phone: false }));
+                    }}
+                    placeholder="__ ___ __ __"
+                    />
+                  </InputGroup>
                 </div>
               </div>
 
               <div className="grid gap-3.5 sm:grid-cols-2">
-                <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-ink">
-                    {c.pet}
-                  </label>
-                  <input
-                    name="pet"
-                    type="text"
-                    placeholder={c.petPlaceholder}
-                    className={fieldClass}
-                  />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-ink">
-                    {c.service}
-                  </label>
-                  <select name="service" defaultValue={c.serviceOptions[0]} className={fieldClass}>
-                    {c.serviceOptions.map((o) => (
-                      <option key={o} value={o}>
-                        {o}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="mb-1.5 block text-xs font-semibold text-ink">
-                  {c.message}
-                </label>
-                <textarea
-                  name="message"
-                  rows={3}
-                  placeholder={c.messagePlaceholder}
-                  className={`${fieldClass} resize-none`}
+                <TextInput
+                  label={c.pet}
+                  value={pet}
+                  onChange={(v) => {
+                    setPet(v);
+                    if (errors.pet) setErrors((p) => ({ ...p, pet: false }));
+                  }}
+                  placeholder={c.petPlaceholder}
+                  status={errors.pet ? { type: "error", message: c.required } : undefined}
+                />
+                <Selector
+                  label={c.service}
+                  value={service}
+                  onChange={(v) => v && setService(v)}
+                  options={c.serviceOptions}
                 />
               </div>
 
-              <button
+              <TextArea
+                label={c.message}
+                value={message}
+                onChange={setMessage}
+                rows={3}
+                placeholder={c.messagePlaceholder}
+              />
+
+              <Button
                 type="submit"
-                disabled={status === "sending"}
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 font-semibold text-on-accent transition-colors hover:bg-accent-bright disabled:opacity-70 sm:w-auto"
-              >
-                {status === "sending" ? c.sending : c.submit}
-                {status !== "sending" && (
-                  <IconArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                )}
-              </button>
+                label={status === "sending" ? c.sending : c.submit}
+                variant="primary"
+                size="lg"
+                isLoading={status === "sending"}
+                width="100%"
+                endContent={<IconArrowUpRight className="h-5 w-5" />}
+              />
 
               {status === "success" && (
                 <p className="rounded-2xl bg-accent-soft px-4 py-3 text-sm font-medium text-accent">

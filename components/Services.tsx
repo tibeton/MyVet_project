@@ -75,7 +75,7 @@ export default function Services({ dict }: { dict: Dict }) {
         <div className="mt-8 flex justify-center">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-3.5 font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+            className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-surface px-6 py-3.5 font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
             {dict.cta.book}
             <IconArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

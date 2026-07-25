@@ -4,6 +4,9 @@ import { Manrope, Onest } from "next/font/google";
 import { getDict, isLocale, locales, type Locale } from "@/lib/i18n";
 import Preloader from "@/components/Preloader";
 import JsonLd from "@/components/JsonLd";
+import { Theme } from "@astryxdesign/core/theme";
+import { myvetTheme } from "@/lib/myvet";
+import "@/lib/myvet.css";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -77,11 +80,14 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
 
   return (
-    <html lang={locale}>
-      <body className={`${manrope.variable} ${onest.variable}`}>
+    // Font variables live on <html> so :root can resolve --font-display/--font-body.
+    <html lang={locale} className={`${manrope.variable} ${onest.variable}`}>
+      <body>
         <JsonLd />
         <Preloader />
-        {children}
+        <Theme theme={myvetTheme} mode="light">
+          {children}
+        </Theme>
       </body>
     </html>
   );

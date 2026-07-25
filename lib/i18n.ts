@@ -47,6 +47,7 @@ type Dict = {
       statusValue: string;
       nextVisit: string;
       nextVisitValue: string;
+      comingSoon: string;
     };
   };
   marquee: string[];
@@ -179,6 +180,7 @@ export const dictionaries: Record<Locale, Dict> = {
         statusValue: "Здоров",
         nextVisit: "Следующий визит",
         nextVisitValue: "12 окт",
+        comingSoon: "Скоро",
       },
     },
     marquee: [
@@ -348,7 +350,7 @@ export const dictionaries: Record<Locale, Dict> = {
         "Терапия и приём",
         "Вакцинация",
         "Хирургия",
-        "Диагностика (УЗИ, анализы)",
+        "Диагностика (УЗИ, рентген, анализы)",
         "Стоматология",
         "Груминг",
         "Вызов на дом",
@@ -423,6 +425,7 @@ export const dictionaries: Record<Locale, Dict> = {
         statusValue: "Sog‘lom",
         nextVisit: "Keyingi tashrif",
         nextVisitValue: "12 okt",
+        comingSoon: "Tez orada",
       },
     },
     marquee: [
@@ -592,7 +595,7 @@ export const dictionaries: Record<Locale, Dict> = {
         "Terapiya va qabul",
         "Vaksinatsiya",
         "Jarrohlik",
-        "Diagnostika (UTT, tahlillar)",
+        "Diagnostika (UTT, rentgen, tahlillar)",
         "Stomatologiya",
         "Gruming",
         "Uyga chaqirish",
@@ -667,6 +670,7 @@ export const dictionaries: Record<Locale, Dict> = {
         statusValue: "Healthy",
         nextVisit: "Next visit",
         nextVisitValue: "Oct 12",
+        comingSoon: "Coming soon",
       },
     },
     marquee: [
@@ -836,7 +840,7 @@ export const dictionaries: Record<Locale, Dict> = {
         "Therapy & consultation",
         "Vaccination",
         "Surgery",
-        "Diagnostics (ultrasound, tests)",
+        "Diagnostics (ultrasound, X-ray, tests)",
         "Dentistry",
         "Grooming",
         "Home visit",

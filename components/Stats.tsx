@@ -76,7 +76,7 @@ export default function Stats({ dict }: { dict: Dict }) {
           <div className="relative grid grid-cols-2 gap-8 lg:grid-cols-4">
             {items.map((item) => (
               <div key={item.label}>
-                <p className="font-display text-[clamp(2.2rem,5vw,3.4rem)] font-extrabold leading-none">
+                <p className="font-display text-[clamp(2.2rem,5vw,3.4rem)] font-extrabold leading-none text-on-accent">
                   <StatValue value={item.value} play={inView} />
                 </p>
                 <p className="mt-2 text-sm/snug text-on-accent/80">

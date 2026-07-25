@@ -60,7 +60,7 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
               <a
                 key={l.href}
                 href={l.href}
-                className="group relative text-sm font-medium text-text transition-colors hover:text-ink"
+                className="group relative whitespace-nowrap text-sm font-medium text-text transition-colors hover:text-ink"
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-pink-bright transition-all duration-300 group-hover:w-full" />
@@ -71,7 +71,7 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
           <div className="flex items-center gap-2 md:gap-3">
             <a
               href={`tel:${site.phoneHref}`}
-              className="hidden items-center gap-1.5 text-sm font-semibold text-ink xl:inline-flex"
+              className="hidden items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-ink xl:inline-flex"
             >
               <IconPhone className="h-4 w-4 text-accent" />
               {site.phoneDisplay}
@@ -79,7 +79,7 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
             <LangSwitch locale={locale} />
             <a
               href="#contact"
-              className="group hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-bright sm:inline-flex"
+              className="group hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-bright sm:inline-flex"
             >
               {dict.cta.book}
               <IconArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -146,7 +146,7 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-4 flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-3.5 font-semibold text-on-accent"
+                className="mt-4 flex items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-4 py-3.5 font-semibold text-on-accent"
               >
                 {dict.cta.book}
                 <IconArrowUpRight className="h-4 w-4" />

@@ -1,3 +1,8 @@
+/* Pin the cascade-layer order for Tailwind + Astryx. Astryx must sit ABOVE
+   Tailwind's `base` (or preflight's `button { background: transparent }`
+   strips Astryx button fills) but BELOW `utilities` (or Astryx's heading
+   rules flatten font-extrabold/font-bold site-wide). Don't reorder. */
+@layer theme, base, astryx-base, astryx-theme, reset, components, utilities;
 @import "tailwindcss";
 
 /* ═════════════════════════════════════════════════════════════
@@ -62,10 +67,22 @@
 
   --grid-line: rgba(45, 49, 146, 0.05);
   --glow: rgba(75, 92, 196, 0.2);
+
+  /* The @theme block above is `inline`, so Tailwind does NOT emit these as
+     real CSS variables — it only inlines them into generated utilities.
+     Hand-written rules (.font-display, body) need them declared for real. */
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-onest), ui-sans-serif, system-ui, sans-serif;
 }
 
-* {
-  border-color: var(--line);
+/* Must stay inside `base`: unlayered, this `*` selector outranks every layered
+   rule and clobbers Astryx's own border colors (error/focus states silently
+   render in --line instead of red). In `base` it still styles the site while
+   Astryx's `astryx-base` layer can override it for its own components. */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
 }
 
 html {
@@ -238,11 +255,16 @@ h1, h2, h3, h4 {
   box-shadow: 0 24px 60px -28px var(--glow);
 }
 
-/* Focus ring */
-:where(a, button, input, textarea, select):focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 8px;
+/* Focus ring — must stay in `base` so Astryx can override it for its own
+   components. Unlayered, this outlines Astryx's *inner* <input> (inset, 0
+   radius) instead of the rounded wrapper, so the ring renders at the wrong
+   size and corner radius. */
+@layer base {
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
 }
 
 /* Respect reduced motion */

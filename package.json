@@ -4,11 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/check-css-layers.mjs",
     "build": "next build",
+    "check:css": "node scripts/check-css-layers.mjs",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@astryxdesign/cli": "^0.1.8",
+    "@astryxdesign/core": "^0.1.8",
+    "@astryxdesign/theme-neutral": "^0.1.8",
     "clsx": "^2.1.1",
     "motion": "^12.40.0",
     "next": "16.2.7",
