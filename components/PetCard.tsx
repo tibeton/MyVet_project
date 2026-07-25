@@ -1,16 +1,22 @@
+"use client";
+
 import type { Dict } from "@/lib/i18n";
-import { IconHeart, IconPaw, IconClock, IconWeight, IconShield } from "./icons";
+import { IconPaw, IconClock, IconWeight, IconShield, IconSyringe, IconScan } from "./icons";
+import { usePet } from "./PetContext";
 
 // Floating "pet health card" shown in the hero — a calm nod to the
 // dashboard panels in the reference designs, themed for a vet clinic.
+// Its data follows the pet selected in the hero switcher (dog / cat).
 export default function PetCard({ dict }: { dict: Dict }) {
   const c = dict.hero.card;
+  const { pet } = usePet();
+  const p = c.pets[pet];
 
   const vitals = [
-    { icon: IconHeart, label: c.heartRate, value: c.heartRateValue, accent: "pink" as const },
-    { icon: IconClock, label: c.temp, value: c.tempValue, accent: "accent" as const },
-    { icon: IconWeight, label: c.weight, value: c.weightValue, accent: "accent" as const },
-    { icon: IconShield, label: c.status, value: c.statusValue, accent: "pink" as const },
+    { icon: IconWeight, label: c.weight, value: p.weightValue, accent: "accent" as const },
+    { icon: IconSyringe, label: c.vaccination, value: p.vaccinationValue, accent: "pink" as const },
+    { icon: IconShield, label: c.antiparasitic, value: p.antiparasiticValue, accent: "accent" as const },
+    { icon: IconScan, label: c.passport, value: p.passportValue, accent: "pink" as const },
   ];
 
   return (
@@ -26,9 +32,9 @@ export default function PetCard({ dict }: { dict: Dict }) {
               {c.label}
             </p>
             <p className="truncate font-display text-lg font-bold text-ink">
-              {c.petName}
+              {p.petName}
             </p>
-            <p className="truncate text-xs text-muted">{c.petMeta}</p>
+            <p className="truncate text-xs text-muted">{p.petMeta}</p>
           </div>
         </div>
 
@@ -62,7 +68,7 @@ export default function PetCard({ dict }: { dict: Dict }) {
 
             <div className="mt-3 flex items-center justify-between rounded-2xl bg-accent px-4 py-3 text-on-accent">
               <span className="text-xs/relaxed opacity-90">{c.nextVisit}</span>
-              <span className="font-display text-sm font-bold">{c.nextVisitValue}</span>
+              <span className="font-display text-sm font-bold">{p.nextVisitValue}</span>
             </div>
           </div>
 

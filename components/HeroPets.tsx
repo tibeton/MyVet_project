@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { IconDog, IconCat } from "./icons";
+import type { Dict } from "@/lib/i18n";
+import { IconDog, IconCat, IconPlus } from "./icons";
+import { usePet, type Pet } from "./PetContext";
 
-type Pet = "dog" | "cat";
-
-export default function HeroPets() {
-  const [pet, setPet] = useState<Pet>("dog");
+export default function HeroPets({ dict }: { dict: Dict }) {
+  const { pet, setPet } = usePet();
+  const c = dict.hero.card;
 
   const toggles: { id: Pet; Icon: typeof IconDog; label: string }[] = [
-    { id: "dog", Icon: IconDog, label: "Собака" },
-    { id: "cat", Icon: IconCat, label: "Кошка" },
+    { id: "cat", Icon: IconCat, label: c.pets.cat.petName },
+    { id: "dog", Icon: IconDog, label: c.pets.dog.petName },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function HeroPets() {
       <div className="absolute -inset-4 -z-10 rounded-[2.6rem] bg-accent-soft blur-2xl xl:hidden" />
 
       {/* Mobile: framed plate. Desktop: no frame, video softly fades into the white background. */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.2rem] border border-line bg-surface-2 shadow-[0_50px_90px_-45px_var(--glow)] xl:rounded-none xl:border-0 xl:bg-transparent xl:shadow-none xl:[-webkit-mask-image:radial-gradient(70%_70%_at_50%_44%,#000_56%,transparent_100%)] xl:[mask-image:radial-gradient(70%_70%_at_50%_44%,#000_56%,transparent_100%)]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.2rem] border border-line bg-surface-2 shadow-[0_50px_90px_-45px_var(--glow)] xl:rounded-none xl:border-0 xl:bg-transparent xl:shadow-none xl:[-webkit-mask-image:radial-gradient(80%_90%_at_50%_48%,#000_70%,transparent_100%)] xl:[mask-image:radial-gradient(80%_90%_at_50%_48%,#000_70%,transparent_100%)]">
         <AnimatePresence mode="wait">
           <motion.video
             key={pet}
@@ -42,8 +42,10 @@ export default function HeroPets() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[rgba(45,49,146,0.18)] to-transparent xl:hidden" />
       </div>
 
-      {/* Dog / Cat toggle */}
-      <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-line bg-surface p-1.5 shadow-[0_24px_50px_-24px_var(--glow)]">
+      {/* Pet switcher — raised to sit at the plate's edge so there's no empty
+          gap below. Dog / Cat switch the video + health card; the "+" adds your
+          own pet (disabled until auth exists). */}
+      <div className="absolute bottom-1 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-line bg-surface p-1.5 shadow-[0_24px_50px_-24px_var(--glow)]">
         {toggles.map(({ id, Icon, label }) => {
           const active = pet === id;
           return (
@@ -63,6 +65,17 @@ export default function HeroPets() {
             </button>
           );
         })}
+
+        {/* Add your own pet — placeholder, enabled once accounts ship */}
+        <button
+          type="button"
+          disabled
+          aria-label={c.addPet}
+          title={c.comingSoon}
+          className="grid h-12 w-12 cursor-not-allowed place-items-center rounded-full border border-dashed border-line text-faint/70"
+        >
+          <IconPlus className="h-5 w-5" />
+        </button>
       </div>
     </div>
   );

@@ -10,6 +10,16 @@ export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
+type PetVitals = {
+  petName: string;
+  petMeta: string;
+  weightValue: string;
+  vaccinationValue: string;
+  antiparasiticValue: string;
+  passportValue: string;
+  nextVisitValue: string;
+};
+
 type Dict = {
   meta: { title: string; description: string };
   nav: {
@@ -35,19 +45,14 @@ type Dict = {
     scroll: string;
     card: {
       label: string;
-      petName: string;
-      petMeta: string;
-      heartRate: string;
-      heartRateValue: string;
-      temp: string;
-      tempValue: string;
       weight: string;
-      weightValue: string;
-      status: string;
-      statusValue: string;
+      vaccination: string;
+      antiparasitic: string;
+      passport: string;
       nextVisit: string;
-      nextVisitValue: string;
       comingSoon: string;
+      addPet: string;
+      pets: { dog: PetVitals; cat: PetVitals };
     };
   };
   marquee: string[];
@@ -168,19 +173,33 @@ export const dictionaries: Record<Locale, Dict> = {
       scroll: "Листайте вниз",
       card: {
         label: "Карта здоровья",
-        petName: "Барсик",
-        petMeta: "кот · 3 года",
-        heartRate: "Пульс",
-        heartRateValue: "92 уд/мин",
-        temp: "Температура",
-        tempValue: "38.5°",
         weight: "Вес",
-        weightValue: "4.2 кг",
-        status: "Состояние",
-        statusValue: "Здоров",
+        vaccination: "Вакцинация",
+        antiparasitic: "Обработка от паразитов",
+        passport: "Ветпаспорт",
         nextVisit: "Следующий визит",
-        nextVisitValue: "12 окт",
         comingSoon: "Скоро",
+        addPet: "Добавить питомца",
+        pets: {
+          dog: {
+            petName: "Снежок",
+            petMeta: "собака · 2 года",
+            weightValue: "28 кг",
+            vaccinationValue: "до 09.2027",
+            antiparasiticValue: "15 авг",
+            passportValue: "№ 4821",
+            nextVisitValue: "20 окт",
+          },
+          cat: {
+            petName: "Барсик",
+            petMeta: "кот · 3 года",
+            weightValue: "4.2 кг",
+            vaccinationValue: "до 06.2027",
+            antiparasiticValue: "3 сен",
+            passportValue: "№ 3390",
+            nextVisitValue: "12 окт",
+          },
+        },
       },
     },
     marquee: [
@@ -413,19 +432,33 @@ export const dictionaries: Record<Locale, Dict> = {
       scroll: "Pastga aylantiring",
       card: {
         label: "Sog‘liq kartasi",
-        petName: "Barsik",
-        petMeta: "mushuk · 3 yosh",
-        heartRate: "Puls",
-        heartRateValue: "92 zarba/min",
-        temp: "Harorat",
-        tempValue: "38.5°",
         weight: "Vazn",
-        weightValue: "4.2 kg",
-        status: "Holati",
-        statusValue: "Sog‘lom",
+        vaccination: "Vaksinatsiya",
+        antiparasitic: "Parazitlarga ishlov",
+        passport: "Vetpasport",
         nextVisit: "Keyingi tashrif",
-        nextVisitValue: "12 okt",
         comingSoon: "Tez orada",
+        addPet: "Hayvon qo‘shish",
+        pets: {
+          dog: {
+            petName: "Snejok",
+            petMeta: "it · 2 yosh",
+            weightValue: "28 kg",
+            vaccinationValue: "09.2027 gacha",
+            antiparasiticValue: "15 avg",
+            passportValue: "№ 4821",
+            nextVisitValue: "20 okt",
+          },
+          cat: {
+            petName: "Barsik",
+            petMeta: "mushuk · 3 yosh",
+            weightValue: "4.2 kg",
+            vaccinationValue: "06.2027 gacha",
+            antiparasiticValue: "3 sen",
+            passportValue: "№ 3390",
+            nextVisitValue: "12 okt",
+          },
+        },
       },
     },
     marquee: [
@@ -658,19 +691,33 @@ export const dictionaries: Record<Locale, Dict> = {
       scroll: "Scroll down",
       card: {
         label: "Health card",
-        petName: "Barsik",
-        petMeta: "cat · 3 yrs",
-        heartRate: "Heart rate",
-        heartRateValue: "92 bpm",
-        temp: "Temperature",
-        tempValue: "38.5°",
         weight: "Weight",
-        weightValue: "4.2 kg",
-        status: "Status",
-        statusValue: "Healthy",
+        vaccination: "Vaccination",
+        antiparasitic: "Parasite control",
+        passport: "Pet passport",
         nextVisit: "Next visit",
-        nextVisitValue: "Oct 12",
         comingSoon: "Coming soon",
+        addPet: "Add a pet",
+        pets: {
+          dog: {
+            petName: "Snezhok",
+            petMeta: "dog · 2 yrs",
+            weightValue: "28 kg",
+            vaccinationValue: "until 09.2027",
+            antiparasiticValue: "Aug 15",
+            passportValue: "No. 4821",
+            nextVisitValue: "Oct 20",
+          },
+          cat: {
+            petName: "Barsik",
+            petMeta: "cat · 3 yrs",
+            weightValue: "4.2 kg",
+            vaccinationValue: "until 06.2027",
+            antiparasiticValue: "Sep 3",
+            passportValue: "No. 3390",
+            nextVisitValue: "Oct 12",
+          },
+        },
       },
     },
     marquee: [

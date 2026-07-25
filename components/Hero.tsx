@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Dict } from "@/lib/i18n";
 import Reveal from "./Reveal";
 import PetCard from "./PetCard";
 import HeroPets from "./HeroPets";
-import { IconArrowUpRight, IconPaw } from "./icons";
+import { PetProvider } from "./PetContext";
+import { IconArrowUpRight } from "./icons";
 
 export default function Hero({ dict }: { dict: Dict }) {
   const h = dict.hero;
@@ -26,7 +28,7 @@ export default function Hero({ dict }: { dict: Dict }) {
   );
 
   return (
-    <section className="relative overflow-hidden bg-grid pt-28 pb-20 md:pt-36 md:pb-28">
+    <section className="relative overflow-hidden bg-grid pt-28 pb-12 md:pt-36 md:pb-16 xl:pb-0">
       {/* Soft ambient blobs */}
       <div className="blob -left-28 top-4 h-72 w-72 bg-accent-soft" />
       <div
@@ -34,23 +36,19 @@ export default function Hero({ dict }: { dict: Dict }) {
         style={{ animationDelay: "-5s" }}
       />
 
-      {/* Slightly tighter left padding pulls the heading further to the edge */}
-      <div className="relative mx-auto w-full max-w-[90rem] pl-[clamp(1rem,3vw,2.5rem)] pr-[clamp(1.25rem,4vw,4rem)]">
+      <div className="shell relative">
+        <PetProvider>
         <div className="flex flex-col items-center gap-10 md:gap-12 xl:grid xl:grid-cols-[0.8fr_1.05fr_0.9fr] xl:items-center xl:gap-10">
           {/* Left — heading (+ desktop CTAs) */}
           <div className="order-1 max-w-xl text-center xl:text-left">
-            <Reveal>
-              <span className="kicker justify-center xl:justify-start">
-                <IconPaw className="h-4 w-4" />
-                {h.kicker}
-              </span>
-            </Reveal>
-
             <Reveal delay={0.06}>
-              <h1 className="mt-4 font-display text-[clamp(1.3rem,5.4vw,1.6rem)] font-extrabold uppercase leading-[1.08] tracking-[-0.02em] text-ink xl:text-[clamp(1.65rem,2.2vw,2.35rem)] xl:leading-[1.05]">
-                {h.titleA}{" "}
-                <span className="text-gradient">{h.titleHighlight}</span>{" "}
-                {h.titleB}
+              {/* Heading rendered as artwork; keep the <h1> + alt for SEO/a11y. */}
+              <h1>
+                <img
+                  src="/header.svg"
+                  alt={`${h.titleA} ${h.titleHighlight} ${h.titleB}`}
+                  className="mx-auto w-full max-w-[20rem] sm:max-w-[24rem] xl:mx-0 xl:max-w-[30rem]"
+                />
               </h1>
             </Reveal>
 
@@ -59,21 +57,22 @@ export default function Hero({ dict }: { dict: Dict }) {
             </Reveal>
           </div>
 
+          {/* Mobile / tablet — CTAs right under the heading, visible on open */}
+          <Reveal delay={0.1} className="order-2 w-full max-w-md xl:hidden">
+            {ctas}
+          </Reveal>
+
           {/* Center — switchable pet video */}
-          <Reveal delay={0.1} className="order-2 w-full">
-            <HeroPets />
+          <Reveal delay={0.1} className="order-3 w-full">
+            <HeroPets dict={dict} />
           </Reveal>
 
           {/* Right — health card */}
-          <Reveal delay={0.16} className="order-3 flex w-full justify-center xl:justify-end">
+          <Reveal delay={0.16} className="order-4 flex w-full justify-center xl:justify-end">
             <PetCard dict={dict} />
           </Reveal>
-
-          {/* Mobile / tablet — CTAs below the health card */}
-          <Reveal delay={0.1} className="order-4 w-full max-w-md xl:hidden">
-            {ctas}
-          </Reveal>
         </div>
+        </PetProvider>
       </div>
     </section>
   );

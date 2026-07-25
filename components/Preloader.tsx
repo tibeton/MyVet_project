@@ -35,11 +35,11 @@ export default function Preloader() {
       window.addEventListener("load", onLoad);
     }
 
-    // 2) Warm the first hero video (dog.mp4 shows first) and resolve on first frame.
+    // 2) Warm the first hero video (cat.mp4 shows first) and resolve on first frame.
     const video = document.createElement("video");
     video.muted = true;
     video.preload = "auto";
-    video.src = "/dog.mp4";
+    video.src = "/cat.mp4";
     const onData = () => finish();
     video.addEventListener("loadeddata", onData);
     video.addEventListener("error", finish);

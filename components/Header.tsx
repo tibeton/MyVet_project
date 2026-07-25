@@ -52,7 +52,7 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
       >
         <div className="shell flex h-[72px] items-center justify-between md:h-[92px]">
           <Link href={`/${locale}`} aria-label="MyVet" className="shrink-0">
-            <BrandLogo className="h-12 w-auto md:h-16" />
+            <BrandLogo variant="mark" className="h-12 w-auto md:h-16" />
           </Link>
 
           <nav className="hidden items-center gap-7 lg:flex">
