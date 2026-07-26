@@ -73,7 +73,8 @@ export default function Reviews({
           <SectionHeading
             kicker={r.kicker}
             title={r.title}
-            lead={r.lead}
+            // Only promise Google once it is actually configured.
+            lead={site.googleReviewsUrl ? r.leadMulti : r.lead}
             icon={<IconHeart className="h-4 w-4" />}
           />
 

@@ -100,6 +100,8 @@ type Dict = {
     ymapsBadge: string;
     googleBadge: string;
     googleCta: string;
+    /** Used instead of `lead` once Google reviews are configured. */
+    leadMulti: string;
   };
   faq: {
     kicker: string;
@@ -331,11 +333,12 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Отзывы",
       title: "Нам доверяют самое дорогое",
-      lead: "Реальные отзывы владельцев с Яндекс.Карт и Google. Нажмите на любой, чтобы открыть его в источнике.",
+      lead: "Реальные отзывы владельцев с Яндекс.Карт. Нажмите на любой, чтобы открыть его в источнике.",
       ymapsCta: "Все отзывы на Яндекс.Картах",
       ymapsBadge: "на Яндекс.Картах",
       googleBadge: "в Google",
       googleCta: "Все отзывы в Google",
+      leadMulti: "Реальные отзывы владельцев с Яндекс.Карт и Google. Нажмите на любой, чтобы открыть его в источнике.",
     },
     faq: {
       kicker: "Частые вопросы",
@@ -592,11 +595,12 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Fikrlar",
       title: "Bizga eng qadrlini ishonishadi",
-      lead: "Yandex.Xarita va Google’dagi haqiqiy mijoz fikrlari. Manbada ochish uchun istalganiga bosing.",
+      lead: "Yandex.Xaritadagi haqiqiy mijoz fikrlari. Manbada ochish uchun istalganiga bosing.",
       ymapsCta: "Yandex.Xaritadagi barcha fikrlar",
       ymapsBadge: "Yandex.Xaritada",
       googleBadge: "Google’da",
       googleCta: "Google’dagi barcha fikrlar",
+      leadMulti: "Yandex.Xarita va Google’dagi haqiqiy mijoz fikrlari. Manbada ochish uchun istalganiga bosing.",
     },
     faq: {
       kicker: "Ko‘p beriladigan savollar",
@@ -853,11 +857,12 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Reviews",
       title: "People trust us with what matters most",
-      lead: "Real client reviews from Yandex Maps and Google. Tap any one to open it at the source.",
+      lead: "Real client reviews from Yandex Maps. Tap any one to open it at the source.",
       ymapsCta: "All reviews on Yandex Maps",
       ymapsBadge: "on Yandex Maps",
       googleBadge: "on Google",
       googleCta: "All reviews on Google",
+      leadMulti: "Real client reviews from Yandex Maps and Google. Tap any one to open it at the source.",
     },
     faq: {
       kicker: "FAQ",

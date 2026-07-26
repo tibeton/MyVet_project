@@ -11,6 +11,16 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Reviews copy no longer promises Google prematurely
+
+### Fixed
+- The reviews lead said "Яндекс.Карт и Google" unconditionally while the badge,
+  CTA and cards were all correctly gated behind real Google data — so the page
+  advertised Google reviews that were not shown. The sentence now switches to
+  `leadMulti` only once `googleReviewsUrl` is set.
+
+---
+
 ## 2026-07-26 — Logo, Telegram, dropdowns, Google reviews
 
 ### Fixed
