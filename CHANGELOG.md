@@ -11,6 +11,23 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Uniform section rhythm
+
+### Changed
+- Every section boundary is now one value (130px desktop / 72px mobile). It was
+  130px at two boundaries and 259px at six.
+- `.section` padding halved: each section contributes *half* a boundary, and two
+  adjacent sections sum to the full gap.
+- Removed `pt-0` from `#why` and Stats. Those overrides were the cause of the
+  drift, not a fix — zeroing one section's padding-top halves only that boundary.
+  With halved padding they are unnecessary and those two gaps are unchanged.
+
+Tinted bands (Team, Prices, FAQ) now carry 65px internal padding on desktop,
+36px on mobile. If that reads as cramped, add `py-*` to those three sections
+rather than reverting the system.
+
+---
+
 ## 2026-07-26 — Section alignment and spacing rhythm
 
 ### Fixed

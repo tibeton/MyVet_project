@@ -139,8 +139,12 @@ h1, h2, h3, h4 {
    `pb-0` or `py-*` actually win. Unlayered, this beat every utility and
    silently kept the full padding-block on sections that opted out. */
 @layer components {
+  /* Half of a section boundary. Adjacent sections each contribute this, so the
+     gap between any two is ~2x — keep it that way and every boundary matches.
+     Don't zero a section's padding-top to "tighten" it: that halves only that
+     one boundary and breaks the rhythm (this is how 130px/259px drift crept in). */
   .section {
-    padding-block: clamp(4.5rem, 9vw, 8.5rem);
+    padding-block: clamp(2.25rem, 4.5vw, 4.25rem);
   }
 }
 

@@ -54,7 +54,7 @@ export default function Stats({ dict }: { dict: Dict }) {
   const items = dict.stats.items;
 
   return (
-    <section className="section pt-0">
+    <section className="section">
       <div className="shell">
         <motion.div
           ref={ref}
