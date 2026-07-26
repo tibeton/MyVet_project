@@ -11,6 +11,25 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Section alignment and spacing rhythm
+
+### Fixed
+- **FAQ and Team had their content centred under a left-aligned heading.** Every
+  `SectionHeading` on the site is left-aligned (nothing passes `align="center"`),
+  but both sections wrapped content in `mx-auto max-w-3xl`, offsetting it by
+  231px from the heading. Dropping `mx-auto` puts every left edge on the same
+  line. If you deliberately want a centred section, pass `align="center"` to
+  `SectionHeading` rather than centring only the content.
+
+### Changed
+- Normalised the heading→content rhythm to 48px: Reviews marquee `mt-11` → `mt-12`,
+  and the Services CTA row `mt-8` → `mt-10` to match the equivalent row in Reviews.
+- Left as-is on purpose: `#why` (16px — its heading sits inside its own card, so
+  48px looks oversized) and `#prices` (28px — two-column layout where the heading
+  is a sidebar, not a section header).
+
+---
+
 ## 2026-07-26 — Agent docs, hero copy, spacing
 
 ### Added

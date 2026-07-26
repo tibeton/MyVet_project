@@ -79,7 +79,7 @@ export default function Reviews({
       {/* Full-bleed marquee of real reviews. Pauses on hover; each card links
           through to the review on Yandex Maps. */}
       <Reveal delay={0.16}>
-        <div className="review-marquee relative mt-11 flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]">
+        <div className="review-marquee relative mt-12 flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_5%,#000_95%,transparent)]">
           <div className="review-track">
             {loop.map((review, i) => (
               <a

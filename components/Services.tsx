@@ -72,7 +72,7 @@ export default function Services({ dict }: { dict: Dict }) {
           })}
         </RevealGroup>
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-surface px-6 py-3.5 font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
