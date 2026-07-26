@@ -11,6 +11,21 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Google reviews link wired up
+
+### Added
+- `googleReviewsUrl` now points at the real listing (maps.app.goo.gl short link,
+  place id `0x38aef59d4c300139`, verified against `site.geo`), so the
+  "Все отзывы в Google" button under the carousel is live.
+- `googleWriteReviewUrl` stored for a future "leave a review" CTA.
+
+Still outstanding, and only fillable by hand: `googleRating` /
+`googleReviewsCount` (the badge stays hidden until both are set) and the Google
+review entries themselves in `lib/reviews.ts` (`source: "google"`), copied
+verbatim like the Yandex ones.
+
+---
+
 ## 2026-07-26 — Reviews copy no longer promises Google prematurely
 
 ### Fixed
