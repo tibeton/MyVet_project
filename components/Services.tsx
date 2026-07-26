@@ -34,7 +34,7 @@ export default function Services({ dict }: { dict: Dict }) {
         />
 
         <RevealGroup
-          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-7 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3"
           stagger={0.08}
         >
           {s.items.map((item, i) => {
@@ -72,7 +72,7 @@ export default function Services({ dict }: { dict: Dict }) {
           })}
         </RevealGroup>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-8 flex justify-center sm:mt-10">
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-surface px-6 py-3.5 font-semibold text-ink transition-colors hover:border-accent hover:text-accent"

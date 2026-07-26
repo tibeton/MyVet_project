@@ -20,7 +20,7 @@ export default function Team({ dict }: { dict: Dict }) {
         />
 
         <RevealGroup
-          className="mt-12 grid max-w-3xl gap-6 sm:grid-cols-2"
+          className="mt-7 grid max-w-3xl gap-6 sm:mt-12 sm:grid-cols-2"
           stagger={0.12}
         >
           {t.members.map((m, i) => (

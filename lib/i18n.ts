@@ -98,6 +98,8 @@ type Dict = {
     lead: string;
     ymapsCta: string;
     ymapsBadge: string;
+    googleBadge: string;
+    googleCta: string;
   };
   faq: {
     kicker: string;
@@ -329,9 +331,11 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Отзывы",
       title: "Нам доверяют самое дорогое",
-      lead: "Реальные отзывы владельцев с Яндекс.Карт. Нажмите на любой, чтобы открыть его на картах.",
+      lead: "Реальные отзывы владельцев с Яндекс.Карт и Google. Нажмите на любой, чтобы открыть его в источнике.",
       ymapsCta: "Все отзывы на Яндекс.Картах",
       ymapsBadge: "на Яндекс.Картах",
+      googleBadge: "в Google",
+      googleCta: "Все отзывы в Google",
     },
     faq: {
       kicker: "Частые вопросы",
@@ -588,9 +592,11 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Fikrlar",
       title: "Bizga eng qadrlini ishonishadi",
-      lead: "Yandex.Xaritadagi haqiqiy mijoz fikrlari. Xaritada ochish uchun istalganiga bosing.",
+      lead: "Yandex.Xarita va Google’dagi haqiqiy mijoz fikrlari. Manbada ochish uchun istalganiga bosing.",
       ymapsCta: "Yandex.Xaritadagi barcha fikrlar",
       ymapsBadge: "Yandex.Xaritada",
+      googleBadge: "Google’da",
+      googleCta: "Google’dagi barcha fikrlar",
     },
     faq: {
       kicker: "Ko‘p beriladigan savollar",
@@ -847,9 +853,11 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Reviews",
       title: "People trust us with what matters most",
-      lead: "Real client reviews from Yandex Maps. Tap any one to open it on the map.",
+      lead: "Real client reviews from Yandex Maps and Google. Tap any one to open it at the source.",
       ymapsCta: "All reviews on Yandex Maps",
       ymapsBadge: "on Yandex Maps",
+      googleBadge: "on Google",
+      googleCta: "All reviews on Google",
     },
     faq: {
       kicker: "FAQ",

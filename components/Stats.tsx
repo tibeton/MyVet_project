@@ -53,15 +53,16 @@ export default function Stats({ dict }: { dict: Dict }) {
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const items = dict.stats.items;
 
+  // pt-0: sits white-on-white against WhyUs, so that boundary is halved.
   return (
-    <section className="section">
+    <section className="section pt-0">
       <div className="shell">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-[2.2rem] bg-accent px-6 py-16 text-on-accent sm:px-12 sm:py-20"
+          className="relative overflow-hidden rounded-[2.2rem] bg-accent px-6 py-12 text-on-accent sm:px-12 sm:py-16"
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-30"

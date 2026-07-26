@@ -28,7 +28,7 @@ export default function Footer({ dict, locale }: { dict: Dict; locale: Locale })
             <p className="mt-4 max-w-xs text-sm/relaxed text-muted">{f.tagline}</p>
             <div className="mt-5 flex gap-2.5">
               <a
-                href={site.telegram}
+                href={site.telegramChannel}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Telegram"

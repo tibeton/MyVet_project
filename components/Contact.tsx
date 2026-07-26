@@ -52,6 +52,19 @@ export default function Contact({
     input.setAttribute("autocomplete", "tel-national");
   }, []);
 
+  const serviceRef = useRef<HTMLDivElement>(null);
+  function centreServiceField() {
+    const el = serviceRef.current;
+    if (!el) return;
+    // Only when the field sits low enough that the list would overflow.
+    if (el.getBoundingClientRect().bottom > window.innerHeight * 0.55) {
+      // Instant, not smooth: pointerdown fires before the list opens, so the
+      // page must already be in place — a smooth scroll would still be running
+      // while the dropdown positions itself against a moving anchor.
+      el.scrollIntoView({ block: "center", behavior: "auto" });
+    }
+  }
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const trimmedName = name.trim();
@@ -167,12 +180,18 @@ export default function Contact({
                   placeholder={c.petPlaceholder}
                   status={errors.pet ? { type: "error", message: c.required } : undefined}
                 />
-                <Selector
-                  label={c.service}
-                  value={service}
-                  onChange={(v) => v && setService(v)}
-                  options={c.serviceOptions}
-                />
+                {/* Astryx anchors the dropdown to its trigger, so a trigger low
+                    on screen opens a list that runs past the fold (and can sit
+                    above the trigger, putting the first option off-screen).
+                    Centring the field before it opens guarantees room. */}
+                <div ref={serviceRef} onPointerDown={centreServiceField}>
+                  <Selector
+                    label={c.service}
+                    value={service}
+                    onChange={(v) => v && setService(v)}
+                    options={c.serviceOptions}
+                  />
+                </div>
               </div>
 
               <TextArea
@@ -245,7 +264,7 @@ export default function Contact({
               </ul>
               <div className="mt-4 flex gap-2.5 px-3">
                 <a
-                  href={site.telegram}
+                  href={site.telegramContact}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Telegram"

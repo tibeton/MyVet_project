@@ -139,10 +139,31 @@ h1, h2, h3, h4 {
    `pb-0` or `py-*` actually win. Unlayered, this beat every utility and
    silently kept the full padding-block on sections that opted out. */
 @layer components {
-  /* Half of a section boundary. Adjacent sections each contribute this, so the
-     gap between any two is ~2x — keep it that way and every boundary matches.
-     Don't zero a section's padding-top to "tighten" it: that halves only that
-     one boundary and breaks the rhythm (this is how 130px/259px drift crept in). */
+  /* Astryx dropdowns (Selector, DropdownMenu) ship a fixed max-height: 300px
+     that ignores how much room is actually on screen, so on short viewports
+     the list runs past the fold and options become unreachable. Cap it against
+     the *dynamic* viewport (dvh accounts for mobile browser chrome). */
+  [role="listbox"],
+  [role="menu"] {
+    max-height: min(18rem, 45dvh);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@layer components {
+  /* Half of a section boundary: two adjacent sections each contribute this, so
+     a normal boundary is ~2x this value.
+
+     Equal padding does NOT mean equal-looking gaps. Where the two sections have
+     different backgrounds (white next to bg-bg-2), the colour edge visually
+     divides the space. Where both are white, the same gap reads as one
+     continuous void and looks much larger.
+
+     So sections that sit white-on-white against their neighbour carry `pt-0`
+     (currently WhyUs and Stats) to halve that boundary. If you change a
+     section's background, re-check its neighbours: add `pt-0` when a boundary
+     becomes same-colour, remove it when a colour edge appears. */
   .section {
     padding-block: clamp(2.25rem, 4.5vw, 4.25rem);
   }

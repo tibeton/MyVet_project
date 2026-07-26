@@ -11,6 +11,36 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Logo, Telegram, dropdowns, Google reviews
+
+### Fixed
+- Header logo did nothing when tapped: it linked to the page you were already
+  on. It now scrolls to top (and closes the mobile menu), keeping the href so
+  middle-click still opens the home page.
+- Dropdowns ran past the fold. Astryx ships a fixed `max-height: 300px` that
+  ignores available space, so a trigger low on screen opened a list partly
+  off-screen — sometimes above the trigger, leaving the first option
+  unreachable. Capped to `min(18rem, 45dvh)` and the service field now centres
+  itself before opening.
+- Section boundaries: same-background pairs are back to half-gaps. Equal padding
+  does not mean equal-looking gaps — see the note in `globals.css`.
+
+### Changed
+- Telegram split by context: `telegramContact` (t.me/ContactMyVet) for the
+  Contact section, `telegramChannel` (t.me/myvetuz) for footer socials and
+  JSON-LD `sameAs`.
+- Reviews support multiple sources. `Review.source` is `"yandex" | "google"`
+  (defaults to Yandex), cards show the matching mark, and copy now reads
+  "Yandex Maps and Google" in all three locales.
+
+**Google reviews need real data before they appear.** `googleReviewsUrl`,
+`googleRating` and `googleReviewsCount` in `lib/site.ts` are intentionally
+empty, and the Google badge/CTA render only once they are filled from the real
+Google Business Profile. Review text must be pasted verbatim like the Yandex
+ones — do not invent reviews for a live clinic.
+
+---
+
 ## 2026-07-26 — Uniform section rhythm
 
 ### Changed

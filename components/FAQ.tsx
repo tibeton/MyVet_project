@@ -15,7 +15,7 @@ export default function FAQ({ dict }: { dict: Dict }) {
       <div className="shell">
         <SectionHeading kicker={f.kicker} title={f.title} lead={f.lead} />
 
-        <div className="mt-12 max-w-3xl space-y-3">
+        <div className="mt-7 max-w-3xl space-y-3 sm:mt-12">
           {f.items.map((item, i) => {
             const open = openIndex === i;
             return (

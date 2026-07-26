@@ -17,8 +17,13 @@
 // Год в ленте Яндекса не отображается — проставлен 2026 (все отзывы свежие).
 // ─────────────────────────────────────────────
 
+/** Where the review was published. Drives the badge shown on the card. */
+export type ReviewSource = "yandex" | "google";
+
 export type Review = {
   author: string;
+  /** Defaults to "yandex" when omitted (all pre-existing entries are Yandex). */
+  source?: ReviewSource;
   /** ISO-дата YYYY-MM-DD — по ней выбираются самые свежие отзывы. */
   date: string;
   /** Оценка 1–5. */

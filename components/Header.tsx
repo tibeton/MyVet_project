@@ -51,7 +51,22 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
         style={{ borderBottomWidth: 1 }}
       >
         <div className="shell flex h-[72px] items-center justify-between md:h-[92px]">
-          <Link href={`/${locale}`} aria-label="MyVet" className="shrink-0">
+          {/* This is a one-page site, so the logo already links to the page
+              we're on — a plain <Link> looked like a dead tap. Scroll to top
+              instead (and close the mobile menu), keeping the href so
+              middle-click / open-in-new-tab still work. */}
+          <Link
+            href={`/${locale}`}
+            aria-label="MyVet"
+            className="shrink-0"
+            onClick={(e) => {
+              setOpen(false);
+              if (window.location.pathname.replace(/\/$/, "") === `/${locale}`) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <BrandLogo variant="mark" className="h-12 w-auto md:h-16" />
           </Link>
 

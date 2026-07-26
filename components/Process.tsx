@@ -16,7 +16,7 @@ export default function Process({ dict }: { dict: Dict }) {
         />
 
         <RevealGroup
-          className="relative mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          className="relative mt-7 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:grid-cols-4"
           stagger={0.1}
         >
           {p.steps.map((step, i) => (

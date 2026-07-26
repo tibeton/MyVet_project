@@ -6,9 +6,12 @@ const ICONS = [IconStethoscope, IconFlask, IconHeart, IconClock, IconShield];
 
 export default function WhyUs({ dict }: { dict: Dict }) {
   const w = dict.why;
+  // pt-0: sits white-on-white against Services, so that boundary is halved.
   return (
-    <section id="why" className="section scroll-mt-20">
+    <section id="why" className="section scroll-mt-20 pt-0">
       <div className="shell">
+        {/* Padding matches the Stats banner so the two full-width cards read as
+            the same kind of block. Change both together. */}
         <div className="overflow-hidden rounded-[2.2rem] border border-line bg-surface-2 px-6 py-12 sm:px-12 sm:py-16">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             {/* Statement */}

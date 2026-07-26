@@ -10,7 +10,11 @@ export const site = {
   emergencyDisplay: "+998 99 067 07 90",
   emergencyHref: "+998990670790",
   email: "info@myvet.uz",
-  telegram: "https://t.me/myvet_uz",
+  // Two different Telegram destinations — pick by context:
+  //   telegramContact — a way to reach us (Contact section "or reach us directly")
+  //   telegramChannel — our public channel (footer socials, JSON-LD sameAs)
+  telegramContact: "https://t.me/ContactMyVet",
+  telegramChannel: "https://t.me/myvetuz",
   instagram: "https://instagram.com/myvet.uz",
   whatsappHref: "+998994425080",
   addressShort: "Tashkent, Uzbekistan",
@@ -30,4 +34,11 @@ export const site = {
   // Рейтинг и число отзывов для бейджа (обновляйте вручную по карточке).
   yandexRating: "5.0",
   yandexReviewsCount: "210",
+
+  // ── Google · отзывы ───────────────────────────────────
+  // TODO: заполните реальными данными из Google Business Profile.
+  // Пока googleReviewsUrl пустой, блок Google не отображается.
+  googleReviewsUrl: "",
+  googleRating: "",
+  googleReviewsCount: "",
 } as const;

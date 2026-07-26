@@ -49,7 +49,7 @@ export default function JsonLd() {
         closes: "23:59",
       },
     ],
-    sameAs: [site.telegram, site.instagram, site.mapLink].filter(Boolean),
+    sameAs: [site.telegramChannel, site.instagram, site.mapLink].filter(Boolean),
     // Агрегированный рейтинг показывается на странице (бейдж + отзывы).
     aggregateRating: {
       "@type": "AggregateRating",
