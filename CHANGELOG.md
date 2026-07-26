@@ -11,9 +11,14 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
-## 2026-07-27 — Circular marks, shorter Yandex label
+## 2026-07-27 — Circular marks, shorter Yandex label, equal-width CTAs
 
 ### Changed
+- Both review CTAs are exactly the same size. Laid out as a `w-fit` grid rather
+  than flex, so the columns take the width of the wider button instead of each
+  sizing to its own text (they were 409px vs 382px). The label is `nowrap` too —
+  at ~900px the longer Yandex label wrapped to two lines while Google's stayed
+  on one, so equal boxes still looked unequal.
 - Platform marks are circles (`rounded-full`), so the square Yandex PNG matches
   Google's round glyph.
 - Yandex CTA drops "Картах": "Все отзывы на Яндексе" / "Yandexdagi barcha

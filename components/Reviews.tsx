@@ -48,7 +48,7 @@ function ReviewsCta({
       target="_blank"
       rel="noopener noreferrer"
       // Stacks on phones: side by side, the score and a long label both wrap.
-      className="lift group inline-flex flex-col items-center gap-3 rounded-[1.75rem] border border-line bg-surface p-3 transition-colors hover:border-accent sm:flex-row sm:gap-4 sm:rounded-full sm:py-2.5 sm:pl-3 sm:pr-6"
+      className="lift group flex w-full flex-col items-center justify-center gap-3 rounded-[1.75rem] border border-line bg-surface p-3 transition-colors hover:border-accent sm:flex-row sm:gap-4 sm:rounded-full sm:py-2.5 sm:pl-3 sm:pr-5"
     >
       <span className="flex items-center gap-2.5 whitespace-nowrap rounded-full bg-bg-2 py-2 pl-2.5 pr-4">
         {mark}
@@ -62,7 +62,7 @@ function ReviewsCta({
       </span>
 
       <span className="flex items-center gap-2 px-2 pb-1 font-semibold text-ink transition-colors group-hover:text-accent sm:px-0 sm:pb-0">
-        <span className="text-sm sm:text-base">{label}</span>
+        <span className="whitespace-nowrap text-sm sm:text-base">{label}</span>
         <IconArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </span>
     </a>
@@ -159,7 +159,10 @@ export default function Reviews({
       {/* One CTA per platform, each carrying its own score. */}
       <div className="shell">
         <Reveal delay={0.1}>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
+          {/* Grid, not flex: the labels differ in length, so content-sized buttons
+                came out different widths. w-fit keeps the pair centred while the
+                columns take the width of the wider one. */}
+          <div className="mx-auto mt-8 grid w-fit grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2">
             <ReviewsCta
               href={site.yandexReviewsUrl}
               mark={<YandexMark className="h-7 w-7" />}
