@@ -11,6 +11,27 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Real platform logos and Google score
+
+### Added
+- Google rating `4.3 · 114`, so both CTAs now carry a score and read as a
+  matched pair.
+- Real logo files (`public/yandexlogo.png`, `public/googlelogo.png`) replace the
+  CSS-drawn "Я" and "G" marks.
+
+### Changed
+- Both CTAs share one `ReviewsCta` component — they were duplicated markup.
+
+### Note for whoever adds art next
+`googlelogo.png` arrived 2820px with roughly two-thirds transparent padding, so
+at a shared box size the "G" rendered far smaller than the Yandex mark. Scaling
+it inside a clipped box just showed an empty white square. It is now cropped to
+its glyph (1100px), which is the durable fix — prefer trimming the asset over
+compensating in CSS. Both files must live in `public/`; at the repo root Next
+does not serve them.
+
+---
+
 ## 2026-07-26 — Google reviews button; lead copy de-branded
 
 ### Added
