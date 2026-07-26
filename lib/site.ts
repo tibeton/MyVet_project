@@ -34,4 +34,12 @@ export const site = {
   // Рейтинг и число отзывов для бейджа (обновляйте вручную по карточке).
   yandexRating: "5.0",
   yandexReviewsCount: "210",
+
+  // ── Google · отзывы ───────────────────────────────────
+  // Панель отзывов организации в поиске Google. Сессионные параметры
+  // (ved / sa / biw / bih / dpr / sca_esv) убраны — остались только q и si.
+  // Если ссылка когда-нибудь перестанет открывать отзывы, замените на
+  // карточку в Картах: https://maps.app.goo.gl/g9NYSJKZgjrqb2cx6
+  googleReviewsUrl:
+    "https://www.google.com/search?q=MyVet.uz+Sharhlar&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_xbZEBSLehUtragcnfYkCRdOtmB-3XyTFoYcTczFaXii_EqFGAcSO05G2t9uKTdRX9OjDDhbZsFVa6FfxZEkKd6UwYue",
 } as const;

@@ -97,6 +97,7 @@ type Dict = {
     title: string;
     lead: string;
     ymapsCta: string;
+    googleCta: string;
   };
   faq: {
     kicker: string;
@@ -328,8 +329,9 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Отзывы",
       title: "Нам доверяют самое дорогое",
-      lead: "Реальные отзывы владельцев с Яндекс.Карт.",
+      lead: "Реальные отзывы владельцев наших пациентов.",
       ymapsCta: "Все отзывы на Яндекс.Картах",
+      googleCta: "Все отзывы в Google",
     },
     faq: {
       kicker: "Частые вопросы",
@@ -586,8 +588,9 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Fikrlar",
       title: "Bizga eng qadrlini ishonishadi",
-      lead: "Yandex.Xaritadagi haqiqiy mijoz fikrlari.",
+      lead: "Mijozlarimizning haqiqiy fikrlari.",
       ymapsCta: "Yandex.Xaritadagi barcha fikrlar",
+      googleCta: "Google’dagi barcha fikrlar",
     },
     faq: {
       kicker: "Ko‘p beriladigan savollar",
@@ -844,8 +847,9 @@ export const dictionaries: Record<Locale, Dict> = {
     reviews: {
       kicker: "Reviews",
       title: "People trust us with what matters most",
-      lead: "Real client reviews from Yandex Maps.",
+      lead: "Real reviews from our clients.",
       ymapsCta: "All reviews on Yandex Maps",
+      googleCta: "All reviews on Google",
     },
     faq: {
       kicker: "FAQ",

@@ -11,6 +11,26 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Google reviews button; lead copy de-branded
+
+### Added
+- "Все отзывы в Google" button beside the Yandex control, pointing at the
+  Google reviews panel. Session parameters (`ved`, `sa`, `biw`, `bih`, `dpr`,
+  `sca_esv`) were stripped from the supplied URL — only `q` and `si` matter.
+  If it ever stops opening reviews, swap in the Maps short link noted in
+  `lib/site.ts`.
+- Deliberately no score on the Google button: there is no verified rating for
+  it, and the button stands on its own without inventing one.
+
+### Changed
+- Reviews lead no longer names Yandex ("Реальные отзывы владельцев наших
+  пациентов") — the section read like an advert for the platform rather than
+  the clinic. Platform names now live only on the buttons, where they are
+  destinations rather than claims.
+- CTA row stacks on phones and sits side by side from `sm` up.
+
+---
+
 ## 2026-07-26 — Reviews: Yandex only, one merged CTA
 
 ### Removed

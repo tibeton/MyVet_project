@@ -17,6 +17,18 @@ function YandexMark({ className = "" }: { className?: string }) {
   );
 }
 
+// Google "G" mark, matching the flat style of YandexMark above.
+function GoogleMark({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`grid place-items-center rounded bg-white font-display font-bold leading-none text-[#4285F4] ring-1 ring-line ${className}`}
+      aria-hidden="true"
+    >
+      G
+    </span>
+  );
+}
+
 export default function Reviews({
   dict,
   locale,
@@ -109,7 +121,7 @@ export default function Reviews({
           the button unsubstantiated. */}
       <div className="shell">
         <Reveal delay={0.1}>
-          <div className="mt-8 flex justify-center sm:mt-10">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
             <a
               href={site.yandexReviewsUrl}
               target="_blank"
@@ -137,6 +149,19 @@ export default function Reviews({
                 <span className="text-sm sm:text-base">{r.ymapsCta}</span>
                 <IconArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
+            </a>
+
+            {/* No score shown for Google: we don't have a verified rating for
+                it, and a button is honest without one. */}
+            <a
+              href={site.googleReviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lift group inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-5 py-3.5 font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+            >
+              <GoogleMark className="h-7 w-7 text-sm" />
+              <span className="text-sm sm:text-base">{r.googleCta}</span>
+              <IconArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </Reveal>
