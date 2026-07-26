@@ -1,0 +1,39 @@
+#!/bin/sh
+# Requires a CHANGELOG.md entry alongside behavioural changes.
+#
+# Enable once per clone (hooks are not shared by git):
+#   git config core.hooksPath .githooks
+#
+# Only source/content changes are gated. Docs, config, lockfiles and generated
+# theme artifacts are exempt, so trivial commits are not blocked.
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+
+# Nothing staged (e.g. merge commit) — let it through.
+[ -z "$staged" ] && exit 0
+
+# Already updating the changelog — done.
+echo "$staged" | grep -q '^CHANGELOG\.md$' && exit 0
+
+# Does this commit touch anything worth logging?
+relevant=$(echo "$staged" | grep -E '^(app|components|lib)/' \
+  | grep -vE '^lib/myvet\.(css|js|d\.ts)$' \
+  | grep -vE '^lib/myvet\.variants\.d\.ts$')
+
+[ -z "$relevant" ] && exit 0
+
+cat >&2 <<EOF
+
+✗ CHANGELOG.md not updated.
+
+These staged files change app behaviour:
+$(echo "$relevant" | sed 's/^/    /')
+
+Add an entry at the top of CHANGELOG.md describing WHY the change was made and
+what breaks if it is undone. See "Before you commit" in AGENTS.md.
+
+If this really needs no entry (pure refactor, typo, no visible effect):
+    git commit --no-verify
+
+EOF
+exit 1

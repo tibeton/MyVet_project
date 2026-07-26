@@ -2,32 +2,32 @@
 
 Project-specific guidance for AI coding agents.
 
-## MyVet — house rules (read before touching CSS or the hero)
+## Conventions live in a skill
 
-**Do not reorder the `@layer` statement at the top of `app/globals.css`.**
-Tailwind and Astryx both ship cascade layers and the order is load-bearing in
-two opposite directions — both failures are silent (build passes, only pixels
-are wrong):
-- Astryx below Tailwind `base` → preflight's `button { background: transparent }`
-  strips Astryx button fills.
-- Astryx above `utilities` → Astryx's `:where(h1..h6)` rules beat
-  `font-extrabold`/`font-bold` and flatten headings site-wide.
+The detailed conventions, known traps, and Astryx workflow for this repo are in
+the **`myvet-ui`** skill (`.claude/skills/myvet-ui/`). Load it before any visual
+or CSS change — it carries the diagnostic shortcuts, so it is kept there rather
+than here to avoid paying for it in sessions that never touch UI.
 
-`npm run check:css` (also wired to `prebuild`) enforces `base < astryx-base < utilities`.
+Tripwire, in case that skill has not loaded: if a Tailwind utility or an Astryx
+style appears to do nothing, the cause is almost certainly an **unlayered rule
+in `app/globals.css`** outranking it — unlayered CSS beats every cascade layer.
+Check that before debugging anything else; it has caused four separate bugs here.
+Never reorder the `@layer` statement at the top of that file (`npm run check:css`
+guards it, and also runs on `prebuild`).
 
-**Fonts:** the `@theme` block in `globals.css` is `@theme inline`, so Tailwind
-does *not* emit those vars to `:root`. Anything hand-written that references
-`var(--font-display)` / `var(--font-body)` needs them declared in the real
-`:root` block. The `next/font` variable classes live on `<html>` (not `<body>`)
-so `:root` can resolve `--font-manrope` / `--font-onest`.
+## Before you commit
 
-**Hero health card (`components/PetCard.tsx`)** is a non-functional mockup for
-v2 — hardcoded vitals from the i18n dict, greyed out behind a "coming soon"
-stamp. Don't wire it to real data without building the feature behind it.
+Add a `CHANGELOG.md` entry (newest at top) for anything that changes behaviour,
+layout, or a decision — record *why* and what breaks if undone, not a file list.
+Use `git log` / `git diff --stat` for file lists. Skip the entry for pure
+refactors and typo fixes. A pre-commit hook enforces this for `app/`,
+`components/`, `lib/`; enable it once per clone:
 
-**CTA links stay `<a>`, not Astryx `Button`.** Astryx `Button` has no `href`,
-and its own guidance says not to use buttons for navigation. Converting them
-would break middle-click / open-in-new-tab.
+    git config core.hooksPath .githooks
+
+`main` is shared and edited in parallel by two people — pull before you start and
+push promptly, because unpushed work is invisible to the other side.
 
 <!-- ASTRYX:START -->
 Astryx v0.1.8 · 153 components

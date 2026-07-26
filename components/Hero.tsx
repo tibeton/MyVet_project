@@ -46,10 +46,22 @@ export default function Hero({ dict }: { dict: Dict }) {
               <h1>
                 <img
                   src="/header.svg"
-                  alt={`${h.titleA} ${h.titleHighlight} ${h.titleB}`}
+                  /* Describe what the artwork actually shows (the brand mark).
+                     The value proposition is real text below, not in this SVG. */
+                  alt={`MyVet.Uz — ${h.kicker}`}
                   className="mx-auto w-full max-w-[20rem] sm:max-w-[24rem] xl:mx-0 xl:max-w-[30rem]"
                 />
               </h1>
+            </Reveal>
+
+            {/* The artwork above is the brand mark ("MyVet.Uz · Ветеринарная
+                клиника"), so it carries no value proposition — without this line
+                mobile shows only a logo and two buttons. Keep it as real text,
+                not baked into the SVG, so it stays translatable and indexable. */}
+            <Reveal delay={0.12}>
+              <p className="mt-4 text-pretty font-display text-lg font-bold leading-snug text-ink sm:text-xl">
+                {h.titleA} <span className="text-accent">{h.titleHighlight}</span> {h.titleB}
+              </p>
             </Reveal>
 
             <Reveal delay={0.16} className="mt-8 hidden xl:block">

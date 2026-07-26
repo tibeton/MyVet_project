@@ -191,8 +191,8 @@ export const dictionaries: Record<Locale, Dict> = {
             nextVisitValue: "20 окт",
           },
           cat: {
-            petName: "Барсик",
-            petMeta: "кот · 3 года",
+            petName: "Мурка",
+            petMeta: "кошка · 3 года",
             weightValue: "4.2 кг",
             vaccinationValue: "до 06.2027",
             antiparasiticValue: "3 сен",
@@ -450,7 +450,7 @@ export const dictionaries: Record<Locale, Dict> = {
             nextVisitValue: "20 okt",
           },
           cat: {
-            petName: "Barsik",
+            petName: "Murka",
             petMeta: "mushuk · 3 yosh",
             weightValue: "4.2 kg",
             vaccinationValue: "06.2027 gacha",
@@ -709,7 +709,7 @@ export const dictionaries: Record<Locale, Dict> = {
             nextVisitValue: "Oct 20",
           },
           cat: {
-            petName: "Barsik",
+            petName: "Murka",
             petMeta: "cat · 3 yrs",
             weightValue: "4.2 kg",
             vaccinationValue: "until 06.2027",

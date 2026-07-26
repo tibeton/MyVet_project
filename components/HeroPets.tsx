@@ -42,10 +42,10 @@ export default function HeroPets({ dict }: { dict: Dict }) {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[rgba(45,49,146,0.18)] to-transparent xl:hidden" />
       </div>
 
-      {/* Pet switcher — raised to sit at the plate's edge so there's no empty
-          gap below. Dog / Cat switch the video + health card; the "+" adds your
-          own pet (disabled until auth exists). */}
-      <div className="absolute bottom-1 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-line bg-surface p-1.5 shadow-[0_24px_50px_-24px_var(--glow)]">
+      {/* Pet switcher — sits inside the plate's lower edge with a little breathing
+          room beneath it. Dog / Cat switch the video + health card; the "+" adds
+          your own pet (disabled until auth exists). */}
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border border-line bg-surface p-1.5 shadow-[0_24px_50px_-24px_var(--glow)]">
         {toggles.map(({ id, Icon, label }) => {
           const active = pet === id;
           return (

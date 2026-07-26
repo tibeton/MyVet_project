@@ -135,8 +135,13 @@ h1, h2, h3, h4 {
 }
 
 /* Section vertical rhythm */
-.section {
-  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+/* In `components` (below `utilities`) so Tailwind overrides like `pt-0`,
+   `pb-0` or `py-*` actually win. Unlayered, this beat every utility and
+   silently kept the full padding-block on sections that opted out. */
+@layer components {
+  .section {
+    padding-block: clamp(4.5rem, 9vw, 8.5rem);
+  }
 }
 
 /* Eyebrow / kicker label */

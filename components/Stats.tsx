@@ -61,7 +61,7 @@ export default function Stats({ dict }: { dict: Dict }) {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="relative overflow-hidden rounded-[2.2rem] bg-accent px-6 py-12 text-on-accent sm:px-12 sm:py-14"
+          className="relative overflow-hidden rounded-[2.2rem] bg-accent px-6 py-16 text-on-accent sm:px-12 sm:py-20"
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-30"
