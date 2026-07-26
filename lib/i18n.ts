@@ -330,7 +330,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Отзывы",
       title: "Нам доверяют самое дорогое",
       lead: "Реальные отзывы владельцев наших пациентов.",
-      ymapsCta: "Все отзывы на Яндекс.Картах",
+      ymapsCta: "Все отзывы на Яндексе",
       googleCta: "Все отзывы в Google",
     },
     faq: {
@@ -589,7 +589,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Fikrlar",
       title: "Bizga eng qadrlini ishonishadi",
       lead: "Mijozlarimizning haqiqiy fikrlari.",
-      ymapsCta: "Yandex.Xaritadagi barcha fikrlar",
+      ymapsCta: "Yandexdagi barcha fikrlar",
       googleCta: "Google’dagi barcha fikrlar",
     },
     faq: {
@@ -848,7 +848,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Reviews",
       title: "People trust us with what matters most",
       lead: "Real reviews from our clients.",
-      ymapsCta: "All reviews on Yandex Maps",
+      ymapsCta: "All reviews on Yandex",
       googleCta: "All reviews on Google",
     },
     faq: {

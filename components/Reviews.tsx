@@ -16,7 +16,7 @@ function PlatformMark({ src, className = "" }: { src: string; className?: string
       src={src}
       alt=""
       aria-hidden="true"
-      className={`shrink-0 rounded object-contain ${className}`}
+      className={`shrink-0 rounded-full object-contain ${className}`}
     />
   );
 }

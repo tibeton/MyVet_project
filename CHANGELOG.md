@@ -11,6 +11,17 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Circular marks, shorter Yandex label
+
+### Changed
+- Platform marks are circles (`rounded-full`), so the square Yandex PNG matches
+  Google's round glyph.
+- Yandex CTA drops "Картах": "Все отзывы на Яндексе" / "Yandexdagi barcha
+  fikrlar" / "All reviews on Yandex". Saves ~50px, which matters most on phones
+  where the two CTAs stack.
+
+---
+
 ## 2026-07-27 — Real platform logos and Google score
 
 ### Added
