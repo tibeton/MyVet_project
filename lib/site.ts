@@ -34,15 +34,4 @@ export const site = {
   // Рейтинг и число отзывов для бейджа (обновляйте вручную по карточке).
   yandexRating: "5.0",
   yandexReviewsCount: "210",
-
-  // ── Google · отзывы ───────────────────────────────────
-  // Карточка: https://www.google.com/maps/place/MyVet.uz (place id 0x38aef59d4c300139)
-  // Короткая ссылка на карточку — открывает отзывы организации.
-  googleReviewsUrl: "https://maps.app.goo.gl/g9NYSJKZgjrqb2cx6",
-  // Прямая ссылка «оставить отзыв» (Google review dialog).
-  googleWriteReviewUrl: "https://g.page/r/CedVtq05BqRiEAI/review",
-  // TODO: рейтинг и число отзывов — впишите вручную с карточки Google
-  // (как yandexRating / yandexReviewsCount). Пока пусто — бейдж не показывается.
-  googleRating: "",
-  googleReviewsCount: "",
 } as const;

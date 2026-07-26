@@ -11,6 +11,28 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-26 — Reviews: Yandex only, one merged CTA
+
+### Removed
+- All Google review support (config, `Review.source`, marks, second badge and
+  CTA, `googleBadge` / `googleCta` / `leadMulti`). Google Maps renders client
+  side so the rating and review text cannot be read programmatically, and they
+  will not be invented — a half-wired feature was worse than none.
+- Per-card links to Yandex. Cards are plain `<article>`s now; the single CTA
+  below the carousel is the only route out.
+
+### Changed
+- Rating and "all reviews" merged into one control: the score is the reason to
+  click through, so separated they left an inert badge and an unsubstantiated
+  button. Stacks on phones — side by side, the score and a 27-character label
+  both wrapped mid-value.
+
+### Superseded
+- The two entries below (Google link wiring, and the lead-copy fix) are undone
+  by this change. Kept for history.
+
+---
+
 ## 2026-07-26 — Google reviews link wired up
 
 ### Added
