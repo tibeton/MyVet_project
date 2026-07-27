@@ -217,7 +217,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Что мы делаем",
       title: "Полный спектр ветеринарной помощи",
       lead:
-        "Полный спектр ветеринарной помощи в одном месте — от профилактического осмотра и диагностики до сложных и неотложных операций.",
+        "От профилактического осмотра и диагностики до сложных и неотложных операций.",
       items: [
         {
           num: "01",
@@ -491,7 +491,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Biz nima qilamiz",
       title: "Veterinariya yordamining to‘liq spektri",
       lead:
-        "Bir joyda veterinariya yordamining to‘liq spektri — profilaktik ko‘rik va diagnostikadan murakkab hamda shoshilinch operatsiyalargacha.",
+        "Profilaktik ko‘rik va diagnostikadan murakkab hamda shoshilinch operatsiyalargacha.",
       items: [
         {
           num: "01",
@@ -765,7 +765,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "What we do",
       title: "A full range of veterinary care",
       lead:
-        "The full range of veterinary care in one place — from preventive check-ups and diagnostics to complex and emergency surgery.",
+        "From preventive check-ups and diagnostics to complex and emergency surgery.",
       items: [
         {
           num: "01",

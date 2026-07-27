@@ -23,8 +23,9 @@ Format: one `##` block per change set, newest at the top.
 - Ultrasound diagnostics: 120 000 → 150 000.
 - New services lead across all three locales.
 
-The services heading is still "Полный спектр ветеринарной помощи" and the new
-lead opens with the same words. Reads as repetition — worth changing one of them.
+The services lead was then shortened to "От профилактического осмотра и
+диагностики до сложных и неотложных операций." — it previously repeated the
+heading's opening words verbatim.
 
 ---
 
