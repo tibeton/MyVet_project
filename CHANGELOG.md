@@ -11,6 +11,30 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Teeth service removed; visit count corrected; mobile header
+
+### Removed
+- **All teeth/dentistry content.** The service card, marquee entry, meta
+  mention, booking-dropdown option and the price line are gone from ru/uz/en.
+  Services renumbered 01–09, which also lands them in a clean 3x3 grid.
+- The one surviving mention of зубы is inside a real customer review and was
+  left verbatim — review text is never edited.
+
+### Changed
+- `30 000+` visits → `7 000+`.
+- Header bar is 94% opaque when scrolled (was 80%) and gets its own compositing
+  layer. On iOS Safari the backdrop blur drops out mid-scroll, and at 80% the
+  hero CTA showed straight through the bar as though it sat above it.
+
+**Unverified on device.** The header fix could not be reproduced in the desktop
+browser — iOS Safari's address-bar collapse and blur behaviour do not emulate.
+It is the standard mitigation, but confirm on a real iPhone.
+
+If you still sell teeth cleaning, the price line is the one thing worth
+restoring: `{ name: "Чистка зубов (ультразвук)", price: "от 250 000" }`.
+
+---
+
 ## 2026-07-27 — Factual corrections and new services
 
 ### Removed — claims the clinic cannot make

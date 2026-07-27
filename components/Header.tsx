@@ -41,14 +41,25 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
       <motion.div
         initial={false}
         animate={{
+          // 94%, not 80%: iOS Safari drops backdrop-blur mid-scroll, and at 80%
+          // the hero CTA showed straight through the bar as if it sat on top.
           backgroundColor: scrolled
-            ? "color-mix(in srgb, #ffffff 80%, transparent)"
+            ? "color-mix(in srgb, #ffffff 94%, transparent)"
             : "color-mix(in srgb, #ffffff 0%, transparent)",
           borderColor: scrolled ? "rgba(45, 49, 146, 0.12)" : "rgba(45, 49, 146, 0)",
         }}
         transition={{ duration: 0.4 }}
         className="border-b backdrop-blur-xl"
-        style={{ borderBottomWidth: 1 }}
+        style={{
+          borderBottomWidth: 1,
+          // Own compositing layer, so iOS repaints the bar with the page
+          // instead of lagging a frame behind during momentum scroll.
+          transform: "translateZ(0)",
+          willChange: "background-color",
+          // No-op unless viewport-fit=cover; keeps the bar under the status
+          // area rather than leaving a strip of page showing above it.
+          paddingTop: "env(safe-area-inset-top)",
+        }}
       >
         <div className="shell flex h-[72px] items-center justify-between md:h-[92px]">
           {/* This is a one-page site, so the logo already links to the page
