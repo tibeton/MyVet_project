@@ -24,7 +24,8 @@ export const site = {
   // Виджет открывает организацию по её ID; клик по адресу ведёт на карточку.
   mapEmbed: "https://yandex.ru/map-widget/v1/?ol=biz&oid=93506518218&z=16",
   mapLink: "https://yandex.uz/maps/org/myvet_uz/93506518218/",
-  yearFounded: 2014,
+  // Клиника открылась 1 октября 2022 года.
+  yearFounded: 2022,
 
   // ── Яндекс.Карты · отзывы ─────────────────────────────
   // Карточка клиники: https://yandex.uz/maps/org/myvet_uz/93506518218

@@ -11,6 +11,36 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Factual corrections and new services
+
+### Removed — claims the clinic cannot make
+- **In-house laboratory.** There isn't one. Stripped from meta description,
+  hero lead, marquee, the Diagnostics service and the why-us points across
+  ru/uz/en. Diagnostics still lists УЗИ / рентген / анализы — only the claim of
+  owning a lab is gone.
+- **Anaesthesia monitoring.** Removed from the Surgery service copy and tags.
+
+### Corrected
+- The clinic opened **1 October 2022**, not 12 years ago, and has **5** vets,
+  not 8. Stats now read "с 2022" rather than a year count, so the figure cannot
+  go stale between deploys. `site.yearFounded` corrected 2014 → 2022.
+
+### Changed
+- **WhyUs and Stats merged.** Two separate "trust us" sections competed; the
+  numbers now sit inside the why-us block, under a divider, and the standalone
+  accent band (`components/Stats.tsx`) is deleted.
+- The why-us point vacated by the laboratory is now "Своё зоотакси".
+
+### Added
+- Four services: Стационар, Зоогостиница, Зоотакси, Чек-ап (ru/uz/en).
+
+### Still unverified
+`30 000+ приёмов` was left untouched, but it was written alongside the wrong
+"12 years". Over ~3 years 9 months it implies ~22 visits every single day —
+plausible for a 24/7 clinic, but worth confirming before it stays on a live site.
+
+---
+
 ## 2026-07-27 — Review CTAs reduced to score chips
 
 ### Changed

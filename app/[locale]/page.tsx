@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
-import Stats from "@/components/Stats";
 import Team from "@/components/Team";
 import Process from "@/components/Process";
 import Prices from "@/components/Prices";
@@ -30,7 +29,6 @@ export default async function Home({
         <Marquee dict={dict} />
         <Services dict={dict} />
         <WhyUs dict={dict} />
-        <Stats dict={dict} />
         <Team dict={dict} />
         <Process dict={dict} />
         <Prices dict={dict} />

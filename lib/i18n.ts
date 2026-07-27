@@ -147,7 +147,7 @@ export const dictionaries: Record<Locale, Dict> = {
     meta: {
       title: "MyVet — Ветеринарная клиника в Ташкенте · Круглосуточно 24/7",
       description:
-        "MyVet — современная ветеринарная клиника в Ташкенте: терапия, хирургия, вакцинация, диагностика (УЗИ, анализы), стоматология и груминг. Своя лаборатория, опытные врачи, круглосуточная экстренная помощь и вызов ветеринара на дом.",
+        "MyVet — современная ветеринарная клиника в Ташкенте: терапия, хирургия, вакцинация, диагностика (УЗИ, рентген, анализы), стоматология, груминг, стационар и зоогостиница. Опытные врачи, круглосуточная экстренная помощь, зоотакси и вызов ветеринара на дом.",
     },
     nav: {
       services: "Услуги",
@@ -167,7 +167,7 @@ export const dictionaries: Record<Locale, Dict> = {
       titleHighlight: "питомца",
       titleB: "под надёжной защитой",
       lead:
-        "Заботливая команда врачей, собственная лаборатория и современное оборудование — от профилактического осмотра до сложной операции. Бережно, без стресса и точно в срок.",
+        "Заботливая команда врачей и современное оборудование — от профилактического осмотра до сложной операции. Бережно, без стресса и точно в срок.",
       primary: "Записаться на приём",
       secondary: "Наши услуги",
       scroll: "Листайте вниз",
@@ -208,7 +208,7 @@ export const dictionaries: Record<Locale, Dict> = {
       "Вакцинация",
       "УЗИ-диагностика",
       "Стоматология",
-      "Лаборатория",
+      "Зоогостиница",
       "Груминг",
       "Стационар",
       "Вызов на дом",
@@ -229,8 +229,8 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "02",
           name: "Хирургия",
-          desc: "Плановые и неотложные операции в стерильной операционной с современным наркозным мониторингом.",
-          tags: ["Стерилизация", "Операции", "Наркоз-контроль"],
+          desc: "Плановые и неотложные операции в стерильной операционной. Готовим питомца к операции и наблюдаем после неё.",
+          tags: ["Стерилизация", "Операции", "Кастрация"],
         },
         {
           num: "03",
@@ -241,7 +241,7 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "04",
           name: "Диагностика",
-          desc: "УЗИ, рентген и анализы в собственной лаборатории — результаты уже во время приёма.",
+          desc: "УЗИ, рентген и анализы — быстро и без лишних направлений в другие клиники.",
           tags: ["УЗИ", "Рентген", "Анализы"],
         },
         {
@@ -256,20 +256,44 @@ export const dictionaries: Record<Locale, Dict> = {
           desc: "Гигиеническая и модельная стрижка, купание и уход за когтями в спокойной обстановке.",
           tags: ["Стрижка", "Купание", "Когти"],
         },
+        {
+          num: "07",
+          name: "Стационар",
+          desc: "Круглосуточное наблюдение под присмотром врача, когда питомцу нужно восстановиться после операции или тяжёлой болезни.",
+          tags: ["Наблюдение 24/7", "Капельницы", "Восстановление"],
+        },
+        {
+          num: "08",
+          name: "Зоогостиница",
+          desc: "Передержка на время вашей поездки: кормление по режиму, прогулки и ежедневный присмотр ветеринара.",
+          tags: ["Передержка", "Кормление", "Присмотр врача"],
+        },
+        {
+          num: "09",
+          name: "Зоотакси",
+          desc: "Своя машина для перевозки питомцев: заберём из дома и привезём обратно после приёма.",
+          tags: ["Своя машина", "Из дома в клинику", "Обратно домой"],
+        },
+        {
+          num: "10",
+          name: "Чек-ап",
+          desc: "Комплексная проверка здоровья: осмотр, базовые анализы и УЗИ — чтобы заметить проблему до появления симптомов.",
+          tags: ["Осмотр", "Анализы", "УЗИ"],
+        },
       ],
     },
     why: {
       kicker: "Почему MyVet",
       title: "Здоровье питомца — наш главный приоритет",
-      lead: "Мы берём ответственность за здоровье вашего любимца на каждом этапе.",
+      lead: "Работаем в Ташкенте с октября 2022 года и берём ответственность за здоровье вашего любимца на каждом этапе.",
       points: [
         {
           title: "Опытные врачи",
           desc: "Специалисты с профильным образованием и многолетней практикой. Регулярно повышаем квалификацию.",
         },
         {
-          title: "Своя лаборатория",
-          desc: "Большинство анализов делаем на месте — результат и решение по лечению в день обращения.",
+          title: "Своё зоотакси",
+          desc: "Заберём питомца из дома и привезём обратно — не нужно искать машину и переноску в спешке.",
         },
         {
           title: "Бережный подход",
@@ -284,10 +308,10 @@ export const dictionaries: Record<Locale, Dict> = {
     stats: {
       title: "Цифры, которым доверяют",
       items: [
-        { value: "12", label: "лет заботы о питомцах" },
+        { value: "с 2022", label: "заботимся о питомцах в Ташкенте" },
         { value: "30 000+", label: "приёмов проведено" },
         { value: "24/7", label: "экстренная помощь" },
-        { value: "8", label: "врачей-специалистов" },
+        { value: "5", label: "врачей-специалистов" },
       ],
     },
     team: {
@@ -406,7 +430,7 @@ export const dictionaries: Record<Locale, Dict> = {
     meta: {
       title: "MyVet — Toshkentda veterinariya klinikasi · 24/7 kechayu kunduz",
       description:
-        "MyVet — Toshkentdagi zamonaviy veterinariya klinikasi: terapiya, jarrohlik, vaksinatsiya, diagnostika (UTT, tahlillar), stomatologiya va gruming. O‘z laboratoriyasi, tajribali shifokorlar, kechayu kunduz shoshilinch yordam va uyga veterinar chaqirish.",
+        "MyVet — Toshkentdagi zamonaviy veterinariya klinikasi: terapiya, jarrohlik, vaksinatsiya, diagnostika (UTT, rentgen, tahlillar), stomatologiya, gruming, statsionar va zoomehmonxona. Tajribali shifokorlar, kechayu kunduz shoshilinch yordam, zootaksi va uyga veterinar chaqirish.",
     },
     nav: {
       services: "Xizmatlar",
@@ -426,7 +450,7 @@ export const dictionaries: Record<Locale, Dict> = {
       titleHighlight: "sog‘lig‘i",
       titleB: "ishonchli qo‘llarda",
       lead:
-        "G‘amxo‘r shifokorlar jamoasi, o‘z laboratoriyasi va zamonaviy uskunalar — profilaktik ko‘rikdan murakkab operatsiyagacha. Ehtiyotkorlik bilan, stresssiz va aniq muddatda.",
+        "G‘amxo‘r shifokorlar jamoasi va zamonaviy uskunalar — profilaktik ko‘rikdan murakkab operatsiyagacha. Ehtiyotkorlik bilan, stresssiz va aniq muddatda.",
       primary: "Qabulga yozilish",
       secondary: "Xizmatlarimiz",
       scroll: "Pastga aylantiring",
@@ -467,7 +491,7 @@ export const dictionaries: Record<Locale, Dict> = {
       "Vaksinatsiya",
       "UTT diagnostika",
       "Stomatologiya",
-      "Laboratoriya",
+      "Zoomehmonxona",
       "Gruming",
       "Statsionar",
       "Uyga chaqirish",
@@ -488,8 +512,8 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "02",
           name: "Jarrohlik",
-          desc: "Rejali va shoshilinch operatsiyalar steril operatsiya xonasida zamonaviy narkoz monitoringi bilan.",
-          tags: ["Sterilizatsiya", "Operatsiyalar", "Narkoz nazorati"],
+          desc: "Rejali va shoshilinch operatsiyalar steril operatsiya xonasida. Hayvonni operatsiyaga tayyorlaymiz va keyin kuzatamiz.",
+          tags: ["Sterilizatsiya", "Operatsiyalar", "Kastratsiya"],
         },
         {
           num: "03",
@@ -500,7 +524,7 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "04",
           name: "Diagnostika",
-          desc: "UTT, rentgen va tahlillar o‘z laboratoriyamizda — natijalar qabul vaqtidayoq tayyor.",
+          desc: "UTT, rentgen va tahlillar — tez va boshqa klinikaga yo‘naltirishsiz.",
           tags: ["UTT", "Rentgen", "Tahlillar"],
         },
         {
@@ -515,20 +539,44 @@ export const dictionaries: Record<Locale, Dict> = {
           desc: "Gigiyenik va modelli qirqish, cho‘miltirish va tirnoqlarni parvarishlash xotirjam muhitda.",
           tags: ["Qirqish", "Cho‘miltirish", "Tirnoqlar"],
         },
+        {
+          num: "07",
+          name: "Statsionar",
+          desc: "Operatsiyadan yoki og‘ir kasallikdan keyin tiklanish kerak bo‘lsa, shifokor nazorati ostida kechayu kunduz kuzatuv.",
+          tags: ["24/7 kuzatuv", "Tomchilar", "Tiklanish"],
+        },
+        {
+          num: "08",
+          name: "Zoomehmonxona",
+          desc: "Safaringiz davrida hayvoningizni saqlaymiz: rejim bo‘yicha ovqatlantirish, sayr va har kuni veterinar nazorati.",
+          tags: ["Saqlash", "Ovqatlantirish", "Shifokor nazorati"],
+        },
+        {
+          num: "09",
+          name: "Zootaksi",
+          desc: "Hayvonlarni tashish uchun o‘z mashinamiz: uydan olib ketamiz va qabuldan keyin qaytarib olib kelamiz.",
+          tags: ["O‘z mashinamiz", "Uydan klinikaga", "Uyga qaytarish"],
+        },
+        {
+          num: "10",
+          name: "Chek-ap",
+          desc: "Sog‘liqni kompleks tekshirish: ko‘rik, asosiy tahlillar va UTT — muammoni alomatlar paydo bo‘lguncha aniqlash uchun.",
+          tags: ["Ko‘rik", "Tahlillar", "UTT"],
+        },
       ],
     },
     why: {
       kicker: "Nega MyVet",
       title: "Hayvon sog‘lig‘i — bizning asosiy ustuvorligimiz",
-      lead: "Sevimli hayvoningiz sog‘lig‘i uchun har bosqichda javobgarlikni o‘z zimmamizga olamiz.",
+      lead: "2022-yil oktabridan Toshkentda ishlaymiz va sevimli hayvoningiz sog‘lig‘i uchun har bosqichda javobgarmiz.",
       points: [
         {
           title: "Tajribali shifokorlar",
           desc: "Mutaxassis ta’limiga va ko‘p yillik amaliyotga ega shifokorlar. Malakamizni doimiy oshiramiz.",
         },
         {
-          title: "O‘z laboratoriyamiz",
-          desc: "Aksariyat tahlillarni joyida bajaramiz — natija va davolash qarori murojaat kunining o‘zida.",
+          title: "O‘z zootaksimiz",
+          desc: "Hayvoningizni uydan olib ketamiz va qaytarib olib kelamiz — shosha-pisha mashina qidirish shart emas.",
         },
         {
           title: "Ehtiyotkor yondashuv",
@@ -543,10 +591,10 @@ export const dictionaries: Record<Locale, Dict> = {
     stats: {
       title: "Ishonadigan raqamlar",
       items: [
-        { value: "12", label: "yillik g‘amxo‘rlik" },
+        { value: "2022‘dan", label: "Toshkentda g‘amxo‘rlik qilamiz" },
         { value: "30 000+", label: "qabul o‘tkazilgan" },
         { value: "24/7", label: "shoshilinch yordam" },
-        { value: "8", label: "mutaxassis shifokor" },
+        { value: "5", label: "mutaxassis shifokor" },
       ],
     },
     team: {
@@ -665,7 +713,7 @@ export const dictionaries: Record<Locale, Dict> = {
     meta: {
       title: "MyVet — Veterinary Clinic in Tashkent · Open 24/7",
       description:
-        "MyVet is a modern veterinary clinic in Tashkent: therapy, surgery, vaccination, diagnostics (ultrasound, lab tests), dentistry and grooming. In-house lab, experienced vets, round-the-clock emergency care and home vet visits.",
+        "MyVet is a modern veterinary clinic in Tashkent: therapy, surgery, vaccination, diagnostics (ultrasound, X-ray, tests), dentistry, grooming, inpatient care and a pet hotel. Experienced vets, round-the-clock emergency care, pet taxi and home visits.",
     },
     nav: {
       services: "Services",
@@ -685,7 +733,7 @@ export const dictionaries: Record<Locale, Dict> = {
       titleHighlight: "in caring",
       titleB: "expert hands",
       lead:
-        "A caring team of vets, an in-house lab and modern equipment — from a routine check-up to complex surgery. Gentle, stress-free and always on time.",
+        "A caring team of vets and modern equipment — from a routine check-up to complex surgery. Gentle, stress-free and always on time.",
       primary: "Book a visit",
       secondary: "Our services",
       scroll: "Scroll down",
@@ -726,7 +774,7 @@ export const dictionaries: Record<Locale, Dict> = {
       "Vaccination",
       "Ultrasound",
       "Dentistry",
-      "Lab tests",
+      "Pet hotel",
       "Grooming",
       "Inpatient care",
       "Home visits",
@@ -747,8 +795,8 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "02",
           name: "Surgery",
-          desc: "Planned and emergency operations in a sterile theatre with modern anaesthesia monitoring.",
-          tags: ["Spaying", "Operations", "Anaesthesia"],
+          desc: "Planned and emergency operations in a sterile theatre. We prepare your pet beforehand and monitor recovery after.",
+          tags: ["Spaying", "Operations", "Neutering"],
         },
         {
           num: "03",
@@ -759,7 +807,7 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "04",
           name: "Diagnostics",
-          desc: "Ultrasound, X-ray and lab tests in our own laboratory — results during your visit.",
+          desc: "Ultrasound, X-ray and lab tests — quickly, with no referrals elsewhere.",
           tags: ["Ultrasound", "X-ray", "Lab tests"],
         },
         {
@@ -774,20 +822,44 @@ export const dictionaries: Record<Locale, Dict> = {
           desc: "Hygienic and breed grooming, bathing and nail care in a calm, gentle environment.",
           tags: ["Grooming", "Bathing", "Nails"],
         },
+        {
+          num: "07",
+          name: "Inpatient care",
+          desc: "Round-the-clock monitoring under veterinary supervision when your pet needs to recover from surgery or serious illness.",
+          tags: ["24/7 monitoring", "IV drips", "Recovery"],
+        },
+        {
+          num: "08",
+          name: "Pet hotel",
+          desc: "Boarding while you travel: feeding on schedule, walks and a daily check by a vet.",
+          tags: ["Boarding", "Feeding", "Vet checks"],
+        },
+        {
+          num: "09",
+          name: "Pet taxi",
+          desc: "Our own vehicle for transporting pets: we collect them from home and bring them back after the visit.",
+          tags: ["Our own vehicle", "Home to clinic", "Back home"],
+        },
+        {
+          num: "10",
+          name: "Health check-up",
+          desc: "A full health screen: examination, basic tests and ultrasound — to catch problems before symptoms appear.",
+          tags: ["Examination", "Tests", "Ultrasound"],
+        },
       ],
     },
     why: {
       kicker: "Why MyVet",
       title: "Your pet's health is our top priority",
-      lead: "We take responsibility for your pet's health at every stage.",
+      lead: "Working in Tashkent since October 2022, taking responsibility for your pet's health at every stage.",
       points: [
         {
           title: "Experienced vets",
           desc: "Specialists with professional training and years of practice. We keep our skills sharp.",
         },
         {
-          title: "In-house laboratory",
-          desc: "Most tests are run on site — results and a treatment decision on the same day.",
+          title: "Our own pet taxi",
+          desc: "We collect your pet from home and bring them back — no scrambling for a car and a carrier.",
         },
         {
           title: "A gentle approach",
@@ -802,10 +874,10 @@ export const dictionaries: Record<Locale, Dict> = {
     stats: {
       title: "Numbers you can trust",
       items: [
-        { value: "12", label: "years of care" },
+        { value: "since 2022", label: "caring for pets in Tashkent" },
         { value: "30,000+", label: "visits handled" },
         { value: "24/7", label: "emergency care" },
-        { value: "8", label: "specialist vets" },
+        { value: "5", label: "specialist vets" },
       ],
     },
     team: {

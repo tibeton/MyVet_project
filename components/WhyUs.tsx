@@ -1,8 +1,9 @@
 import type { Dict } from "@/lib/i18n";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
-import { IconShield, IconFlask, IconHeart, IconClock, IconStethoscope } from "./icons";
+import { IconShield, IconHeart, IconClock, IconStethoscope, IconPin } from "./icons";
 
-const ICONS = [IconStethoscope, IconFlask, IconHeart, IconClock, IconShield];
+// IconPin stands in for the pet-taxi point that replaced the lab.
+const ICONS = [IconStethoscope, IconPin, IconHeart, IconClock, IconShield];
 
 export default function WhyUs({ dict }: { dict: Dict }) {
   const w = dict.why;
@@ -51,6 +52,23 @@ export default function WhyUs({ dict }: { dict: Dict }) {
               })}
             </RevealGroup>
           </div>
+
+          {/* Numbers used to be a separate accent band below. Merged in here so
+              the claims and the evidence for them sit in one block instead of
+              two competing "trust us" sections. */}
+          <RevealGroup
+            className="mt-10 grid grid-cols-2 gap-6 border-t border-line pt-10 sm:mt-12 sm:gap-8 sm:pt-12 lg:grid-cols-4"
+            stagger={0.06}
+          >
+            {dict.stats.items.map((item) => (
+              <RevealItem key={item.label}>
+                <p className="font-display text-[clamp(1.6rem,4vw,2.4rem)] font-extrabold leading-none text-accent">
+                  {item.value}
+                </p>
+                <p className="mt-2 text-sm/snug text-muted">{item.label}</p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </div>
     </section>
