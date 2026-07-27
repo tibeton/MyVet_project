@@ -11,6 +11,20 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Review CTAs reduced to score chips
+
+### Changed
+- The two review buttons drop their text labels and keep logo, score, count and
+  a small arrow. 161x42 each (was 405x66), and they now fit side by side even at
+  375px instead of stacking — the row went from ~224px tall on phones to 42px.
+
+The label still exists as `aria-label` / `title`, so screen readers and hover
+tooltips get "Все отзывы на Яндексе" rather than an unlabelled link. Don't drop
+those attributes when editing: with no visible text they are the only accessible
+name the link has.
+
+---
+
 ## 2026-07-27 — Favicon uses the header mark
 
 ### Changed

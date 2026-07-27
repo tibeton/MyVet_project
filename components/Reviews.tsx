@@ -28,7 +28,9 @@ const GoogleMark = (p: { className?: string }) => (
   <PlatformMark src="/googlelogo.png" {...p} />
 );
 
-// One CTA per platform: mark + score + label, so neither is an inert badge.
+// Compact score chip per platform. No visible label — the logo plus score says
+// it, and `label` (already translated) becomes the accessible name so screen
+// readers still get "all reviews on <platform>".
 function ReviewsCta({
   href,
   mark,
@@ -47,24 +49,17 @@ function ReviewsCta({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      // Stacks on phones: side by side, the score and a long label both wrap.
-      className="lift group flex w-full flex-col items-center justify-center gap-3 rounded-[1.75rem] border border-line bg-surface p-3 transition-colors hover:border-accent sm:flex-row sm:gap-4 sm:rounded-full sm:py-2.5 sm:pl-3 sm:pr-5"
+      aria-label={label}
+      title={label}
+      className="lift group flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line bg-surface py-2 pl-2 pr-3.5 transition-colors hover:border-accent"
     >
-      <span className="flex items-center gap-2.5 whitespace-nowrap rounded-full bg-bg-2 py-2 pl-2.5 pr-4">
-        {mark}
-        <span className="flex items-baseline gap-1.5">
-          <span className="font-display text-lg font-bold leading-none text-ink">
-            {rating}
-          </span>
-          <IconStar className="h-3.5 w-3.5 self-center text-pink-bright" />
-          <span className="text-sm leading-none text-muted">· {count}</span>
-        </span>
+      {mark}
+      <span className="font-display text-base font-bold leading-none text-ink">
+        {rating}
       </span>
-
-      <span className="flex items-center gap-2 px-2 pb-1 font-semibold text-ink transition-colors group-hover:text-accent sm:px-0 sm:pb-0">
-        <span className="whitespace-nowrap text-sm sm:text-base">{label}</span>
-        <IconArrowUpRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </span>
+      <IconStar className="h-3.5 w-3.5 shrink-0 text-pink-bright" />
+      <span className="text-sm leading-none text-muted">· {count}</span>
+      <IconArrowUpRight className="h-3.5 w-3.5 shrink-0 text-faint transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
 }
@@ -162,17 +157,17 @@ export default function Reviews({
           {/* Grid, not flex: the labels differ in length, so content-sized buttons
                 came out different widths. w-fit keeps the pair centred while the
                 columns take the width of the wider one. */}
-          <div className="mx-auto mt-8 grid w-fit grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2">
+          <div className="mx-auto mt-8 grid w-fit grid-cols-2 gap-2.5 sm:mt-10 sm:gap-3">
             <ReviewsCta
               href={site.yandexReviewsUrl}
-              mark={<YandexMark className="h-7 w-7" />}
+              mark={<YandexMark className="h-6 w-6" />}
               rating={site.yandexRating}
               count={site.yandexReviewsCount}
               label={r.ymapsCta}
             />
             <ReviewsCta
               href={site.googleReviewsUrl}
-              mark={<GoogleMark className="h-7 w-7" />}
+              mark={<GoogleMark className="h-6 w-6" />}
               rating={site.googleRating}
               count={site.googleReviewsCount}
               label={r.googleCta}
