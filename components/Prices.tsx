@@ -50,9 +50,13 @@ export default function Prices({ dict }: { dict: Dict }) {
                     endContent={
                       <span className="shrink-0 text-right font-display text-base font-bold text-accent sm:text-lg">
                         {item.price}
-                        <span className="ml-1 text-xs font-medium text-faint">
-                          {p.currency}
-                        </span>
+                        {/* "по запросу сум" would be nonsense — the currency
+                            only belongs on rows that carry a number. */}
+                        {!item.onRequest && (
+                          <span className="ml-1 text-xs font-medium text-faint">
+                            {p.currency}
+                          </span>
+                        )}
                       </span>
                     }
                   />

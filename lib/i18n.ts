@@ -39,7 +39,6 @@ type Dict = {
     titleA: string;
     titleHighlight: string;
     titleB: string;
-    lead: string;
     primary: string;
     secondary: string;
     scroll: string;
@@ -90,7 +89,8 @@ type Dict = {
     lead: string;
     note: string;
     currency: string;
-    items: { name: string; price: string }[];
+    /** onRequest hides the currency suffix — the price is not a number. */
+    items: { name: string; price: string; onRequest?: boolean }[];
   };
   reviews: {
     kicker: string;
@@ -166,8 +166,6 @@ export const dictionaries: Record<Locale, Dict> = {
       titleA: "Здоровье вашего",
       titleHighlight: "питомца",
       titleB: "под надёжной защитой",
-      lead:
-        "Заботливая команда врачей и современное оборудование — от профилактического осмотра до сложной операции. Бережно, без стресса и точно в срок.",
       primary: "Записаться на приём",
       secondary: "Наши услуги",
       scroll: "Листайте вниз",
@@ -331,7 +329,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Прайс-лист",
       title: "Прозрачные цены",
       lead: "Самые востребованные услуги. Полный прайс отправим по запросу.",
-      note: "Точная стоимость зависит от состояния питомца и определяется на приёме.",
+      note: "Точная стоимость зависит от состояния питомца и определяется на приёме. Цена стационара и зоогостиницы зависит от номера, питомца и его состояния — напишите нам в Telegram.",
       currency: "сум",
       items: [
         { name: "Первичный приём и консультация", price: "от 120 000" },
@@ -340,6 +338,9 @@ export const dictionaries: Record<Locale, Dict> = {
         { name: "Стерилизация", price: "от 450 000" },
         { name: "Кастрация", price: "от 250 000" },
         { name: "Вызов врача на дом", price: "от 150 000" },
+        { name: "Зоотакси", price: "от 150 000" },
+        { name: "Стационар", price: "по запросу", onRequest: true },
+        { name: "Зоогостиница", price: "по запросу", onRequest: true },
       ],
     },
     reviews: {
@@ -440,8 +441,6 @@ export const dictionaries: Record<Locale, Dict> = {
       titleA: "Sevimli hayvoningiz",
       titleHighlight: "sog‘lig‘i",
       titleB: "ishonchli qo‘llarda",
-      lead:
-        "G‘amxo‘r shifokorlar jamoasi va zamonaviy uskunalar — profilaktik ko‘rikdan murakkab operatsiyagacha. Ehtiyotkorlik bilan, stresssiz va aniq muddatda.",
       primary: "Qabulga yozilish",
       secondary: "Xizmatlarimiz",
       scroll: "Pastga aylantiring",
@@ -605,7 +604,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Narxlar ro‘yxati",
       title: "Shaffof narxlar",
       lead: "Eng ko‘p so‘raladigan xizmatlar. To‘liq narxlarni so‘rov bo‘yicha yuboramiz.",
-      note: "Aniq narx hayvon holatiga bog‘liq va qabulda belgilanadi.",
+      note: "Aniq narx hayvon holatiga bog‘liq va qabulda belgilanadi. Statsionar va zoomehmonxona narxi xona, hayvon va uning holatiga bog‘liq — Telegramga yozing.",
       currency: "so‘m",
       items: [
         { name: "Birlamchi qabul va maslahat", price: "120 000 dan" },
@@ -614,6 +613,9 @@ export const dictionaries: Record<Locale, Dict> = {
         { name: "Sterilizatsiya", price: "450 000 dan" },
         { name: "Kastratsiya", price: "250 000 dan" },
         { name: "Shifokorni uyga chaqirish", price: "150 000 dan" },
+        { name: "Zootaksi", price: "150 000 dan" },
+        { name: "Statsionar", price: "so‘rov bo‘yicha", onRequest: true },
+        { name: "Zoomehmonxona", price: "so‘rov bo‘yicha", onRequest: true },
       ],
     },
     reviews: {
@@ -714,8 +716,6 @@ export const dictionaries: Record<Locale, Dict> = {
       titleA: "Your pet's health",
       titleHighlight: "in caring",
       titleB: "expert hands",
-      lead:
-        "A caring team of vets and modern equipment — from a routine check-up to complex surgery. Gentle, stress-free and always on time.",
       primary: "Book a visit",
       secondary: "Our services",
       scroll: "Scroll down",
@@ -879,7 +879,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Price list",
       title: "Transparent pricing",
       lead: "Our most requested services. We'll send the full price list on request.",
-      note: "The exact price depends on your pet's condition and is confirmed at the visit.",
+      note: "The exact price depends on your pet's condition and is confirmed at the visit. Inpatient care and the pet hotel depend on the room, the pet and its condition — message us on Telegram.",
       currency: "UZS",
       items: [
         { name: "Initial visit & consultation", price: "from 120,000" },
@@ -888,6 +888,9 @@ export const dictionaries: Record<Locale, Dict> = {
         { name: "Spaying", price: "from 450,000" },
         { name: "Neutering", price: "from 250,000" },
         { name: "Vet home visit", price: "from 150,000" },
+        { name: "Pet taxi", price: "from 150,000" },
+        { name: "Inpatient care", price: "on request", onRequest: true },
+        { name: "Pet hotel", price: "on request", onRequest: true },
       ],
     },
     reviews: {

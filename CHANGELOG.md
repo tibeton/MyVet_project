@@ -11,6 +11,28 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Prices for new services; dead hero copy removed
+
+### Added
+- Зоотакси от 150 000. Стационар and Зоогостиница are priced "по запросу" —
+  they depend on the room, pet and condition. The note now points people to
+  Telegram for those two.
+- `onRequest` flag on price items. Without it the row rendered "по запросу сум",
+  since the currency suffix was appended unconditionally.
+
+### Removed
+- `hero.lead` — translated in three languages but rendered nowhere since the
+  hero was rebuilt around the logo artwork.
+
+### Known, not addressed
+`public/dog.mp4` and `public/cat.mp4` are 19 MB each, `autoPlay` with
+`preload="auto"`. That is ~19 MB before any content paints, on a site whose
+visitors are mostly on mobile data, and another 19 MB when the pet is switched.
+Compressing to 720p would cut this by roughly 90% with no visible difference at
+the rendered size.
+
+---
+
 ## 2026-07-27 — Leadership block, nav, prices, services lead
 
 ### Changed
