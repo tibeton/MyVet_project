@@ -11,6 +11,20 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Favicon uses the header mark
+
+### Changed
+- `public/favicon.svg` is now the header logo (`public/Logo.svg`) scaled onto
+  the brand square, replacing the simplified paw drawing.
+
+The brand square is not decoration: the header artwork is white on a
+transparent background, so used as-is the favicon disappears on a light browser
+tab. If `Logo.svg` is ever redrawn, regenerate the favicon the same way
+(fit the 90x102 viewBox into 64x64 with 8px padding) rather than pointing
+`icons.icon` straight at it.
+
+---
+
 ## 2026-07-27 — Circular marks, shorter Yandex label, equal-width CTAs
 
 ### Changed
