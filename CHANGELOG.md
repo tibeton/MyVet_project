@@ -11,6 +11,23 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Leadership block, nav, prices, services lead
+
+### Changed
+- The team section is leadership, not staff: kicker "Руководство", new heading,
+  and full names with real roles — Улугбек Баходирович Юлдашев (главный врач,
+  хирург) and Наргиза Фарходовна Ахадова (учредитель, директор), in ru/uz/en.
+- Removed the "Врачи" link from the header nav. The footer still links to the
+  section, so `nav.team` was relabelled "Руководство" / "Rahbariyat" /
+  "Leadership" rather than left saying "Врачи" and pointing at leadership.
+- Ultrasound diagnostics: 120 000 → 150 000.
+- New services lead across all three locales.
+
+The services heading is still "Полный спектр ветеринарной помощи" and the new
+lead opens with the same words. Reads as repetition — worth changing one of them.
+
+---
+
 ## 2026-07-27 — Teeth service removed; visit count corrected; mobile header
 
 ### Removed

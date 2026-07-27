@@ -29,7 +29,6 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
 
   const links = [
     { href: "#services", label: dict.nav.services },
-    { href: "#team", label: dict.nav.team },
     { href: "#process", label: dict.nav.process },
     { href: "#prices", label: dict.nav.prices },
     { href: "#reviews", label: dict.nav.reviews },

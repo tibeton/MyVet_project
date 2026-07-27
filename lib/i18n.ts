@@ -152,7 +152,7 @@ export const dictionaries: Record<Locale, Dict> = {
     nav: {
       services: "Услуги",
       why: "Почему мы",
-      team: "Врачи",
+      team: "Руководство",
       process: "Как проходит приём",
       prices: "Цены",
       reviews: "Отзывы",
@@ -217,7 +217,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Что мы делаем",
       title: "Полный спектр ветеринарной помощи",
       lead:
-        "Всё для здоровья питомца под одной крышей — от планового осмотра до неотложной хирургии. Без лишних направлений в другие клиники.",
+        "Полный спектр ветеринарной помощи в одном месте — от профилактического осмотра и диагностики до сложных и неотложных операций.",
       items: [
         {
           num: "01",
@@ -308,12 +308,12 @@ export const dictionaries: Record<Locale, Dict> = {
       ],
     },
     team: {
-      kicker: "Наша команда",
-      title: "Команда, которой доверяют питомцев",
-      lead: "Каждый специалист — это опыт, забота и любовь к животным.",
+      kicker: "Руководство",
+      title: "Кто отвечает за клинику",
+      lead: "Опыт, забота и личная ответственность за каждого пациента.",
       members: [
-        { name: "Улугбек Баходирович", role: "Главный врач" },
-        { name: "Наргиза Фарходовна", role: "Руководитель" },
+        { name: "Улугбек Баходирович Юлдашев", role: "Главный врач, хирург" },
+        { name: "Наргиза Фарходовна Ахадова", role: "Учредитель, директор" },
       ],
     },
     process: {
@@ -336,7 +336,7 @@ export const dictionaries: Record<Locale, Dict> = {
       items: [
         { name: "Первичный приём и консультация", price: "от 120 000" },
         { name: "Вакцинация (комплексная)", price: "от 185 000" },
-        { name: "УЗИ-диагностика", price: "от 120 000" },
+        { name: "УЗИ-диагностика", price: "от 150 000" },
         { name: "Стерилизация", price: "от 450 000" },
         { name: "Кастрация", price: "от 250 000" },
         { name: "Вызов врача на дом", price: "от 150 000" },
@@ -426,7 +426,7 @@ export const dictionaries: Record<Locale, Dict> = {
     nav: {
       services: "Xizmatlar",
       why: "Nega biz",
-      team: "Shifokorlar",
+      team: "Rahbariyat",
       process: "Qabul jarayoni",
       prices: "Narxlar",
       reviews: "Fikrlar",
@@ -491,7 +491,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Biz nima qilamiz",
       title: "Veterinariya yordamining to‘liq spektri",
       lead:
-        "Hayvon sog‘lig‘i uchun barchasi bir tom ostida — rejali ko‘rikdan shoshilinch jarrohlikgacha. Boshqa klinikaga yo‘naltirishsiz.",
+        "Bir joyda veterinariya yordamining to‘liq spektri — profilaktik ko‘rik va diagnostikadan murakkab hamda shoshilinch operatsiyalargacha.",
       items: [
         {
           num: "01",
@@ -582,12 +582,12 @@ export const dictionaries: Record<Locale, Dict> = {
       ],
     },
     team: {
-      kicker: "Bizning jamoa",
-      title: "Hayvonlar ishonadigan jamoa",
-      lead: "Har bir mutaxassis — tajriba, g‘amxo‘rlik va hayvonlarga mehr.",
+      kicker: "Rahbariyat",
+      title: "Klinika uchun kim javobgar",
+      lead: "Tajriba, g‘amxo‘rlik va har bir bemor uchun shaxsiy javobgarlik.",
       members: [
-        { name: "Ulug‘bek Bahodirovich", role: "Bosh shifokor" },
-        { name: "Nargiza Farhodovna", role: "Rahbar" },
+        { name: "Ulug‘bek Bahodirovich Yuldashev", role: "Bosh shifokor, jarroh" },
+        { name: "Nargiza Farhodovna Ahadova", role: "Ta’sischi, direktor" },
       ],
     },
     process: {
@@ -610,7 +610,7 @@ export const dictionaries: Record<Locale, Dict> = {
       items: [
         { name: "Birlamchi qabul va maslahat", price: "120 000 dan" },
         { name: "Vaksinatsiya (kompleks)", price: "185 000 dan" },
-        { name: "UTT diagnostika", price: "120 000 dan" },
+        { name: "UTT diagnostika", price: "150 000 dan" },
         { name: "Sterilizatsiya", price: "450 000 dan" },
         { name: "Kastratsiya", price: "250 000 dan" },
         { name: "Shifokorni uyga chaqirish", price: "150 000 dan" },
@@ -700,7 +700,7 @@ export const dictionaries: Record<Locale, Dict> = {
     nav: {
       services: "Services",
       why: "Why us",
-      team: "Vets",
+      team: "Leadership",
       process: "How it works",
       prices: "Pricing",
       reviews: "Reviews",
@@ -765,7 +765,7 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "What we do",
       title: "A full range of veterinary care",
       lead:
-        "Everything for your pet's health under one roof — from a routine check-up to emergency surgery. No referrals to other clinics.",
+        "The full range of veterinary care in one place — from preventive check-ups and diagnostics to complex and emergency surgery.",
       items: [
         {
           num: "01",
@@ -856,12 +856,12 @@ export const dictionaries: Record<Locale, Dict> = {
       ],
     },
     team: {
-      kicker: "Our team",
-      title: "A team you can trust your pet with",
-      lead: "Every specialist brings experience, care and a genuine love for animals.",
+      kicker: "Leadership",
+      title: "Who runs the clinic",
+      lead: "Experience, care and personal responsibility for every patient.",
       members: [
-        { name: "Ulugbek Bakhodirovich", role: "Head veterinarian" },
-        { name: "Nargiza Farkhodovna", role: "Director" },
+        { name: "Ulugbek Bakhodirovich Yuldashev", role: "Head veterinarian, surgeon" },
+        { name: "Nargiza Farkhodovna Akhadova", role: "Founder, director" },
       ],
     },
     process: {
@@ -884,7 +884,7 @@ export const dictionaries: Record<Locale, Dict> = {
       items: [
         { name: "Initial visit & consultation", price: "from 120,000" },
         { name: "Vaccination (complex)", price: "from 185,000" },
-        { name: "Ultrasound diagnostics", price: "from 120,000" },
+        { name: "Ultrasound diagnostics", price: "from 150,000" },
         { name: "Spaying", price: "from 450,000" },
         { name: "Neutering", price: "from 250,000" },
         { name: "Vet home visit", price: "from 150,000" },
