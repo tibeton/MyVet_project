@@ -11,6 +11,18 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Price list collapsed; CTA spacing symmetric
+
+### Changed
+- Price list shows 5 rows with a "Показать все цены (4)" toggle. Nine rows
+  pushed the booking CTA well down the page.
+- The Services CTA now uses the same clamp as `.section` padding, so the gap
+  above the button matches the gap below it (65px / 65px at 1440px). It was
+  40px above and 65px below, because the space underneath is section padding
+  while the space above was a fixed `mt-8 sm:mt-10`.
+
+---
+
 ## 2026-07-27 — Prices for new services; dead hero copy removed
 
 ### Added

@@ -1,11 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import type { Dict } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 import { Item } from "@astryxdesign/core/Item";
-import { IconArrowUpRight, IconFlask, IconPaw } from "./icons";
+import { IconArrowUpRight, IconFlask, IconPaw, IconPlus } from "./icons";
+
+// Show a handful by default: nine rows pushed the booking CTA far down the page
+// and most visitors only scan the first few.
+const VISIBLE = 5;
 
 export default function Prices({ dict }: { dict: Dict }) {
   const p = dict.prices;
+  const [expanded, setExpanded] = useState(false);
+  const rows = expanded ? p.items : p.items.slice(0, VISIBLE);
+  const hidden = p.items.length - VISIBLE;
   return (
     <section id="prices" className="section scroll-mt-20 bg-bg-2">
       <div className="shell">
@@ -32,7 +42,7 @@ export default function Prices({ dict }: { dict: Dict }) {
           </div>
 
           <RevealGroup className="space-y-3" stagger={0.07}>
-            {p.items.map((item) => (
+            {rows.map((item) => (
               <RevealItem key={item.name}>
                 <div className="lift group rounded-2xl border border-line bg-surface px-6 py-5">
                   <Item
@@ -65,6 +75,22 @@ export default function Prices({ dict }: { dict: Dict }) {
             ))}
           </RevealGroup>
         </div>
+
+        {hidden > 0 && (
+          <div className="mt-6 flex justify-center lg:justify-end">
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+            >
+              {expanded ? p.showLess : `${p.showMore} (${hidden})`}
+              <IconPlus
+                className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-45" : ""}`}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

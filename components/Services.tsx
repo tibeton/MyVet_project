@@ -72,7 +72,9 @@ export default function Services({ dict }: { dict: Dict }) {
           })}
         </RevealGroup>
 
-        <div className="mt-8 flex justify-center sm:mt-10">
+        {/* Same clamp as .section padding, so the gap above this button matches
+            the gap below it (WhyUs has pt-0, so below == section padding). */}
+        <div className="mt-[clamp(2.25rem,4.5vw,4.25rem)] flex justify-center">
           <a
             href="#contact"
             className="group inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-line bg-surface px-6 py-3.5 font-semibold text-ink transition-colors hover:border-accent hover:text-accent"

@@ -331,6 +331,8 @@ export const dictionaries: Record<Locale, Dict> = {
       lead: "Самые востребованные услуги. Полный прайс отправим по запросу.",
       note: "Точная стоимость зависит от состояния питомца и определяется на приёме. Цена стационара и зоогостиницы зависит от номера, питомца и его состояния — напишите нам в Telegram.",
       currency: "сум",
+      showMore: "Показать все цены",
+      showLess: "Свернуть",
       items: [
         { name: "Первичный приём и консультация", price: "от 120 000" },
         { name: "Вакцинация (комплексная)", price: "от 185 000" },
@@ -606,6 +608,8 @@ export const dictionaries: Record<Locale, Dict> = {
       lead: "Eng ko‘p so‘raladigan xizmatlar. To‘liq narxlarni so‘rov bo‘yicha yuboramiz.",
       note: "Aniq narx hayvon holatiga bog‘liq va qabulda belgilanadi. Statsionar va zoomehmonxona narxi xona, hayvon va uning holatiga bog‘liq — Telegramga yozing.",
       currency: "so‘m",
+      showMore: "Barcha narxlarni ko‘rsatish",
+      showLess: "Yig‘ish",
       items: [
         { name: "Birlamchi qabul va maslahat", price: "120 000 dan" },
         { name: "Vaksinatsiya (kompleks)", price: "185 000 dan" },
@@ -881,6 +885,8 @@ export const dictionaries: Record<Locale, Dict> = {
       lead: "Our most requested services. We'll send the full price list on request.",
       note: "The exact price depends on your pet's condition and is confirmed at the visit. Inpatient care and the pet hotel depend on the room, the pet and its condition — message us on Telegram.",
       currency: "UZS",
+      showMore: "Show all prices",
+      showLess: "Show less",
       items: [
         { name: "Initial visit & consultation", price: "from 120,000" },
         { name: "Vaccination (complex)", price: "from 185,000" },
