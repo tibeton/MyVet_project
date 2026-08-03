@@ -5,8 +5,9 @@ import { IconClock } from "./icons";
 
 export default function Process({ dict }: { dict: Dict }) {
   const p = dict.process;
+  // pt-0: sits white-on-white against ClinicGallery, so that boundary is halved.
   return (
-    <section id="process" className="section scroll-mt-20">
+    <section id="process" className="section scroll-mt-20 pt-0">
       <div className="shell">
         <SectionHeading
           kicker={p.kicker}

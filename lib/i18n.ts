@@ -71,6 +71,13 @@ type Dict = {
     title: string;
     items: { value: string; label: string }[];
   };
+  clinic: {
+    kicker: string;
+    title: string;
+    lead: string;
+    placeholder: string;
+    items: string[];
+  };
   team: {
     kicker: string;
     title: string;
@@ -311,6 +318,13 @@ export const dictionaries: Record<Locale, Dict> = {
         { value: "24/7", label: "экстренная помощь" },
         { value: "5", label: "врачей-специалистов" },
       ],
+    },
+    clinic: {
+      kicker: "Наша клиника",
+      title: "Где мы принимаем",
+      lead: "Приёмная, смотровая, операционная и стационар — можно посмотреть заранее.",
+      placeholder: "Фото скоро",
+      items: ["Приёмная", "Смотровая", "Операционная", "Стационар"],
     },
     team: {
       kicker: "Руководство",
@@ -611,6 +625,13 @@ export const dictionaries: Record<Locale, Dict> = {
         { value: "5", label: "mutaxassis shifokor" },
       ],
     },
+    clinic: {
+      kicker: "Bizning klinika",
+      title: "Qayerda qabul qilamiz",
+      lead: "Qabulxona, ko‘rik xonasi, operatsiya xonasi va statsionar — oldindan ko‘rishingiz mumkin.",
+      placeholder: "Foto tez orada",
+      items: ["Qabulxona", "Ko‘rik xonasi", "Operatsiya xonasi", "Statsionar"],
+    },
     team: {
       kicker: "Rahbariyat",
       title: "Klinika uchun kim javobgar",
@@ -909,6 +930,13 @@ export const dictionaries: Record<Locale, Dict> = {
         { value: "24/7", label: "emergency care" },
         { value: "5", label: "specialist vets" },
       ],
+    },
+    clinic: {
+      kicker: "Our clinic",
+      title: "Where we treat your pet",
+      lead: "Reception, exam room, operating theatre and inpatient ward — see them before you come.",
+      placeholder: "Photo coming soon",
+      items: ["Reception", "Exam room", "Operating theatre", "Inpatient ward"],
     },
     team: {
       kicker: "Leadership",

@@ -11,6 +11,31 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Clinic gallery; Nargiza photo replaced
+
+### Added
+- `components/ClinicGallery.tsx` — four tiles (приёмная, смотровая,
+  операционная, стационар) between Руководство and Как проходит приём.
+  Tiles read paths from `site.clinicPhotos`; an empty string renders a branded
+  "Фото скоро" placeholder instead of a photo.
+
+**To publish real photos:** drop files in `public/clinic/` and fill
+`site.clinicPhotos` — order matches `dict.clinic.items`. No stock or borrowed
+interiors: a photo captioned "операционная" is a promise the visitor checks in
+person, so it must be this clinic.
+
+### Changed
+- Leadership photo of Наргиза replaced with the new shot (955x1280, taken in
+  the clinic reception).
+
+### Fixed
+- Section rhythm after inserting the gallery. `team → clinic` is a colour edge
+  and needs the full gap; `clinic → process` is white-on-white and needs the
+  half gap. Initially both were inverted — see the background rule in
+  `globals.css` whenever a section is inserted or its background changes.
+
+---
+
 ## 2026-07-27 — Licence in the footer
 
 ### Added
