@@ -27,6 +27,14 @@ export const site = {
   // Клиника открылась 1 октября 2022 года.
   yearFounded: 2022,
 
+  // ── Юридические данные (с лицензии № 048853) ──────────
+  legalName: 'ООО "MOY VETVRACH"',
+  licenseNumber: "048853",
+  licenseRegistry: "L-496468",
+  taxId: "309765458",
+  licenseSince: "17.11.2022",
+  licenseImage: "/license.png",
+
   // ── Яндекс.Карты · отзывы ─────────────────────────────
   // Карточка клиники: https://yandex.uz/maps/org/myvet_uz/93506518218
   // (yandex.ru редиректит на .uz — организация в Узбекистане).

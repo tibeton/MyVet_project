@@ -135,6 +135,9 @@ type Dict = {
   };
   footer: {
     tagline: string;
+    license: string;
+    viewLicense: string;
+    taxId: string;
     nav: string;
     contacts: string;
     social: string;
@@ -435,6 +438,9 @@ export const dictionaries: Record<Locale, Dict> = {
       nav: "Навигация",
       contacts: "Контакты",
       social: "Соцсети",
+      license: "Лицензия",
+      viewLicense: "Посмотреть лицензию",
+      taxId: "СТИР",
       rights: "Все права защищены.",
       madeWith: "Сделано с заботой о питомцах",
     },
@@ -731,6 +737,9 @@ export const dictionaries: Record<Locale, Dict> = {
       nav: "Navigatsiya",
       contacts: "Aloqa",
       social: "Ijtimoiy tarmoqlar",
+      license: "Litsenziya",
+      viewLicense: "Litsenziyani ko‘rish",
+      taxId: "STIR",
       rights: "Barcha huquqlar himoyalangan.",
       madeWith: "Hayvonlarga g‘amxo‘rlik bilan yaratilgan",
     },
@@ -1027,6 +1036,9 @@ export const dictionaries: Record<Locale, Dict> = {
       nav: "Navigation",
       contacts: "Contacts",
       social: "Social",
+      license: "Licence",
+      viewLicense: "View licence",
+      taxId: "Tax ID",
       rights: "All rights reserved.",
       madeWith: "Made with care for pets",
     },

@@ -11,6 +11,25 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Licence in the footer
+
+### Added
+- Legal block in the footer from the real licence: ООО "MOY VETVRACH",
+  лицензия № 048853 (реестр L-496468), СТИР 309765458, действует с 17.11.2022,
+  plus a link to `public/license.png`. Details live in `lib/site.ts`.
+
+A checkable licence number is the strongest trust signal a clinic can put on a
+page. Keep it accurate — if the licence is reissued, update `site.ts` and
+replace the image.
+
+### Not done — deliberately
+Clinic and equipment photos were requested as "just any photos". Placeholder or
+stock images presented as this clinic's rooms and equipment would misrepresent a
+real business to worried pet owners, so none were added. The section is worth
+building once real photos exist — a phone camera is enough.
+
+---
+
 ## 2026-07-27 — Pre-launch audit fixes
 
 ### Fixed — conversion

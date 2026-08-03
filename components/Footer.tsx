@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Dict, Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import BrandLogo from "./BrandLogo";
-import { IconTelegram, IconInstagram, IconPhone, IconHeart } from "./icons";
+import { IconTelegram, IconInstagram, IconPhone, IconHeart, IconArrowUpRight } from "./icons";
 
 export default function Footer({ dict, locale }: { dict: Dict; locale: Locale }) {
   const f = dict.footer;
@@ -88,7 +88,25 @@ export default function Footer({ dict, locale }: { dict: Dict; locale: Locale })
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row">
+        {/* Legal block: a real, checkable licence number is the strongest trust
+            signal a clinic can put on a page — keep it verifiable, not decorative. */}
+        <div className="mt-12 border-t border-line pt-6 text-xs/relaxed text-muted">
+          <p>
+            {site.legalName} · {f.license} № {site.licenseNumber} ({site.licenseRegistry}),{" "}
+            {f.taxId} {site.taxId} · {site.licenseSince}
+          </p>
+          <a
+            href={site.licenseImage}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-flex items-center gap-1.5 font-semibold text-ink transition-colors hover:text-accent"
+          >
+            {f.viewLicense}
+            <IconArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row">
           <p>
             © {year} {site.name}. {f.rights}
           </p>
