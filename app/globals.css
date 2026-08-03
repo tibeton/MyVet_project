@@ -51,8 +51,10 @@
   --surface-2: #e8e9f5;
   --ink: #2d3192;
   --text: #3e4474;
-  --muted: #6a6f9c;
-  --faint: #9a9ec1;
+  /* Both pass WCAG AA on white AND on --bg-2 (the tinted sections).
+     Was --muted #6a6f9c (4.42:1 on tint) and --faint #9a9ec1 (2.40:1). */
+  --muted: #5b6191;
+  --faint: #626897;
   --line: rgba(45, 49, 146, 0.12);
 
   --accent: #4b5cc4;

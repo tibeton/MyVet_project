@@ -89,6 +89,8 @@ type Dict = {
     lead: string;
     note: string;
     currency: string;
+    showMore: string;
+    showLess: string;
     /** onRequest hides the currency suffix — the price is not a number. */
     items: { name: string; price: string; onRequest?: boolean }[];
   };
@@ -208,6 +210,8 @@ export const dictionaries: Record<Locale, Dict> = {
       "Зоогостиница",
       "Груминг",
       "Стационар",
+      "Зоотакси",
+      "Чек-ап",
       "Вызов на дом",
       "Чипирование",
     ],
@@ -226,7 +230,7 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "02",
           name: "Хирургия",
-          desc: "Плановые и неотложные операции в стерильной операционной. Готовим питомца к операции и наблюдаем после неё.",
+          desc: "Плановые и неотложные операции в стерильной операционной. Перед операцией — обследование, после — наблюдение в стационаре.",
           tags: ["Стерилизация", "Операции", "Кастрация"],
         },
         {
@@ -343,6 +347,7 @@ export const dictionaries: Record<Locale, Dict> = {
         { name: "Зоотакси", price: "от 150 000" },
         { name: "Стационар", price: "по запросу", onRequest: true },
         { name: "Зоогостиница", price: "по запросу", onRequest: true },
+        { name: "Чек-ап", price: "по запросу", onRequest: true },
       ],
     },
     reviews: {
@@ -373,6 +378,18 @@ export const dictionaries: Record<Locale, Dict> = {
           q: "Делаете ли вы вызов врача на дом?",
           a: "Да. Врач приедет с необходимым оборудованием для осмотра, вакцинации или забора анализов на дому.",
         },
+        {
+          q: "Сколько стоит стационар или зоогостиница?",
+          a: "Цена зависит от номера, размера питомца и его состояния. Напишите нам в Telegram — рассчитаем стоимость в день обращения.",
+        },
+        {
+          q: "Можно ли навещать питомца в стационаре?",
+          a: "Да, по согласованию с лечащим врачом. Мы также на связи и сообщаем о состоянии питомца.",
+        },
+        {
+          q: "Как заказать зоотакси?",
+          a: "Позвоните нам или напишите в Telegram. Заберём питомца из дома и привезём обратно после приёма.",
+        },
       ],
     },
     contact: {
@@ -390,6 +407,10 @@ export const dictionaries: Record<Locale, Dict> = {
         "Хирургия",
         "Диагностика (УЗИ, рентген, анализы)",
         "Груминг",
+        "Стационар",
+        "Зоогостиница",
+        "Зоотакси",
+        "Чек-ап",
         "Вызов на дом",
         "Другое",
       ],
@@ -485,6 +506,8 @@ export const dictionaries: Record<Locale, Dict> = {
       "Zoomehmonxona",
       "Gruming",
       "Statsionar",
+      "Zootaksi",
+      "Chek-ap",
       "Uyga chaqirish",
       "Chiplashtirish",
     ],
@@ -503,7 +526,7 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "02",
           name: "Jarrohlik",
-          desc: "Rejali va shoshilinch operatsiyalar steril operatsiya xonasida. Hayvonni operatsiyaga tayyorlaymiz va keyin kuzatamiz.",
+          desc: "Rejali va shoshilinch operatsiyalar steril operatsiya xonasida. Operatsiyadan oldin — tekshiruv, keyin — statsionarda kuzatuv.",
           tags: ["Sterilizatsiya", "Operatsiyalar", "Kastratsiya"],
         },
         {
@@ -620,6 +643,7 @@ export const dictionaries: Record<Locale, Dict> = {
         { name: "Zootaksi", price: "150 000 dan" },
         { name: "Statsionar", price: "so‘rov bo‘yicha", onRequest: true },
         { name: "Zoomehmonxona", price: "so‘rov bo‘yicha", onRequest: true },
+        { name: "Chek-ap", price: "so‘rov bo‘yicha", onRequest: true },
       ],
     },
     reviews: {
@@ -650,6 +674,18 @@ export const dictionaries: Record<Locale, Dict> = {
           q: "Shifokorni uyga chaqirsa bo‘ladimi?",
           a: "Ha. Shifokor ko‘rik, emlash yoki tahlil olish uchun kerakli uskunalar bilan uyingizga keladi.",
         },
+        {
+          q: "Statsionar yoki zoomehmonxona qancha turadi?",
+          a: "Narx xona, hayvon o‘lchami va uning holatiga bog‘liq. Telegramga yozing — murojaat kunining o‘zida hisoblab beramiz.",
+        },
+        {
+          q: "Statsionarda hayvonni yo‘qlash mumkinmi?",
+          a: "Ha, davolovchi shifokor bilan kelishilgan holda. Shuningdek, hayvon holati haqida doimo xabar berib turamiz.",
+        },
+        {
+          q: "Zootaksini qanday buyurtma qilaman?",
+          a: "Qo‘ng‘iroq qiling yoki Telegramga yozing. Hayvonni uydan olib ketamiz va qabuldan keyin qaytarib olib kelamiz.",
+        },
       ],
     },
     contact: {
@@ -667,6 +703,10 @@ export const dictionaries: Record<Locale, Dict> = {
         "Jarrohlik",
         "Diagnostika (UTT, rentgen, tahlillar)",
         "Gruming",
+        "Statsionar",
+        "Zoomehmonxona",
+        "Zootaksi",
+        "Chek-ap",
         "Uyga chaqirish",
         "Boshqa",
       ],
@@ -762,6 +802,8 @@ export const dictionaries: Record<Locale, Dict> = {
       "Pet hotel",
       "Grooming",
       "Inpatient care",
+      "Pet taxi",
+      "Health check-up",
       "Home visits",
       "Microchipping",
     ],
@@ -780,7 +822,7 @@ export const dictionaries: Record<Locale, Dict> = {
         {
           num: "02",
           name: "Surgery",
-          desc: "Planned and emergency operations in a sterile theatre. We prepare your pet beforehand and monitor recovery after.",
+          desc: "Planned and emergency operations in a sterile theatre. Examination beforehand, monitored recovery in our inpatient ward after.",
           tags: ["Spaying", "Operations", "Neutering"],
         },
         {
@@ -897,6 +939,7 @@ export const dictionaries: Record<Locale, Dict> = {
         { name: "Pet taxi", price: "from 150,000" },
         { name: "Inpatient care", price: "on request", onRequest: true },
         { name: "Pet hotel", price: "on request", onRequest: true },
+        { name: "Health check-up", price: "on request", onRequest: true },
       ],
     },
     reviews: {
@@ -927,6 +970,18 @@ export const dictionaries: Record<Locale, Dict> = {
           q: "Do you make home visits?",
           a: "Yes. The vet comes with the equipment needed for an exam, vaccination or taking samples at your home.",
         },
+        {
+          q: "How much do inpatient care and the pet hotel cost?",
+          a: "It depends on the room, your pet's size and its condition. Message us on Telegram and we'll quote you the same day.",
+        },
+        {
+          q: "Can I visit my pet in the inpatient ward?",
+          a: "Yes, by arrangement with the treating vet. We also keep you updated on how your pet is doing.",
+        },
+        {
+          q: "How do I book the pet taxi?",
+          a: "Call us or message us on Telegram. We'll collect your pet from home and bring them back after the visit.",
+        },
       ],
     },
     contact: {
@@ -944,6 +999,10 @@ export const dictionaries: Record<Locale, Dict> = {
         "Surgery",
         "Diagnostics (ultrasound, X-ray, tests)",
         "Grooming",
+        "Inpatient care",
+        "Pet hotel",
+        "Pet taxi",
+        "Health check-up",
         "Home visit",
         "Other",
       ],

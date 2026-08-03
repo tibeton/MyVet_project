@@ -11,6 +11,45 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Pre-launch audit fixes
+
+### Fixed — conversion
+- **All nine services are now selectable when booking.** Стационар,
+  зоогостиница, зоотакси and чек-ап were advertised but missing from the form's
+  dropdown, so they could not be requested at all.
+- **Tap-to-call button in the header below `xl`.** The phone number was hidden
+  on phones, leaving a 24/7 clinic with no way to call from the header.
+
+### Fixed — SEO
+- **`h1` was empty** (it wrapped only the logo image). The value proposition is
+  now the `h1` and the artwork is a plain `div`. Deliberately *not* a new
+  keyword heading: the artwork already reads "MyVet.Uz · Ветеринарная клиника",
+  so a text heading saying the same would duplicate the brand name.
+- **`aggregateRating` removed from JSON-LD.** The 5.0/210 and 4.3/114 scores
+  belong to Yandex and Google. Google's structured-data policy does not allow
+  marking up third-party ratings as your own, and the marked-up value did not
+  match what the page showed. Google surfaces its own rating in the knowledge
+  panel regardless — it cannot be embedded here.
+
+### Fixed — accessibility
+- `--muted` #6a6f9c → #5b6191 and `--faint` #9a9ec1 → #626897. Both now pass
+  WCAG AA on white *and* on the tinted sections (4.89:1 / 5.42:1 on tint).
+  `--faint` was 2.40:1 there.
+- Closed language menu is `inert` — its links were tabbable while invisible.
+- Burger, language trigger and menu rows raised to 44px.
+- Name field gets `autocomplete="name"`.
+
+### Content
+- FAQ +3: cost of inpatient/hotel, visiting a pet, booking the pet taxi.
+- Чек-ап priced "по запросу"; зоотакси and чек-ап added to the marquee.
+- Surgery copy made concrete.
+
+### Not done — needs ffmpeg
+`dog.mp4` / `cat.mp4` are still 19 MB each. No ffmpeg on this machine, so they
+could not be re-encoded. This is the largest remaining launch risk.
+
+---
+
 ## 2026-07-27 — Price list collapsed; CTA spacing symmetric
 
 ### Changed

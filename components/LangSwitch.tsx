@@ -33,7 +33,7 @@ export default function LangSwitch({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-full border border-line bg-surface/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-ink backdrop-blur transition-colors hover:border-accent"
+        className="flex h-11 items-center gap-1.5 rounded-full border border-line bg-surface/70 px-3.5 text-xs font-semibold uppercase tracking-wide text-ink backdrop-blur transition-colors hover:border-accent"
       >
         {locale}
         <svg
@@ -60,6 +60,10 @@ export default function LangSwitch({ locale }: { locale: Locale }) {
             : "pointer-events-none -translate-y-1 opacity-0"
         }`}
         role="menu"
+        /* Closed menu is invisible but was still tabbable — keyboard users
+           landed on links they could not see. React 19 renders inert="" when
+           the prop is true and omits it entirely when undefined. */
+        inert={!open || undefined}
       >
         <div className="min-w-[9.5rem] overflow-hidden rounded-2xl border border-line bg-surface/95 p-1.5 shadow-[0_24px_50px_-24px_var(--glow)] backdrop-blur-xl">
           {locales.map((l) => {
@@ -71,7 +75,7 @@ export default function LangSwitch({ locale }: { locale: Locale }) {
                 role="menuitem"
                 aria-current={active ? "true" : undefined}
                 onClick={() => setOpen(false)}
-                className={`flex items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${
+                className={`flex min-h-11 items-center justify-between gap-3 rounded-xl px-3 py-2 text-sm transition-colors ${
                   active
                     ? "bg-accent text-on-accent"
                     : "text-text hover:bg-bg-2 hover:text-ink"

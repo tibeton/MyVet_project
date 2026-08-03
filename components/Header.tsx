@@ -94,12 +94,21 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
           </nav>
 
           <div className="flex items-center gap-2 md:gap-3">
+            {/* Full number from xl up; below that a tap-to-call button, so a
+                24/7 clinic is never more than one tap away on a phone. */}
             <a
               href={`tel:${site.phoneHref}`}
               className="hidden items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-ink xl:inline-flex"
             >
               <IconPhone className="h-4 w-4 text-accent" />
               {site.phoneDisplay}
+            </a>
+            <a
+              href={`tel:${site.phoneHref}`}
+              aria-label={`${dict.cta.call} ${site.phoneDisplay}`}
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line bg-surface/70 text-accent backdrop-blur transition-colors hover:border-accent hover:bg-accent hover:text-on-accent xl:hidden"
+            >
+              <IconPhone className="h-5 w-5" />
             </a>
             <LangSwitch locale={locale} />
             <a
@@ -116,7 +125,7 @@ export default function Header({ dict, locale }: { dict: Dict; locale: Locale })
               aria-label="Menu"
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface/70 backdrop-blur lg:hidden"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line bg-surface/70 backdrop-blur lg:hidden"
             >
               <span className="relative block h-3.5 w-5">
                 <span

@@ -45,11 +45,17 @@ export default function Contact({
   // Astryx TextInput exposes neither inputMode nor autoComplete, so set them on
   // the underlying <input> — without inputMode phones show a full keyboard.
   const phoneRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const input = phoneRef.current?.querySelector("input");
-    if (!input) return;
-    input.setAttribute("inputmode", "numeric");
-    input.setAttribute("autocomplete", "tel-national");
+    if (input) {
+      input.setAttribute("inputmode", "numeric");
+      input.setAttribute("autocomplete", "tel-national");
+    }
+    // Astryx TextInput has no autoComplete prop either, so the name field is
+    // wired up the same way — without it browsers cannot autofill it.
+    const nameInput = nameRef.current?.querySelector("input");
+    if (nameInput) nameInput.setAttribute("autocomplete", "name");
   }, []);
 
   const serviceRef = useRef<HTMLDivElement>(null);
@@ -131,7 +137,8 @@ export default function Contact({
 
             <form onSubmit={onSubmit} noValidate className="mt-7 space-y-3.5">
               <div className="grid gap-3.5 sm:grid-cols-2">
-                <TextInput
+                <div ref={nameRef}>
+                  <TextInput
                   label={c.name}
                   value={name}
                   onChange={(v) => {
@@ -139,7 +146,8 @@ export default function Contact({
                     if (errors.name) setErrors((p) => ({ ...p, name: false }));
                   }}
                   status={errors.name ? { type: "error", message: c.required } : undefined}
-                />
+                  />
+                </div>
                 <div ref={phoneRef}>
                   <InputGroup
                     label={c.phone}

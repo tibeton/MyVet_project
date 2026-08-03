@@ -3,6 +3,9 @@ import { site } from "@/lib/site";
 // Structured data for local search / rich results.
 // VeterinaryCare is a LocalBusiness subtype — gives Google the clinic's
 // name, contacts, 24/7 hours, geo link, socials and aggregate rating.
+// No aggregateRating: the 5.0/210 and 4.3/114 scores belong to Yandex and
+// Google, and Google's structured-data policy does not allow marking up
+// third-party ratings as your own. The visible chips link to the sources.
 export default function JsonLd() {
   const base = "https://myvet.uz";
 
@@ -51,13 +54,6 @@ export default function JsonLd() {
     ],
     sameAs: [site.telegramChannel, site.instagram, site.mapLink].filter(Boolean),
     // Агрегированный рейтинг показывается на странице (бейдж + отзывы).
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: site.yandexRating,
-      reviewCount: String(parseInt(site.yandexReviewsCount, 10) || 0),
-      bestRating: "5",
-      worstRating: "1",
-    },
   };
 
   return (

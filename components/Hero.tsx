@@ -42,8 +42,10 @@ export default function Hero({ dict }: { dict: Dict }) {
           {/* Left — heading (+ desktop CTAs) */}
           <div className="order-1 max-w-xl text-center xl:text-left">
             <Reveal delay={0.06}>
-              {/* Heading rendered as artwork; keep the <h1> + alt for SEO/a11y. */}
-              <h1>
+              {/* Brand artwork, not the heading: it already contains the words
+                  "MyVet.Uz · Ветеринарная клиника", so making it the h1 would
+                  duplicate the brand name instead of stating what we offer. */}
+              <div>
                 <img
                   src="/header.svg"
                   /* Describe what the artwork actually shows (the brand mark).
@@ -51,7 +53,7 @@ export default function Hero({ dict }: { dict: Dict }) {
                   alt={`MyVet.Uz — ${h.kicker}`}
                   className="mx-auto w-full max-w-[20rem] sm:max-w-[24rem] xl:mx-0 xl:max-w-[30rem]"
                 />
-              </h1>
+              </div>
             </Reveal>
 
             {/* The artwork above is the brand mark ("MyVet.Uz · Ветеринарная
@@ -59,9 +61,9 @@ export default function Hero({ dict }: { dict: Dict }) {
                 mobile shows only a logo and two buttons. Keep it as real text,
                 not baked into the SVG, so it stays translatable and indexable. */}
             <Reveal delay={0.12}>
-              <p className="mt-4 text-pretty font-display text-lg font-bold leading-snug text-ink sm:text-xl">
+              <h1 className="mt-4 text-pretty font-display text-lg font-bold leading-snug text-ink sm:text-xl">
                 {h.titleA} <span className="text-accent">{h.titleHighlight}</span> {h.titleB}
-              </p>
+              </h1>
             </Reveal>
 
             <Reveal delay={0.16} className="mt-8 hidden xl:block">
