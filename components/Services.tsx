@@ -6,19 +6,29 @@ import {
   IconScalpel,
   IconSyringe,
   IconScan,
-  IconTooth,
   IconScissors,
+  IconBed,
+  IconHouse,
+  IconCar,
+  IconClipboard,
   IconArrowUpRight,
   IconPaw,
 } from "./icons";
 
+// One icon per service, in the order of dict.services.items. This used to be a
+// short list cycled with `i % ICONS.length`, which silently mismatched as soon
+// as services were added or removed — grooming ended up with a tooth, the
+// inpatient ward with scissors and the pet taxi with a scalpel.
 const ICONS = [
-  IconStethoscope,
-  IconScalpel,
-  IconSyringe,
-  IconScan,
-  IconTooth,
-  IconScissors,
+  IconStethoscope, // Терапия и приём
+  IconScalpel,     // Хирургия
+  IconSyringe,     // Вакцинация и профилактика
+  IconScan,        // Диагностика
+  IconScissors,    // Груминг и уход
+  IconBed,         // Стационар
+  IconHouse,       // Зоогостиница
+  IconCar,         // Зоотакси
+  IconClipboard,   // Чек-ап
 ];
 
 export default function Services({ dict }: { dict: Dict }) {
@@ -38,7 +48,7 @@ export default function Services({ dict }: { dict: Dict }) {
           stagger={0.08}
         >
           {s.items.map((item, i) => {
-            const Icon = ICONS[i % ICONS.length];
+            const Icon = ICONS[i] ?? IconPaw;
             return (
               <RevealItem key={item.num}>
                 <article className="lift group h-full rounded-3xl border border-line bg-surface p-7">

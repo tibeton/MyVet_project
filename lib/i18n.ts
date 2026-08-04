@@ -313,7 +313,6 @@ export const dictionaries: Record<Locale, Dict> = {
     stats: {
       title: "Цифры, которым доверяют",
       items: [
-        { value: "с 2022", label: "заботимся о питомцах в Ташкенте" },
         { value: "7 000+", label: "приёмов проведено" },
         { value: "24/7", label: "экстренная помощь" },
         { value: "5", label: "врачей-специалистов" },
@@ -619,7 +618,6 @@ export const dictionaries: Record<Locale, Dict> = {
     stats: {
       title: "Ishonadigan raqamlar",
       items: [
-        { value: "2022‘dan", label: "Toshkentda g‘amxo‘rlik qilamiz" },
         { value: "7 000+", label: "qabul o‘tkazilgan" },
         { value: "24/7", label: "shoshilinch yordam" },
         { value: "5", label: "mutaxassis shifokor" },
@@ -925,7 +923,6 @@ export const dictionaries: Record<Locale, Dict> = {
     stats: {
       title: "Numbers you can trust",
       items: [
-        { value: "since 2022", label: "caring for pets in Tashkent" },
         { value: "7,000+", label: "visits handled" },
         { value: "24/7", label: "emergency care" },
         { value: "5", label: "specialist vets" },

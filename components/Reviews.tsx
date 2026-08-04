@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 import { latestReviews } from "@/lib/reviews";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
-import { IconQuote, IconStar, IconHeart, IconArrowUpRight } from "./icons";
+import { IconQuote, IconStar, IconArrowUpRight } from "./icons";
 
 // Real platform logos from /public. The Google PNG was cropped to its glyph —
 // the original had ~2/3 transparent padding, so at a shared box size the "G"
@@ -99,7 +99,7 @@ export default function Reviews({
           kicker={r.kicker}
           title={r.title}
           lead={r.lead}
-          icon={<IconHeart className="h-4 w-4" />}
+          icon={<IconStar className="h-4 w-4" />}
         />
       </div>
 

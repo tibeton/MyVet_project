@@ -11,6 +11,31 @@ Format: one `##` block per change set, newest at the top.
 
 ---
 
+## 2026-07-27 — Icons rebound to meaning; "с 2022" stat dropped
+
+### Fixed — icons
+Services had six icons cycled across nine cards with `i % ICONS.length`, so the
+list silently desynced every time a service was added or removed. Груминг showed
+a **tooth**, Стационар **scissors**, Зоотакси a **scalpel**, Чек-ап a syringe.
+There is now one icon per service, indexed directly (`ICONS[i]`), so a missing
+entry falls back to a paw instead of showing someone else's icon.
+
+New icons in the existing stroke style: `IconCar`, `IconHouse`, `IconBed`,
+`IconClipboard`, `IconTag`. `IconTooth` removed with the dentistry service.
+
+Also rebound:
+- Prices heading: lab flask → price tag. The clinic has no laboratory, so a
+  flask on the price list was doubly wrong.
+- Reviews heading: heart → star (heart already means "care" in why-us).
+- Leadership heading: stethoscope → shield ("кто отвечает за клинику").
+- Why-us "Своё зоотакси": map pin → car.
+
+### Removed
+- The "с 2022 · заботимся о питомцах в Ташкенте" stat. Three figures remain
+  (7 000+, 24/7, 5) and the grid is 3 columns instead of 4.
+
+---
+
 ## 2026-07-27 — Clinic gallery; Nargiza photo replaced
 
 ### Added

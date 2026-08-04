@@ -1,9 +1,15 @@
 import type { Dict } from "@/lib/i18n";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
-import { IconShield, IconHeart, IconClock, IconStethoscope, IconPin } from "./icons";
+import { IconShield, IconHeart, IconClock, IconStethoscope, IconCar } from "./icons";
 
-// IconPin stands in for the pet-taxi point that replaced the lab.
-const ICONS = [IconStethoscope, IconPin, IconHeart, IconClock, IconShield];
+// Order matches dict.why.points.
+const ICONS = [
+  IconStethoscope, // Опытные врачи
+  IconCar,         // Своё зоотакси
+  IconHeart,       // Бережный подход
+  IconClock,       // Помощь 24/7
+  IconShield,      // spare
+];
 
 export default function WhyUs({ dict }: { dict: Dict }) {
   const w = dict.why;
@@ -57,7 +63,7 @@ export default function WhyUs({ dict }: { dict: Dict }) {
               the claims and the evidence for them sit in one block instead of
               two competing "trust us" sections. */}
           <RevealGroup
-            className="mt-10 grid grid-cols-2 gap-6 border-t border-line pt-10 sm:mt-12 sm:gap-8 sm:pt-12 lg:grid-cols-4"
+            className="mt-10 grid grid-cols-1 gap-6 border-t border-line pt-10 sm:mt-12 sm:grid-cols-3 sm:gap-8 sm:pt-12"
             stagger={0.06}
           >
             {dict.stats.items.map((item) => (

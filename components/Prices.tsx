@@ -5,7 +5,7 @@ import type { Dict } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 import { Item } from "@astryxdesign/core/Item";
-import { IconArrowUpRight, IconFlask, IconPaw, IconPlus } from "./icons";
+import { IconArrowUpRight, IconTag, IconPaw, IconPlus } from "./icons";
 
 // Show a handful by default: nine rows pushed the booking CTA far down the page
 // and most visitors only scan the first few.
@@ -25,7 +25,7 @@ export default function Prices({ dict }: { dict: Dict }) {
               kicker={p.kicker}
               title={p.title}
               lead={p.lead}
-              icon={<IconFlask className="h-4 w-4" />}
+              icon={<IconTag className="h-4 w-4" />}
             />
             <Reveal delay={0.16}>
               <div className="mt-7 rounded-3xl border border-line bg-surface p-6">
