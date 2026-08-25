@@ -124,8 +124,14 @@ export default function Contact({
   return (
     <section id="contact" className="section scroll-mt-20">
       <div className="shell">
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          {/* Form card */}
+        {/* items-start обязателен: при stretch колонка растягивается на всю
+            высоту строки, и sticky некуда ехать. */}
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+          {/* Form card — залипает, как левая колонка в прайсе: пока справа
+              проматываются контакты и карта, форма остаётся на экране.
+              Обёртка обычным div, а не sticky прямо на Reveal: motion держит
+              на анимированном элементе свой transform. */}
+          <div className="lg:sticky lg:top-28">
           <Reveal className="rounded-[2rem] border border-line bg-surface-2 p-6 sm:p-9">
             <span className="kicker">{c.kicker}</span>
             <h2 className="mt-4 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-extrabold leading-[1.07] tracking-[-0.02em] text-ink">
@@ -232,6 +238,7 @@ export default function Contact({
               )}
             </form>
           </Reveal>
+          </div>
 
           {/* Info + map */}
           <Reveal delay={0.1} className="flex flex-col gap-5">

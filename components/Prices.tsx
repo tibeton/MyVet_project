@@ -5,17 +5,52 @@ import type { Dict } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 import { Item } from "@astryxdesign/core/Item";
-import { IconArrowUpRight, IconTag, IconPaw, IconPlus } from "./icons";
+import ShowMore from "./ShowMore";
+import { IconArrowUpRight, IconTag, IconPaw } from "./icons";
 
-// Show a handful by default: nine rows pushed the booking CTA far down the page
+// Show a handful by default: ten rows pushed the booking CTA far down the page
 // and most visitors only scan the first few.
 const VISIBLE = 5;
+
+type Row = Dict["prices"]["items"][number];
+
+function PriceRow({ item, currency }: { item: Row; currency: string }) {
+  return (
+    <div className="lift group rounded-2xl border border-line bg-surface px-6 py-5">
+      <Item
+        density="compact"
+        startContent={
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-on-accent">
+            <IconPaw className="h-5 w-5" />
+          </span>
+        }
+        label={
+          <span className="font-display text-base font-semibold text-ink sm:text-lg">
+            {item.name}
+          </span>
+        }
+        endContent={
+          <span className="shrink-0 text-right font-display text-base font-bold text-accent sm:text-lg">
+            {item.price}
+            {/* "по запросу сум" would be nonsense — the currency only belongs
+                on rows that carry a number. */}
+            {!item.onRequest && (
+              <span className="ml-1 text-xs font-medium text-faint">
+                {currency}
+              </span>
+            )}
+          </span>
+        }
+      />
+    </div>
+  );
+}
 
 export default function Prices({ dict }: { dict: Dict }) {
   const p = dict.prices;
   const [expanded, setExpanded] = useState(false);
-  const rows = expanded ? p.items : p.items.slice(0, VISIBLE);
   const hidden = p.items.length - VISIBLE;
+
   return (
     <section id="prices" className="section scroll-mt-20 bg-bg-2">
       <div className="shell">
@@ -41,55 +76,42 @@ export default function Prices({ dict }: { dict: Dict }) {
             </Reveal>
           </div>
 
-          <RevealGroup className="space-y-3" stagger={0.07}>
-            {rows.map((item) => (
-              <RevealItem key={item.name}>
-                <div className="lift group rounded-2xl border border-line bg-surface px-6 py-5">
-                  <Item
-                    density="compact"
-                    startContent={
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-on-accent">
-                        <IconPaw className="h-5 w-5" />
-                      </span>
-                    }
-                    label={
-                      <span className="font-display text-base font-semibold text-ink sm:text-lg">
-                        {item.name}
-                      </span>
-                    }
-                    endContent={
-                      <span className="shrink-0 text-right font-display text-base font-bold text-accent sm:text-lg">
-                        {item.price}
-                        {/* "по запросу сум" would be nonsense — the currency
-                            only belongs on rows that carry a number. */}
-                        {!item.onRequest && (
-                          <span className="ml-1 text-xs font-medium text-faint">
-                            {p.currency}
-                          </span>
-                        )}
-                      </span>
-                    }
-                  />
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          {/* Две группы, а не одна с `slice`. RevealGroup держит whileInView с
+              `once: true`: к моменту раскрытия он уже отработал и больше не
+              оркеструет детей, поэтому строки, дописанные в него позже,
+              оставались на opacity 0 — спойлер открывался пустым.
+              Свежесмонтированная группа запускает свой whileInView сама, и
+              появляется она уже в кадре (ShowMore держит якорь прокрутки). */}
+          <div className="space-y-3">
+            <RevealGroup className="space-y-3" stagger={0.07}>
+              {p.items.slice(0, VISIBLE).map((item) => (
+                <RevealItem key={item.name}>
+                  <PriceRow item={item} currency={p.currency} />
+                </RevealItem>
+              ))}
+            </RevealGroup>
+
+            {expanded && (
+              <RevealGroup className="space-y-3" stagger={0.07}>
+                {p.items.slice(VISIBLE).map((item) => (
+                  <RevealItem key={item.name}>
+                    <PriceRow item={item} currency={p.currency} />
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            )}
+          </div>
         </div>
 
         {hidden > 0 && (
-          <div className="mt-6 flex justify-center lg:justify-end">
-            <button
-              type="button"
-              onClick={() => setExpanded((v) => !v)}
-              aria-expanded={expanded}
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-5 py-3 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
-            >
-              {expanded ? p.showLess : `${p.showMore} (${hidden})`}
-              <IconPlus
-                className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-45" : ""}`}
-              />
-            </button>
-          </div>
+          <ShowMore
+            expanded={expanded}
+            hidden={hidden}
+            onToggle={() => setExpanded((v) => !v)}
+            more={p.showMore}
+            less={p.showLess}
+            className="mt-6 lg:justify-end"
+          />
         )}
       </div>
     </section>

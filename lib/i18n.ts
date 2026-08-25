@@ -117,6 +117,8 @@ type Dict = {
     kicker: string;
     title: string;
     lead: string;
+    showMore: string;
+    showLess: string;
     items: { q: string; a: string }[];
   };
   contact: {
@@ -316,21 +318,21 @@ export const dictionaries: Record<Locale, Dict> = {
       ],
     },
     hotel: {
-      kicker: "Зоогостиница",
-      title: "Питомец под присмотром, пока вы в отъезде",
-      lead: "Отдельные номера при клинике: игровой комплекс, лежанка, свои миски и лоток. Врач рядом каждый день.",
+      kicker: "Пока вы в отъезде",
+      title: "Зоогостиница",
+      lead: "Отдельные номера при клинике: игровой комплекс, лежанка, свои миски и лоток.",
       points: [
         {
           title: "Отдельный номер",
           desc: "Не клетка, а комната: игровой комплекс, лежанка и укрытие для сна.",
         },
         {
-          title: "Свет и климат",
-          desc: "Окно с дневным светом, кондиционер и отопление.",
+          title: "Дневной свет",
+          desc: "Окно в номере, кондиционер и отопление.",
         },
         {
           title: "Врач рядом",
-          desc: "Гостиница находится в клинике — помощь окажут сразу.",
+          desc: "Гостиница прямо в клинике, поэтому врач видит питомца каждый день.",
         },
         {
           title: "Свои вещи",
@@ -353,12 +355,12 @@ export const dictionaries: Record<Locale, Dict> = {
       items: ["Приёмная", "Смотровая", "Операционная", "Стационар"],
     },
     team: {
-      kicker: "Руководство",
-      title: "Кто отвечает за клинику",
-      lead: "Опыт, забота и личная ответственность за каждого пациента.",
+      kicker: "Кто мы",
+      title: "Основатели клиники",
+      lead: "С них начинался MyVet — они открыли клинику и задали то, как здесь работают с питомцами.",
       members: [
-        { name: "Улугбек Баходирович Юлдашев", role: "Главный врач, хирург" },
-        { name: "Наргиза Фарходовна Ахадова", role: "Учредитель, директор" },
+        { name: "Улугбек Баходирович Юлдашев", role: "Соучредитель" },
+        { name: "Наргиза Фарходовна Ахадова", role: "Соучредитель, директор" },
       ],
     },
     process: {
@@ -404,6 +406,8 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Частые вопросы",
       title: "Коротко о главном",
       lead: "Не нашли ответ? Напишите нам — подскажем по вашему случаю.",
+      showMore: "Показать все вопросы",
+      showLess: "Свернуть",
       items: [
         {
           q: "Нужна ли предварительная запись?",
@@ -643,21 +647,21 @@ export const dictionaries: Record<Locale, Dict> = {
       ],
     },
     hotel: {
-      kicker: "Zoomehmonxona",
-      title: "Siz safarda bo‘lganingizda uy hayvoningiz nazorat ostida",
-      lead: "Klinika qoshidagi alohida xonalar: o‘yin majmuasi, yumshoq joy, o‘z idishi va hojatxonasi. Shifokor har kuni yonida.",
+      kicker: "Siz safarda bo‘lganingizda",
+      title: "Zoomehmonxona",
+      lead: "Klinika qoshidagi alohida xonalar: o‘yin majmuasi, yumshoq joy, o‘z idishi va hojatxonasi.",
       points: [
         {
           title: "Alohida xona",
           desc: "Qafas emas, xona: o‘yin majmuasi, yumshoq joy va uxlash uchun panoh.",
         },
         {
-          title: "Yorug‘lik va iqlim",
-          desc: "Deraza orqali kunduzgi yorug‘lik, konditsioner va isitish.",
+          title: "Kunduzgi yorug‘lik",
+          desc: "Xonada deraza, konditsioner va isitish.",
         },
         {
           title: "Shifokor yaqin",
-          desc: "Mehmonxona klinika ichida — yordam darhol ko‘rsatiladi.",
+          desc: "Mehmonxona klinikaning o‘zida, shuning uchun shifokor har kuni ko‘rib turadi.",
         },
         {
           title: "O‘z buyumlari",
@@ -680,12 +684,12 @@ export const dictionaries: Record<Locale, Dict> = {
       items: ["Qabulxona", "Ko‘rik xonasi", "Operatsiya xonasi", "Statsionar"],
     },
     team: {
-      kicker: "Rahbariyat",
-      title: "Klinika uchun kim javobgar",
-      lead: "Tajriba, g‘amxo‘rlik va har bir bemor uchun shaxsiy javobgarlik.",
+      kicker: "Biz kimmiz",
+      title: "Klinika asoschilari",
+      lead: "MyVet shu odamlardan boshlangan: klinikani ular ochgan va bu yerdagi ish uslubini ular shakllantirgan.",
       members: [
-        { name: "Ulug‘bek Bahodirovich Yuldashev", role: "Bosh shifokor, jarroh" },
-        { name: "Nargiza Farhodovna Ahadova", role: "Ta’sischi, direktor" },
+        { name: "Ulug‘bek Bahodirovich Yuldashev", role: "Hammuassis" },
+        { name: "Nargiza Farhodovna Ahadova", role: "Hammuassis, direktor" },
       ],
     },
     process: {
@@ -731,6 +735,8 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "Ko‘p beriladigan savollar",
       title: "Eng muhimi qisqacha",
       lead: "Javob topmadingizmi? Bizga yozing — holatingiz bo‘yicha maslahat beramiz.",
+      showMore: "Barcha savollarni ko‘rsatish",
+      showLess: "Yig‘ish",
       items: [
         {
           q: "Oldindan yozilish kerakmi?",
@@ -970,21 +976,21 @@ export const dictionaries: Record<Locale, Dict> = {
       ],
     },
     hotel: {
-      kicker: "Pet hotel",
-      title: "Your pet is looked after while you are away",
-      lead: "Private rooms at the clinic: a climbing tree, a bed, their own bowls and litter box. A vet on site every day.",
+      kicker: "While you are away",
+      title: "Pet hotel",
+      lead: "Private rooms at the clinic: a climbing tree, a bed, their own bowls and litter box.",
       points: [
         {
           title: "A room, not a cage",
           desc: "Climbing tree, a soft bed and a hideaway to sleep in.",
         },
         {
-          title: "Light and climate",
-          desc: "Daylight from a window, air conditioning and heating.",
+          title: "Daylight",
+          desc: "A window in the room, air conditioning and heating.",
         },
         {
           title: "A vet nearby",
-          desc: "The hotel is inside the clinic, so help is immediate.",
+          desc: "The hotel is inside the clinic, so a vet sees your pet every day.",
         },
         {
           title: "Their own things",
@@ -1007,12 +1013,12 @@ export const dictionaries: Record<Locale, Dict> = {
       items: ["Reception", "Exam room", "Operating theatre", "Inpatient ward"],
     },
     team: {
-      kicker: "Leadership",
-      title: "Who runs the clinic",
-      lead: "Experience, care and personal responsibility for every patient.",
+      kicker: "Who we are",
+      title: "The founders",
+      lead: "MyVet started with them: they opened the clinic and set how pets are cared for here.",
       members: [
-        { name: "Ulugbek Bakhodirovich Yuldashev", role: "Head veterinarian, surgeon" },
-        { name: "Nargiza Farkhodovna Akhadova", role: "Founder, director" },
+        { name: "Ulugbek Bakhodirovich Yuldashev", role: "Co-founder" },
+        { name: "Nargiza Farkhodovna Akhadova", role: "Co-founder, director" },
       ],
     },
     process: {
@@ -1058,6 +1064,8 @@ export const dictionaries: Record<Locale, Dict> = {
       kicker: "FAQ",
       title: "The essentials, briefly",
       lead: "Didn't find your answer? Message us — we'll advise on your case.",
+      showMore: "Show all questions",
+      showLess: "Show less",
       items: [
         {
           q: "Do I need to book in advance?",

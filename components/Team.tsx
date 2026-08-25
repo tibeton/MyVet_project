@@ -2,7 +2,7 @@
 import type { Dict } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
 import { RevealGroup, RevealItem } from "./Reveal";
-import { IconPaw, IconShield } from "./icons";
+import { IconPaw, IconHeart } from "./icons";
 
 // Photos by member index (parallel to dict.team.members order).
 const PHOTOS = ["/team/ulugbek.jpg", "/team/nargiza.jpg"];
@@ -16,7 +16,7 @@ export default function Team({ dict }: { dict: Dict }) {
           kicker={t.kicker}
           title={t.title}
           lead={t.lead}
-          icon={<IconShield className="h-4 w-4" />}
+          icon={<IconHeart className="h-4 w-4" />}
         />
 
         <RevealGroup

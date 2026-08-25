@@ -3,14 +3,16 @@ import type { Dict } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import SectionHeading from "./SectionHeading";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
-import { IconHouse, IconSun, IconStethoscope, IconBowl, IconTelegram } from "./icons";
+import { IconHouse, IconDoor, IconSun, IconStethoscope, IconBag, IconTelegram } from "./icons";
 
 // Order matches dict.hotel.points.
+// Один в один по заголовкам карточек. IconHouse здесь не используется — он
+// стоит у заголовка всей секции, и дублировать его в первой карточке нельзя.
 const ICONS = [
-  IconHouse,       // Отдельный номер
-  IconSun,         // Свет и климат
+  IconDoor,        // Отдельный номер
+  IconSun,         // Дневной свет
   IconStethoscope, // Врач рядом
-  IconBowl,        // Свои вещи
+  IconBag,         // Свои вещи
 ];
 
 // Зоогостиница живёт отдельным блоком, а не плиткой в списке услуг: это
@@ -64,7 +66,7 @@ export default function Hotel({ dict }: { dict: Dict }) {
           stagger={0.07}
         >
           {h.points.map((p, i) => {
-            const Icon = ICONS[i] ?? IconHouse;
+            const Icon = ICONS[i] ?? IconDoor;
             return (
               <RevealItem key={p.title}>
                 <div className="lift h-full rounded-3xl border border-line bg-surface p-6">

@@ -4,11 +4,31 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import type { Dict } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
+import ShowMore from "./ShowMore";
 import { IconPlus } from "./icons";
+
+// Столько вопросов видно до раскрытия. Семь аккордеонов подряд читались как
+// стена и отодвигали форму записи; первых пяти хватает на типовой сценарий.
+const VISIBLE = 5;
 
 export default function FAQ({ dict }: { dict: Dict }) {
   const f = dict.faq;
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // null, а не 0: раскрытый первый вопрос сбивает скан списка — глаз читает
+  // его как единственный, а остальные как хвост.
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState(false);
+  const rows = expanded ? f.items : f.items.slice(0, VISIBLE);
+  const hidden = f.items.length - VISIBLE;
+
+  function toggle() {
+    setExpanded((v) => {
+      // Свернуть с раскрытым вопросом из скрытой части — значит оставить
+      // openIndex указывать в никуда: следующий клик по видимому вопросу
+      // выглядел бы как «ничего не открылось».
+      if (v && openIndex !== null && openIndex >= VISIBLE) setOpenIndex(null);
+      return !v;
+    });
+  }
 
   return (
     <section id="faq" className="section scroll-mt-20 bg-bg-2">
@@ -16,7 +36,7 @@ export default function FAQ({ dict }: { dict: Dict }) {
         <SectionHeading kicker={f.kicker} title={f.title} lead={f.lead} />
 
         <div className="mt-7 max-w-3xl space-y-3 sm:mt-12">
-          {f.items.map((item, i) => {
+          {rows.map((item, i) => {
             const open = openIndex === i;
             return (
               <div
@@ -43,14 +63,30 @@ export default function FAQ({ dict }: { dict: Dict }) {
                 <AnimatePresence initial={false}>
                   {open && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      // overflow: hidden прямо на анимируемом элементе, иначе
+                      // текст вылезает за пределы схлопывающейся высоты и
+                      // раскрытие выглядит рывком.
+                      style={{ overflow: "hidden" }}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <p className="px-6 pb-5 text-sm/relaxed text-muted">
+                      {/* Текст догоняет высоту с задержкой на раскрытии и
+                          уходит первым на закрытии — так движение читается
+                          как одно, а не как две одновременные анимации. */}
+                      <motion.p
+                        className="px-6 pb-5 text-sm/relaxed text-muted"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.3, delay: 0.08 },
+                        }}
+                        exit={{ opacity: 0, transition: { duration: 0.15 } }}
+                      >
                         {item.a}
-                      </p>
+                      </motion.p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -58,6 +94,17 @@ export default function FAQ({ dict }: { dict: Dict }) {
             );
           })}
         </div>
+
+        {hidden > 0 && (
+          <ShowMore
+            expanded={expanded}
+            hidden={hidden}
+            onToggle={toggle}
+            more={f.showMore}
+            less={f.showLess}
+            className="mt-6 max-w-3xl"
+          />
+        )}
       </div>
     </section>
   );
