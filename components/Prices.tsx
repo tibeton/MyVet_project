@@ -6,6 +6,7 @@ import SectionHeading from "./SectionHeading";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 import { Item } from "@astryxdesign/core/Item";
 import ShowMore from "./ShowMore";
+import Collapsible from "./Collapsible";
 import { IconArrowUpRight, IconTag, IconPaw } from "./icons";
 
 // Show a handful by default: ten rows pushed the booking CTA far down the page
@@ -76,13 +77,13 @@ export default function Prices({ dict }: { dict: Dict }) {
             </Reveal>
           </div>
 
-          {/* Две группы, а не одна с `slice`. RevealGroup держит whileInView с
-              `once: true`: к моменту раскрытия он уже отработал и больше не
-              оркеструет детей, поэтому строки, дописанные в него позже,
-              оставались на opacity 0 — спойлер открывался пустым.
-              Свежесмонтированная группа запускает свой whileInView сама, и
-              появляется она уже в кадре (ShowMore держит якорь прокрутки). */}
-          <div className="space-y-3">
+          {/* Скрытая часть — отдельный блок, а не `slice` внутри той же
+              RevealGroup. RevealGroup держит whileInView с `once: true`: к
+              моменту раскрытия он уже отработал и больше не оркеструет детей,
+              поэтому строки, дописанные в него позже, оставались на
+              `opacity: 0` — спойлер открывался пустым. Здесь их видимость
+              обеспечивает Collapsible, а не whileInView. */}
+          <div>
             <RevealGroup className="space-y-3" stagger={0.07}>
               {p.items.slice(0, VISIBLE).map((item) => (
                 <RevealItem key={item.name}>
@@ -91,15 +92,11 @@ export default function Prices({ dict }: { dict: Dict }) {
               ))}
             </RevealGroup>
 
-            {expanded && (
-              <RevealGroup className="space-y-3" stagger={0.07}>
-                {p.items.slice(VISIBLE).map((item) => (
-                  <RevealItem key={item.name}>
-                    <PriceRow item={item} currency={p.currency} />
-                  </RevealItem>
-                ))}
-              </RevealGroup>
-            )}
+            <Collapsible open={expanded} className="space-y-3 pt-3">
+              {p.items.slice(VISIBLE).map((item) => (
+                <PriceRow key={item.name} item={item} currency={p.currency} />
+              ))}
+            </Collapsible>
           </div>
         </div>
 

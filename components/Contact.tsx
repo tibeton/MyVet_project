@@ -124,15 +124,13 @@ export default function Contact({
   return (
     <section id="contact" className="section scroll-mt-20">
       <div className="shell">
-        {/* items-start обязателен: при stretch колонка растягивается на всю
-            высоту строки, и sticky некуда ехать. */}
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          {/* Form card — залипает, как левая колонка в прайсе: пока справа
-              проматываются контакты и карта, форма остаётся на экране.
-              Обёртка обычным div, а не sticky прямо на Reveal: motion держит
-              на анимированном элементе свой transform. */}
-          <div className="lg:sticky lg:top-28">
-          <Reveal className="rounded-[2rem] border border-line bg-surface-2 p-6 sm:p-9">
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          {/* Form card — тянется на всю высоту строки (то есть до низа карты
+              справа), а залипает её содержимое внутри. Так карточка не
+              обрывается на середине колонки, но форма всё равно остаётся на
+              экране, пока справа проматываются контакты и карта. */}
+          <Reveal className="h-full rounded-[2rem] border border-line bg-surface-2 p-6 sm:p-9">
+            <div className="lg:sticky lg:top-28">
             <span className="kicker">{c.kicker}</span>
             <h2 className="mt-4 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-extrabold leading-[1.07] tracking-[-0.02em] text-ink">
               {c.title}
@@ -237,8 +235,8 @@ export default function Contact({
                 </p>
               )}
             </form>
+            </div>
           </Reveal>
-          </div>
 
           {/* Info + map */}
           <Reveal delay={0.1} className="flex flex-col gap-5">
