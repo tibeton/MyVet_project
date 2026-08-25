@@ -53,7 +53,7 @@ export default function Prices({ dict }: { dict: Dict }) {
   const hidden = p.items.length - VISIBLE;
 
   return (
-    <section id="prices" className="section scroll-mt-20 bg-bg-2">
+    <section id="prices" className="section scroll-mt-20">
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="lg:sticky lg:top-28">

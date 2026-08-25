@@ -28,20 +28,19 @@ const GoogleMark = (p: { className?: string }) => (
   <PlatformMark src="/googlelogo.png" {...p} />
 );
 
-// Compact score chip per platform. No visible label — the logo plus score says
-// it, and `label` (already translated) becomes the accessible name so screen
-// readers still get "all reviews on <platform>".
+// Кнопка перехода на площадку. Раньше здесь висели оценка и число отзывов —
+// цифры, вбитые руками в site.ts. Они устаревают молча: отзывы копятся, а на
+// сайте остаётся старый счётчик, и это ровно тот случай, когда «социальное
+// доказательство» начинает работать против. Теперь кнопка обещает только то,
+// что действительно произойдёт по клику, а актуальные цифры посетитель видит
+// на самой площадке.
 function ReviewsCta({
   href,
   mark,
-  rating,
-  count,
   label,
 }: {
   href: string;
   mark: React.ReactNode;
-  rating: string;
-  count: string;
   label: string;
 }) {
   return (
@@ -49,16 +48,12 @@ function ReviewsCta({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
-      title={label}
-      className="lift group flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-line bg-surface py-2 pl-2 pr-3.5 transition-colors hover:border-accent"
+      className="lift group flex w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full border border-line bg-surface py-2.5 pl-2.5 pr-4 transition-colors hover:border-accent"
     >
       {mark}
-      <span className="font-display text-base font-bold leading-none text-ink">
-        {rating}
+      <span className="text-sm font-semibold leading-none text-ink">
+        {label}
       </span>
-      <IconStar className="h-3.5 w-3.5 shrink-0 text-pink-bright" />
-      <span className="text-sm leading-none text-muted">· {count}</span>
       <IconArrowUpRight className="h-3.5 w-3.5 shrink-0 text-faint transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
@@ -151,25 +146,22 @@ export default function Reviews({
         </div>
       </Reveal>
 
-      {/* One CTA per platform, each carrying its own score. */}
+      {/* По одной кнопке на площадку. */}
       <div className="shell">
         <Reveal delay={0.1}>
-          {/* Grid, not flex: the labels differ in length, so content-sized buttons
-                came out different widths. w-fit keeps the pair centred while the
-                columns take the width of the wider one. */}
-          <div className="mx-auto mt-8 grid w-fit grid-cols-2 gap-2.5 sm:mt-10 sm:gap-3">
+          {/* Grid, not flex: подписи разной длины, и кнопки по содержимому
+              выходили разной ширины. w-fit держит пару по центру, колонки
+              берут ширину более длинной. На узких экранах — в столбик, иначе
+              две подписи не помещаются в строку. */}
+          <div className="mx-auto mt-8 grid w-fit grid-cols-1 gap-2.5 sm:mt-10 sm:grid-cols-2 sm:gap-3">
             <ReviewsCta
               href={site.yandexReviewsUrl}
               mark={<YandexMark className="h-6 w-6" />}
-              rating={site.yandexRating}
-              count={site.yandexReviewsCount}
               label={r.ymapsCta}
             />
             <ReviewsCta
               href={site.googleReviewsUrl}
               mark={<GoogleMark className="h-6 w-6" />}
-              rating={site.googleRating}
-              count={site.googleReviewsCount}
               label={r.googleCta}
             />
           </div>

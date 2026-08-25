@@ -21,15 +21,13 @@ const ICONS = [
 // Цены здесь нет: она зависит от номера и питомца, так что единственный CTA
 // ведёт в Telegram, а не в форму записи.
 //
-// Секция белая и с `pt-0`: она стоит белым-на-белом после галереи клиники, и
-// эти два блока сознательно читаются как одна глава «посмотрите на нас».
-// Если галерею уберут, гостиница окажется после тонированной «команды» —
-// граница станет цветовой и `pt-0` нужно будет снять.
+// Фон тонированный: секция стоит между белыми «услугами» и белым прайсом.
+// Цепочка фонов описана в app/[locale]/page.tsx — правьте там же.
 export default function Hotel({ dict }: { dict: Dict }) {
   const h = dict.hotel;
 
   return (
-    <section id="hotel" className="section scroll-mt-20 pt-0">
+    <section id="hotel" className="section scroll-mt-20 bg-bg-2">
       <div className="shell">
         <SectionHeading
           kicker={h.kicker}
