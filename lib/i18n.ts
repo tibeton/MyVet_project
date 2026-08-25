@@ -67,10 +67,6 @@ type Dict = {
     lead: string;
     points: { title: string; desc: string }[];
   };
-  stats: {
-    title: string;
-    items: { value: string; label: string }[];
-  };
   clinic: {
     kicker: string;
     title: string;
@@ -317,14 +313,6 @@ export const dictionaries: Record<Locale, Dict> = {
           title: "Помощь 24/7",
           desc: "Экстренная линия работает круглосуточно — в критической ситуации мы рядом.",
         },
-      ],
-    },
-    stats: {
-      title: "Цифры, которым доверяют",
-      items: [
-        { value: "7 000+", label: "приёмов проведено" },
-        { value: "24/7", label: "экстренная помощь" },
-        { value: "5", label: "врачей-специалистов" },
       ],
     },
     hotel: {
@@ -654,14 +642,6 @@ export const dictionaries: Record<Locale, Dict> = {
         },
       ],
     },
-    stats: {
-      title: "Ishonadigan raqamlar",
-      items: [
-        { value: "7 000+", label: "qabul o‘tkazilgan" },
-        { value: "24/7", label: "shoshilinch yordam" },
-        { value: "5", label: "mutaxassis shifokor" },
-      ],
-    },
     hotel: {
       kicker: "Zoomehmonxona",
       title: "Siz safarda bo‘lganingizda uy hayvoningiz nazorat ostida",
@@ -987,14 +967,6 @@ export const dictionaries: Record<Locale, Dict> = {
           title: "24/7 support",
           desc: "Our emergency line runs around the clock — we're here when it matters most.",
         },
-      ],
-    },
-    stats: {
-      title: "Numbers you can trust",
-      items: [
-        { value: "7,000+", label: "visits handled" },
-        { value: "24/7", label: "emergency care" },
-        { value: "5", label: "specialist vets" },
       ],
     },
     hotel: {

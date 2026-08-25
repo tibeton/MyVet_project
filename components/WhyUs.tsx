@@ -17,8 +17,6 @@ export default function WhyUs({ dict }: { dict: Dict }) {
   return (
     <section id="why" className="section scroll-mt-20 pt-0">
       <div className="shell">
-        {/* Padding matches the Stats banner so the two full-width cards read as
-            the same kind of block. Change both together. */}
         <div className="overflow-hidden rounded-[2.2rem] border border-line bg-surface-2 px-6 py-12 sm:px-12 sm:py-16">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             {/* Statement */}
@@ -58,23 +56,6 @@ export default function WhyUs({ dict }: { dict: Dict }) {
               })}
             </RevealGroup>
           </div>
-
-          {/* Numbers used to be a separate accent band below. Merged in here so
-              the claims and the evidence for them sit in one block instead of
-              two competing "trust us" sections. */}
-          <RevealGroup
-            className="mt-10 grid grid-cols-1 gap-6 border-t border-line pt-10 sm:mt-12 sm:grid-cols-3 sm:gap-8 sm:pt-12"
-            stagger={0.06}
-          >
-            {dict.stats.items.map((item) => (
-              <RevealItem key={item.label}>
-                <p className="font-display text-[clamp(1.6rem,4vw,2.4rem)] font-extrabold leading-none text-accent">
-                  {item.value}
-                </p>
-                <p className="mt-2 text-sm/snug text-muted">{item.label}</p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
         </div>
       </div>
     </section>

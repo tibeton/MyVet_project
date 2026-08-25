@@ -39,25 +39,21 @@ export default function Hotel({ dict }: { dict: Dict }) {
           stagger={0.09}
         >
           {site.hotelPhotos.map((src, i) => {
-            const caption = h.captions[i] ?? "";
+            // Видимых подписей нет — строка остаётся описанием для alt.
+            const alt = h.captions[i] ?? "";
             return (
               <RevealItem
                 key={src}
                 className="w-[76%] shrink-0 snap-start sm:w-auto"
               >
-                <figure className="lift group relative aspect-[3/4] overflow-hidden rounded-3xl border border-line bg-surface-2">
+                <div className="lift group relative aspect-[3/4] overflow-hidden rounded-3xl border border-line bg-surface-2">
                   <img
                     src={src}
-                    alt={caption}
+                    alt={alt}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  {/* Подпись — это и есть доказательство, а белый текст поверх
-                      непредсказуемого фото требует гарантированной подложки. */}
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/40 to-transparent px-5 pb-4 pt-10 text-sm/snug font-semibold text-white">
-                    {caption}
-                  </figcaption>
-                </figure>
+                </div>
               </RevealItem>
             );
           })}
