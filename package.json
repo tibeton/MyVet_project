@@ -8,7 +8,10 @@
     "build": "next build",
     "check:css": "node scripts/check-css-layers.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "trust:system": "mkdir -p certs && security find-certificate -a -p /System/Library/Keychains/SystemRootCertificates.keychain > certs/system-roots.pem && security find-certificate -a -p /Library/Keychains/System.keychain >> certs/system-roots.pem",
+    "dev:trusted": "NODE_EXTRA_CA_CERTS=\"$(pwd)/certs/system-roots.pem\" next dev",
+    "check:telegram": "node scripts/check-telegram.mjs"
   },
   "dependencies": {
     "@astryxdesign/cli": "^0.1.8",

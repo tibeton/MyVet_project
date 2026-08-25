@@ -11,3 +11,6 @@ npm-debug.log*
 next-env.d.ts
 
 .vercel
+
+# macOS root bundle exported for NODE_EXTRA_CA_CERTS (local TLS workaround)
+/certs
