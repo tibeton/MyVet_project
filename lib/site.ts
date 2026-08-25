@@ -40,6 +40,10 @@ export const site = {
   // Положите файлы в public/clinic/ и впишите путь, например "/clinic/reception.jpg".
   clinicPhotos: ["", "", "", ""],
 
+  // ── Фото зоогостиницы ─────────────────────────────────
+  // Реальные номера для кошек. Порядок совпадает с dict.hotel.captions.
+  hotelPhotos: ["/hotel/room-1.jpg", "/hotel/room-2.jpg", "/hotel/room-3.jpg"],
+
   // ── Яндекс.Карты · отзывы ─────────────────────────────
   // Карточка клиники: https://yandex.uz/maps/org/myvet_uz/93506518218
   // (yandex.ru редиректит на .uz — организация в Узбекистане).

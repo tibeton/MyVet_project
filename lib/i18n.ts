@@ -78,6 +78,15 @@ type Dict = {
     placeholder: string;
     items: string[];
   };
+  hotel: {
+    kicker: string;
+    title: string;
+    lead: string;
+    points: { title: string; desc: string }[];
+    note: string;
+    cta: string;
+    captions: string[];
+  };
   team: {
     kicker: string;
     title: string;
@@ -316,6 +325,36 @@ export const dictionaries: Record<Locale, Dict> = {
         { value: "7 000+", label: "приёмов проведено" },
         { value: "24/7", label: "экстренная помощь" },
         { value: "5", label: "врачей-специалистов" },
+      ],
+    },
+    hotel: {
+      kicker: "Зоогостиница",
+      title: "Питомец под присмотром, пока вы в отъезде",
+      lead: "Отдельные номера при клинике: игровой комплекс, лежанка, свои миски и лоток. Врач рядом каждый день.",
+      points: [
+        {
+          title: "Отдельный номер",
+          desc: "Не клетка, а комната: игровой комплекс, лежанка и укрытие для сна.",
+        },
+        {
+          title: "Свет и климат",
+          desc: "Окно с дневным светом, кондиционер и отопление.",
+        },
+        {
+          title: "Врач рядом",
+          desc: "Гостиница находится в клинике — помощь окажут сразу.",
+        },
+        {
+          title: "Свои вещи",
+          desc: "Можно привезти привычный корм, лежанку и любимые игрушки.",
+        },
+      ],
+      note: "Стоимость зависит от номера и типа питомца — напишите нам в Telegram, подберём вариант.",
+      cta: "Написать в Telegram",
+      captions: [
+        "Номер с игровым комплексом",
+        "Дневной свет и своё окно",
+        "Лежанка, миски и закрытый лоток",
       ],
     },
     clinic: {
@@ -623,6 +662,36 @@ export const dictionaries: Record<Locale, Dict> = {
         { value: "5", label: "mutaxassis shifokor" },
       ],
     },
+    hotel: {
+      kicker: "Zoomehmonxona",
+      title: "Siz safarda bo‘lganingizda uy hayvoningiz nazorat ostida",
+      lead: "Klinika qoshidagi alohida xonalar: o‘yin majmuasi, yumshoq joy, o‘z idishi va hojatxonasi. Shifokor har kuni yonida.",
+      points: [
+        {
+          title: "Alohida xona",
+          desc: "Qafas emas, xona: o‘yin majmuasi, yumshoq joy va uxlash uchun panoh.",
+        },
+        {
+          title: "Yorug‘lik va iqlim",
+          desc: "Deraza orqali kunduzgi yorug‘lik, konditsioner va isitish.",
+        },
+        {
+          title: "Shifokor yaqin",
+          desc: "Mehmonxona klinika ichida — yordam darhol ko‘rsatiladi.",
+        },
+        {
+          title: "O‘z buyumlari",
+          desc: "Odatdagi yemini, yotog‘ini va sevimli o‘yinchoqlarini olib kelsangiz bo‘ladi.",
+        },
+      ],
+      note: "Narx xona va uy hayvoni turiga bog‘liq — Telegram’ga yozing, mos variantni tanlaymiz.",
+      cta: "Telegram’ga yozish",
+      captions: [
+        "O‘yin majmuasi bo‘lgan xona",
+        "Kunduzgi yorug‘lik va deraza",
+        "Yotoq joyi, idishlar va yopiq hojatxona",
+      ],
+    },
     clinic: {
       kicker: "Bizning klinika",
       title: "Qayerda qabul qilamiz",
@@ -926,6 +995,36 @@ export const dictionaries: Record<Locale, Dict> = {
         { value: "7,000+", label: "visits handled" },
         { value: "24/7", label: "emergency care" },
         { value: "5", label: "specialist vets" },
+      ],
+    },
+    hotel: {
+      kicker: "Pet hotel",
+      title: "Your pet is looked after while you are away",
+      lead: "Private rooms at the clinic: a climbing tree, a bed, their own bowls and litter box. A vet on site every day.",
+      points: [
+        {
+          title: "A room, not a cage",
+          desc: "Climbing tree, a soft bed and a hideaway to sleep in.",
+        },
+        {
+          title: "Light and climate",
+          desc: "Daylight from a window, air conditioning and heating.",
+        },
+        {
+          title: "A vet nearby",
+          desc: "The hotel is inside the clinic, so help is immediate.",
+        },
+        {
+          title: "Their own things",
+          desc: "Bring their usual food, bed and favourite toys.",
+        },
+      ],
+      note: "The price depends on the room and the pet — message us on Telegram and we will find the right option.",
+      cta: "Message us on Telegram",
+      captions: [
+        "Room with a climbing tree",
+        "Daylight and a window",
+        "Bed, bowls and a covered litter box",
       ],
     },
     clinic: {
