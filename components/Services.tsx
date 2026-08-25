@@ -51,7 +51,7 @@ export default function Services({ dict }: { dict: Dict }) {
             const Icon = ICONS[i] ?? IconPaw;
             return (
               <RevealItem key={item.num}>
-                <article className="lift group h-full rounded-3xl border border-line bg-surface p-7">
+                <article className="lift group flex h-full flex-col rounded-3xl border border-line bg-surface p-7">
                   <div className="flex items-start justify-between">
                     <div className="grid h-14 w-14 place-items-center rounded-2xl bg-accent-soft text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-on-accent">
                       <Icon className="h-7 w-7" />
@@ -66,7 +66,11 @@ export default function Services({ dict }: { dict: Dict }) {
                   </h3>
                   <p className="mt-2.5 text-sm/relaxed text-muted">{item.desc}</p>
 
-                  <ul className="mt-5 flex flex-wrap gap-2">
+                  {/* mt-auto: описания у услуг разной длины, и без этого
+                      теги вставали на разной высоте — в ряду из трёх карточек
+                      низ содержимого «плясал». Теперь теги всегда прижаты к
+                      низу карточки, pt-5 держит минимальный отступ от текста. */}
+                  <ul className="mt-auto flex flex-wrap gap-2 pt-5">
                     {item.tags.map((t) => (
                       <li
                         key={t}
@@ -82,8 +86,9 @@ export default function Services({ dict }: { dict: Dict }) {
           })}
         </RevealGroup>
 
-        {/* Same clamp as .section padding, so the gap above this button matches
-            the gap below it (WhyUs has pt-0, so below == section padding). */}
+        {/* Same clamp as .section padding: кнопка отбивается от сетки услуг
+            ровно на один шаг секции, то есть остаётся частью этого блока, а
+            не повисает между секциями. */}
         <div className="mt-[clamp(2.25rem,4.5vw,4.25rem)] flex justify-center">
           <a
             href="#contact"

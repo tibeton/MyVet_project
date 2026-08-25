@@ -11,7 +11,6 @@ export default function Footer({ dict, locale }: { dict: Dict; locale: Locale })
   const navLinks = [
     { href: "#services", label: dict.nav.services },
     { href: "#team", label: dict.nav.team },
-    { href: "#process", label: dict.nav.process },
     { href: "#prices", label: dict.nav.prices },
     { href: "#reviews", label: dict.nav.reviews },
     { href: "#faq", label: dict.nav.faq },

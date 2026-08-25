@@ -132,10 +132,10 @@ export default function Contact({
           <Reveal className="h-full rounded-[2rem] border border-line bg-surface-2 p-6 sm:p-9">
             <div className="lg:sticky lg:top-28">
             <span className="kicker">{c.kicker}</span>
-            <h2 className="mt-4 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-extrabold leading-[1.07] tracking-[-0.02em] text-ink">
+            <h2 className="mt-4 text-pretty font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-extrabold leading-[1.07] tracking-[-0.02em] text-ink">
               {c.title}
             </h2>
-            <p className="mt-3 max-w-md text-sm/relaxed text-muted sm:text-base/relaxed">
+            <p className="mt-3 max-w-md text-pretty text-sm/relaxed text-muted sm:text-base/relaxed">
               {c.lead}
             </p>
 

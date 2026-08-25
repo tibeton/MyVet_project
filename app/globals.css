@@ -163,9 +163,11 @@ h1, h2, h3, h4 {
      continuous void and looks much larger.
 
      So sections that sit white-on-white against their neighbour carry `pt-0`
-     (currently WhyUs and Stats) to halve that boundary. If you change a
-     section's background, re-check its neighbours: add `pt-0` when a boundary
-     becomes same-colour, remove it when a colour edge appears. */
+     to halve that boundary. Right now the page alternates white / bg-bg-2 all
+     the way down, so every boundary is a colour edge and nothing needs `pt-0`.
+     If you add, remove or reorder a section, re-check its neighbours: add
+     `pt-0` when a boundary becomes same-colour, remove it when a colour edge
+     appears. */
   .section {
     padding-block: clamp(2.25rem, 4.5vw, 4.25rem);
   }

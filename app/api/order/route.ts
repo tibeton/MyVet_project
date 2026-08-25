@@ -18,6 +18,59 @@ function escapeHtml(s: string) {
     .replace(/>/g, "&gt;");
 }
 
+/**
+ * The pet and service fields arrive as free text in whichever of the three site
+ * languages the visitor used, so these maps match keywords in ru / uz / en.
+ * First hit wins — order matters where keywords overlap.
+ */
+const PET_EMOJI: [RegExp, string][] = [
+  [/кот|кош|кис|mushuk|\bcat\b|kitten/i, "🐱"],
+  [/собак|пёс|пес\b|щен|kuchuk|\bit\b|\bdog\b|puppy/i, "🐶"],
+  [/попуг|птиц|to'?ti|qush|parrot|bird/i, "🦜"],
+  [/хомяк|морск\w* свинк|hamster|guinea/i, "🐹"],
+  [/кролик|заяц|quyon|rabbit|bunny/i, "🐰"],
+  [/черепах|toshbaqa|turtle|tortoise/i, "🐢"],
+  [/рыб|baliq|fish/i, "🐟"],
+  [/змея|ящер|игуан|ilon|snake|lizard|reptile/i, "🐍"],
+  [/хорёк|хорек|ferret/i, "🦦"],
+  [/ёж|еж\b|hedgehog/i, "🦔"],
+  [/лошад|конь|\bot\b|horse/i, "🐴"],
+];
+
+const SERVICE_EMOJI: [RegExp, string][] = [
+  [/вакцин|vaksin|vaccin/i, "💉"],
+  [/хирург|jarroh|surgery/i, "🏥"],
+  [/диагност|узи|рентген|анализ|diagnostika|utt|rentgen|tahlil|diagnostic|ultrasound|x-ray|test/i, "🔬"],
+  [/груминг|gruming|grooming/i, "✂️"],
+  [/стационар|statsionar|inpatient/i, "🛏"],
+  [/гостиниц|mehmonxona|hotel/i, "🏨"],
+  [/такси|taksi|taxi/i, "🚕"],
+  [/чек-?ап|chek-?ap|check-?up/i, "📋"],
+  [/на дом|uyga|home visit/i, "🏠"],
+  [/терап|приём|прием|консульт|terapiya|qabul|therapy|consult/i, "🩺"],
+  [/друго|boshqa|other/i, "📝"],
+];
+
+const LOCALE_LABEL: Record<string, string> = {
+  ru: "🇷🇺 русский",
+  uz: "🇺🇿 o‘zbekcha",
+  en: "🇬🇧 English",
+};
+
+function pick(map: [RegExp, string][], value: string, fallback: string) {
+  return map.find(([re]) => re.test(value))?.[1] ?? fallback;
+}
+
+function tashkentTime() {
+  return new Intl.DateTimeFormat("ru-RU", {
+    timeZone: "Asia/Tashkent",
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date());
+}
+
 export async function POST(req: Request) {
   let body: OrderPayload;
   try {
@@ -53,13 +106,18 @@ export async function POST(req: Request) {
   }
 
   const text =
-    `<b>🐾 Новая запись — MyVet</b>\n\n` +
-    `<b>Имя:</b> ${escapeHtml(name)}\n` +
-    `<b>Телефон:</b> ${escapeHtml(phone)}\n` +
-    (pet ? `<b>Питомец:</b> ${escapeHtml(pet)}\n` : "") +
-    (service ? `<b>Услуга:</b> ${escapeHtml(service)}\n` : "") +
-    (message ? `<b>Комментарий:</b> ${escapeHtml(message)}\n` : "") +
-    `<b>Язык сайта:</b> ${escapeHtml(locale)}`;
+    `🐾 <b>НОВАЯ ЗАЯВКА</b> — MyVet\n` +
+    `\n` +
+    `👤 <b>${escapeHtml(name)}</b>\n` +
+    `📞 ${escapeHtml(phone)}\n` +
+    (pet ? `${pick(PET_EMOJI, pet, "🐾")} <b>Питомец:</b> ${escapeHtml(pet)}\n` : "") +
+    (service
+      ? `${pick(SERVICE_EMOJI, service, "🩺")} <b>Услуга:</b> ${escapeHtml(service)}\n`
+      : "") +
+    (message
+      ? `\n💬 <b>Комментарий</b>\n<blockquote>${escapeHtml(message)}</blockquote>\n`
+      : "") +
+    `\n<i>🕘 ${tashkentTime()}  ·  🌐 ${LOCALE_LABEL[locale] ?? escapeHtml(locale)}</i>`;
 
   try {
     const tgRes = await fetch(

@@ -24,13 +24,16 @@ export default function SectionHeading({
         </span>
       </Reveal>
       <Reveal delay={0.06}>
-        <h2 className="mt-3 font-display sm:mt-4 text-[clamp(1.9rem,4vw,3.1rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-ink">
+        <h2 className="mt-3 text-balance font-display sm:mt-4 text-[clamp(1.9rem,4vw,3.1rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-ink">
           {title}
         </h2>
       </Reveal>
       {lead && (
         <Reveal delay={0.12}>
-          <p className="mt-3 text-base/relaxed sm:mt-4 text-muted sm:text-lg/relaxed">
+          {/* text-balance, иначе лид почти везде роняет одно слово на вторую
+              строку («…и неотложных / операций.»). Балансировка делит его на
+              две примерно равные строки. */}
+          <p className="mt-3 text-balance text-base/relaxed sm:mt-4 text-muted sm:text-lg/relaxed">
             {lead}
           </p>
         </Reveal>

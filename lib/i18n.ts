@@ -24,9 +24,7 @@ type Dict = {
   meta: { title: string; description: string };
   nav: {
     services: string;
-    why: string;
     team: string;
-    process: string;
     prices: string;
     reviews: string;
     faq: string;
@@ -61,12 +59,6 @@ type Dict = {
     lead: string;
     items: { num: string; name: string; desc: string; tags: string[] }[];
   };
-  why: {
-    kicker: string;
-    title: string;
-    lead: string;
-    points: { title: string; desc: string }[];
-  };
   clinic: {
     kicker: string;
     title: string;
@@ -88,12 +80,6 @@ type Dict = {
     title: string;
     lead: string;
     members: { name: string; role: string }[];
-  };
-  process: {
-    kicker: string;
-    title: string;
-    lead: string;
-    steps: { num: string; title: string; desc: string }[];
   };
   prices: {
     kicker: string;
@@ -170,9 +156,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     nav: {
       services: "Услуги",
-      why: "Почему мы",
       team: "Руководство",
-      process: "Как проходит приём",
       prices: "Цены",
       reviews: "Отзывы",
       faq: "Вопросы",
@@ -294,29 +278,6 @@ export const dictionaries: Record<Locale, Dict> = {
         },
       ],
     },
-    why: {
-      kicker: "Почему MyVet",
-      title: "Здоровье питомца — наш главный приоритет",
-      lead: "Работаем в Ташкенте с октября 2022 года и берём ответственность за здоровье вашего любимца на каждом этапе.",
-      points: [
-        {
-          title: "Опытные врачи",
-          desc: "Специалисты с профильным образованием и многолетней практикой. Регулярно повышаем квалификацию.",
-        },
-        {
-          title: "Своё зоотакси",
-          desc: "Заберём питомца из дома и привезём обратно — не нужно искать машину и переноску в спешке.",
-        },
-        {
-          title: "Бережный подход",
-          desc: "Минимум стресса для питомца: мягкая фиксация, спокойная атмосфера и внимание к деталям.",
-        },
-        {
-          title: "Помощь 24/7",
-          desc: "Экстренная линия работает круглосуточно — в критической ситуации мы рядом.",
-        },
-      ],
-    },
     hotel: {
       kicker: "Пока вы в отъезде",
       title: "Зоогостиница",
@@ -361,17 +322,6 @@ export const dictionaries: Record<Locale, Dict> = {
       members: [
         { name: "Улугбек Баходирович Юлдашев", role: "Соучредитель" },
         { name: "Наргиза Фарходовна Ахадова", role: "Соучредитель, директор" },
-      ],
-    },
-    process: {
-      kicker: "Как проходит приём",
-      title: "От записи до выздоровления — 4 шага",
-      lead: "Понятный процесс, в котором вы и питомец чувствуете себя спокойно.",
-      steps: [
-        { num: "01", title: "Запись", desc: "Оставьте заявку или позвоните — подберём удобное время без очередей." },
-        { num: "02", title: "Осмотр и диагностика", desc: "Врач осматривает питомца, при необходимости — анализы и УЗИ на месте." },
-        { num: "03", title: "Лечение", desc: "Составляем план лечения и проводим процедуры бережно и безопасно." },
-        { num: "04", title: "Наблюдение", desc: "Контролируем восстановление и остаёмся на связи после визита." },
       ],
     },
     prices: {
@@ -499,9 +449,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     nav: {
       services: "Xizmatlar",
-      why: "Nega biz",
       team: "Rahbariyat",
-      process: "Qabul jarayoni",
       prices: "Narxlar",
       reviews: "Fikrlar",
       faq: "Savollar",
@@ -623,29 +571,6 @@ export const dictionaries: Record<Locale, Dict> = {
         },
       ],
     },
-    why: {
-      kicker: "Nega MyVet",
-      title: "Hayvon sog‘lig‘i — bizning asosiy ustuvorligimiz",
-      lead: "2022-yil oktabridan Toshkentda ishlaymiz va sevimli hayvoningiz sog‘lig‘i uchun har bosqichda javobgarmiz.",
-      points: [
-        {
-          title: "Tajribali shifokorlar",
-          desc: "Mutaxassis ta’limiga va ko‘p yillik amaliyotga ega shifokorlar. Malakamizni doimiy oshiramiz.",
-        },
-        {
-          title: "O‘z zootaksimiz",
-          desc: "Hayvoningizni uydan olib ketamiz va qaytarib olib kelamiz — shosha-pisha mashina qidirish shart emas.",
-        },
-        {
-          title: "Ehtiyotkor yondashuv",
-          desc: "Hayvon uchun minimal stress: yumshoq ushlash, xotirjam muhit va detallarga e’tibor.",
-        },
-        {
-          title: "24/7 yordam",
-          desc: "Shoshilinch liniya kechayu kunduz ishlaydi — og‘ir vaziyatda biz yoningizdamiz.",
-        },
-      ],
-    },
     hotel: {
       kicker: "Siz safarda bo‘lganingizda",
       title: "Zoomehmonxona",
@@ -690,17 +615,6 @@ export const dictionaries: Record<Locale, Dict> = {
       members: [
         { name: "Ulug‘bek Bahodirovich Yuldashev", role: "Hammuassis" },
         { name: "Nargiza Farhodovna Ahadova", role: "Hammuassis, direktor" },
-      ],
-    },
-    process: {
-      kicker: "Qabul jarayoni",
-      title: "Yozilishdan sog‘ayishgacha — 4 qadam",
-      lead: "Siz va hayvoningiz o‘zini xotirjam his qiladigan tushunarli jarayon.",
-      steps: [
-        { num: "01", title: "Yozilish", desc: "Ariza qoldiring yoki qo‘ng‘iroq qiling — navbatsiz qulay vaqt tanlaymiz." },
-        { num: "02", title: "Ko‘rik va diagnostika", desc: "Shifokor hayvonni ko‘rikdan o‘tkazadi, kerak bo‘lsa — joyida tahlil va UTT." },
-        { num: "03", title: "Davolash", desc: "Davolash rejasini tuzamiz va muolajalarni ehtiyotkorlik bilan o‘tkazamiz." },
-        { num: "04", title: "Kuzatuv", desc: "Sog‘ayishni nazorat qilamiz va tashrifdan keyin ham aloqada bo‘lamiz." },
       ],
     },
     prices: {
@@ -828,9 +742,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     nav: {
       services: "Services",
-      why: "Why us",
       team: "Leadership",
-      process: "How it works",
       prices: "Pricing",
       reviews: "Reviews",
       faq: "FAQ",
@@ -952,29 +864,6 @@ export const dictionaries: Record<Locale, Dict> = {
         },
       ],
     },
-    why: {
-      kicker: "Why MyVet",
-      title: "Your pet's health is our top priority",
-      lead: "Working in Tashkent since October 2022, taking responsibility for your pet's health at every stage.",
-      points: [
-        {
-          title: "Experienced vets",
-          desc: "Specialists with professional training and years of practice. We keep our skills sharp.",
-        },
-        {
-          title: "Our own pet taxi",
-          desc: "We collect your pet from home and bring them back — no scrambling for a car and a carrier.",
-        },
-        {
-          title: "A gentle approach",
-          desc: "Minimal stress for your pet: soft handling, a calm atmosphere and attention to detail.",
-        },
-        {
-          title: "24/7 support",
-          desc: "Our emergency line runs around the clock — we're here when it matters most.",
-        },
-      ],
-    },
     hotel: {
       kicker: "While you are away",
       title: "Pet hotel",
@@ -1019,17 +908,6 @@ export const dictionaries: Record<Locale, Dict> = {
       members: [
         { name: "Ulugbek Bakhodirovich Yuldashev", role: "Co-founder" },
         { name: "Nargiza Farkhodovna Akhadova", role: "Co-founder, director" },
-      ],
-    },
-    process: {
-      kicker: "How it works",
-      title: "From booking to recovery — 4 steps",
-      lead: "A clear process that keeps you and your pet at ease.",
-      steps: [
-        { num: "01", title: "Book", desc: "Leave a request or call us — we'll find a convenient time with no queues." },
-        { num: "02", title: "Exam & diagnostics", desc: "The vet examines your pet, with on-site tests and ultrasound if needed." },
-        { num: "03", title: "Treatment", desc: "We build a treatment plan and carry out procedures gently and safely." },
-        { num: "04", title: "Follow-up", desc: "We monitor recovery and stay in touch after your visit." },
       ],
     },
     prices: {
