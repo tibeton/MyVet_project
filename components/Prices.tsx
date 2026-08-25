@@ -17,7 +17,7 @@ type Row = Dict["prices"]["items"][number];
 
 function PriceRow({ item, currency }: { item: Row; currency: string }) {
   return (
-    <div className="lift group rounded-2xl border border-line bg-surface px-6 py-5">
+    <div className="lift group rounded-3xl border border-line bg-surface px-6 py-5">
       <Item
         density="compact"
         startContent={

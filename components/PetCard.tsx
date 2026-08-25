@@ -21,7 +21,7 @@ export default function PetCard({ dict }: { dict: Dict }) {
 
   return (
     <div className="bob relative w-full max-w-sm">
-      <div className="rounded-[28px] border border-line bg-surface/90 p-5 shadow-[0_40px_90px_-40px_var(--glow)] backdrop-blur-xl sm:p-6">
+      <div className="rounded-3xl border border-line bg-surface/90 p-5 shadow-[0_40px_90px_-40px_var(--glow)] backdrop-blur-xl sm:p-6">
         {/* Header row */}
         <div className="flex items-center gap-3">
           <div className="grid h-12 w-12 place-items-center rounded-2xl bg-accent text-on-accent">

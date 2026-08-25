@@ -20,7 +20,7 @@ export default function HeroPets({ dict }: { dict: Dict }) {
       <div className="absolute -inset-4 -z-10 rounded-[2.6rem] bg-accent-soft blur-2xl xl:hidden" />
 
       {/* Mobile: framed plate. Desktop: no frame, video softly fades into the white background. */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.2rem] border border-line bg-surface-2 shadow-[0_50px_90px_-45px_var(--glow)] xl:rounded-none xl:border-0 xl:bg-transparent xl:shadow-none xl:[-webkit-mask-image:radial-gradient(80%_90%_at_50%_48%,#000_70%,transparent_100%)] xl:[mask-image:radial-gradient(80%_90%_at_50%_48%,#000_70%,transparent_100%)]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-line bg-surface-2 shadow-[0_50px_90px_-45px_var(--glow)] xl:rounded-none xl:border-0 xl:bg-transparent xl:shadow-none xl:[-webkit-mask-image:radial-gradient(80%_90%_at_50%_48%,#000_70%,transparent_100%)] xl:[mask-image:radial-gradient(80%_90%_at_50%_48%,#000_70%,transparent_100%)]">
         <AnimatePresence mode="wait">
           <motion.video
             key={pet}
@@ -29,7 +29,10 @@ export default function HeroPets({ dict }: { dict: Dict }) {
             loop
             muted
             playsInline
-            preload="auto"
+            // metadata, не auto: ролик всё равно тянется из-за autoPlay, но
+            // при переключении питомца браузер не начинает качать второй файл
+            // «на всякий случай».
+            preload="metadata"
             initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}

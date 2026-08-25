@@ -57,6 +57,8 @@ type Dict = {
     kicker: string;
     title: string;
     lead: string;
+    showMore: string;
+    showLess: string;
     items: { num: string; name: string; desc: string; tags: string[] }[];
   };
   clinic: {
@@ -156,7 +158,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     nav: {
       services: "Услуги",
-      team: "Руководство",
+      team: "Основатели",
       prices: "Цены",
       reviews: "Отзывы",
       faq: "Вопросы",
@@ -221,6 +223,8 @@ export const dictionaries: Record<Locale, Dict> = {
       title: "Полный спектр ветеринарной помощи",
       lead:
         "От профилактического осмотра и диагностики до сложных и неотложных операций.",
+      showMore: "Показать все услуги",
+      showLess: "Свернуть",
       items: [
         {
           num: "01",
@@ -449,7 +453,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     nav: {
       services: "Xizmatlar",
-      team: "Rahbariyat",
+      team: "Asoschilar",
       prices: "Narxlar",
       reviews: "Fikrlar",
       faq: "Savollar",
@@ -514,6 +518,8 @@ export const dictionaries: Record<Locale, Dict> = {
       title: "Veterinariya yordamining to‘liq spektri",
       lead:
         "Profilaktik ko‘rik va diagnostikadan murakkab hamda shoshilinch operatsiyalargacha.",
+      showMore: "Barcha xizmatlarni ko‘rsatish",
+      showLess: "Yig‘ish",
       items: [
         {
           num: "01",
@@ -742,7 +748,7 @@ export const dictionaries: Record<Locale, Dict> = {
     },
     nav: {
       services: "Services",
-      team: "Leadership",
+      team: "Founders",
       prices: "Pricing",
       reviews: "Reviews",
       faq: "FAQ",
@@ -807,6 +813,8 @@ export const dictionaries: Record<Locale, Dict> = {
       title: "A full range of veterinary care",
       lead:
         "From preventive check-ups and diagnostics to complex and emergency surgery.",
+      showMore: "Show all services",
+      showLess: "Show less",
       items: [
         {
           num: "01",

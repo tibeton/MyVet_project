@@ -129,7 +129,7 @@ export default function Contact({
               справа), а залипает её содержимое внутри. Так карточка не
               обрывается на середине колонки, но форма всё равно остаётся на
               экране, пока справа проматываются контакты и карта. */}
-          <Reveal className="h-full rounded-[2rem] border border-line bg-surface-2 p-6 sm:p-9">
+          <Reveal className="h-full rounded-3xl border border-line bg-surface-2 p-6 sm:p-9">
             <div className="lg:sticky lg:top-28">
             <span className="kicker">{c.kicker}</span>
             <h2 className="mt-4 text-pretty font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-extrabold leading-[1.07] tracking-[-0.02em] text-ink">
@@ -139,10 +139,19 @@ export default function Contact({
               {c.lead}
             </p>
 
-            <form onSubmit={onSubmit} noValidate className="mt-7 space-y-3.5">
+                        {/* Даже на `size="lg"` поля astryx выходят 36px. Для формы, которую
+                заполняют с телефона, поднимаем их до 44px — рекомендуемый
+                минимум для пальца. Через селектор по классу, а не через проп:
+                размера крупнее `lg` у компонентов нет. */}
+            <form
+              onSubmit={onSubmit}
+              noValidate
+              className="mt-7 space-y-3.5 [&_[class*=astryx-input-group]]:min-h-11 [&_[class*=astryx-selector]]:min-h-11 [&_[class*=astryx-text-input]]:min-h-11"
+            >
               <div className="grid gap-3.5 sm:grid-cols-2">
                 <div ref={nameRef}>
                   <TextInput
+                  size="lg"
                   label={c.name}
                   value={name}
                   onChange={(v) => {
@@ -154,11 +163,13 @@ export default function Contact({
                 </div>
                 <div ref={phoneRef}>
                   <InputGroup
+                    size="lg"
                     label={c.phone}
                     status={errors.phone ? { type: "error", message: c.invalidPhone } : undefined}
                   >
                     <InputGroupText>+998</InputGroupText>
                   <TextInput
+                    size="lg"
                     label={c.phone}
                     isLabelHidden
                     type="text"
@@ -183,6 +194,7 @@ export default function Contact({
 
               <div className="grid gap-3.5 sm:grid-cols-2">
                 <TextInput
+                  size="lg"
                   label={c.pet}
                   value={pet}
                   onChange={(v) => {
@@ -198,6 +210,7 @@ export default function Contact({
                     Centring the field before it opens guarantees room. */}
                 <div ref={serviceRef} onPointerDown={centreServiceField}>
                   <Selector
+                    size="lg"
                     label={c.service}
                     value={service}
                     onChange={(v) => v && setService(v)}
@@ -207,6 +220,7 @@ export default function Contact({
               </div>
 
               <TextArea
+                size="lg"
                 label={c.message}
                 value={message}
                 onChange={setMessage}
@@ -214,15 +228,20 @@ export default function Contact({
                 placeholder={c.messagePlaceholder}
               />
 
-              <Button
-                type="submit"
-                label={status === "sending" ? c.sending : c.submit}
-                variant="primary"
-                size="lg"
-                isLoading={status === "sending"}
-                width="100%"
-                endContent={<IconArrowUpRight className="h-5 w-5" />}
-              />
+              {/* lg — максимальный размер у astryx Button, а это 36px. Для
+                  главной кнопки конверсии на телефоне мало, поэтому поднимаем
+                  до 44px (min-h-11) — рекомендуемый минимум для пальца. */}
+              <div className="[&_button]:min-h-11">
+                <Button
+                  type="submit"
+                  label={status === "sending" ? c.sending : c.submit}
+                  variant="primary"
+                  size="lg"
+                  isLoading={status === "sending"}
+                  width="100%"
+                  endContent={<IconArrowUpRight className="h-5 w-5" />}
+                />
+              </div>
 
               {status === "success" && (
                 <p className="rounded-2xl bg-accent-soft px-4 py-3 text-sm font-medium text-accent">
@@ -240,7 +259,7 @@ export default function Contact({
 
           {/* Info + map */}
           <Reveal delay={0.1} className="flex flex-col gap-5">
-            <div className="rounded-[2rem] border border-line bg-surface p-6 sm:p-7">
+            <div className="rounded-3xl border border-line bg-surface p-6 sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-faint">
                 {c.or}
               </p>
@@ -297,7 +316,7 @@ export default function Contact({
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[2rem] border border-line bg-surface">
+            <div className="overflow-hidden rounded-3xl border border-line bg-surface">
               <iframe
                 src={site.mapEmbed}
                 title="MyVet — map"

@@ -24,7 +24,7 @@ function Question({
   onToggle: () => void;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-surface">
+    <div className="overflow-hidden rounded-3xl border border-line bg-surface">
       <button
         type="button"
         onClick={onToggle}

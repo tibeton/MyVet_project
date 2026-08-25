@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import type { Dict } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
+import ShowMore from "./ShowMore";
 import { RevealGroup, RevealItem } from "./Reveal";
 import {
   IconStethoscope,
@@ -31,8 +35,20 @@ const ICONS = [
   IconClipboard,   // Чек-ап
 ];
 
+// На телефоне девять карточек идут в одну колонку — это ~2700px скролла до
+// следующего блока. Показываем четыре, остальные под кнопкой.
+//
+// Скрываем через `hidden sm:block`, а не размонтированием: на sm+ сетка 3x3
+// и прятать там нечего, а карточки, домонтированные позже, остались бы на
+// opacity 0 — RevealGroup держит whileInView с `once: true` и после срабатывания
+// уже не оркеструет новых детей. Скрытые display:none карточки анимацию
+// получают вместе со всеми, поэтому появляются сразу видимыми.
+const MOBILE_VISIBLE = 4;
+
 export default function Services({ dict }: { dict: Dict }) {
   const s = dict.services;
+  const [expanded, setExpanded] = useState(false);
+  const hidden = s.items.length - MOBILE_VISIBLE;
   return (
     <section id="services" className="section scroll-mt-20">
       <div className="shell">
@@ -50,7 +66,12 @@ export default function Services({ dict }: { dict: Dict }) {
           {s.items.map((item, i) => {
             const Icon = ICONS[i] ?? IconPaw;
             return (
-              <RevealItem key={item.num}>
+              <RevealItem
+                key={item.num}
+                className={
+                  !expanded && i >= MOBILE_VISIBLE ? "hidden sm:block" : undefined
+                }
+              >
                 <article className="lift group flex h-full flex-col rounded-3xl border border-line bg-surface p-7">
                   <div className="flex items-start justify-between">
                     <div className="grid h-14 w-14 place-items-center rounded-2xl bg-accent-soft text-accent transition-colors duration-500 group-hover:bg-accent group-hover:text-on-accent">
@@ -85,6 +106,18 @@ export default function Services({ dict }: { dict: Dict }) {
             );
           })}
         </RevealGroup>
+
+        {/* Только для телефона: на sm+ видны все девять карточек сразу. */}
+        {hidden > 0 && (
+          <ShowMore
+            expanded={expanded}
+            hidden={hidden}
+            onToggle={() => setExpanded((v) => !v)}
+            more={s.showMore}
+            less={s.showLess}
+            className="mt-6 sm:hidden"
+          />
+        )}
 
         {/* Same clamp as .section padding: кнопка отбивается от сетки услуг
             ровно на один шаг секции, то есть остаётся частью этого блока, а

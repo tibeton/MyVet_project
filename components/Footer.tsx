@@ -56,7 +56,7 @@ export default function Footer({ dict, locale }: { dict: Dict; locale: Locale })
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-sm text-muted transition-colors hover:text-accent"
+                    className="inline-block py-1 text-sm text-muted transition-colors hover:text-accent"
                   >
                     {l.label}
                   </a>
@@ -71,13 +71,13 @@ export default function Footer({ dict, locale }: { dict: Dict; locale: Locale })
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted">
               <li>
-                <a href={`tel:${site.phoneHref}`} className="inline-flex items-center gap-2 transition-colors hover:text-accent">
+                <a href={`tel:${site.phoneHref}`} className="inline-flex items-center gap-2 py-1 transition-colors hover:text-accent">
                   <IconPhone className="h-4 w-4 text-accent" />
                   {site.phoneDisplay}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="transition-colors hover:text-accent">
+                <a href={`mailto:${site.email}`} className="inline-block py-1 transition-colors hover:text-accent">
                   {site.email}
                 </a>
               </li>
@@ -98,7 +98,7 @@ export default function Footer({ dict, locale }: { dict: Dict; locale: Locale })
             href={site.licenseImage}
             target="_blank"
             rel="noreferrer"
-            className="mt-2 inline-flex items-center gap-1.5 font-semibold text-ink transition-colors hover:text-accent"
+            className="mt-2 inline-flex items-center gap-1.5 py-1 font-semibold text-ink transition-colors hover:text-accent"
           >
             {f.viewLicense}
             <IconArrowUpRight className="h-3.5 w-3.5" />
